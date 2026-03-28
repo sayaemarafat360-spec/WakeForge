@@ -188,7 +188,7 @@ fun WeeklyBarChart(
                         textAlign = android.graphics.Paint.Align.CENTER
                         isAntiAlias = true
                     }
-                    drawText(label, textX, textY, paint)
+                    drawContext.canvas.nativeCanvas.drawText(label, textX, textY, paint)
                 }
             }
         }
@@ -259,5 +259,6 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRoundedBar(
     }
     drawPath(path, color)
 }
+
 
 

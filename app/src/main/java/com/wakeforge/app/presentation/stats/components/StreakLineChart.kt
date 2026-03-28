@@ -105,7 +105,7 @@ fun StreakLineChart(
                     textAlign = android.graphics.Paint.Align.RIGHT
                     isAntiAlias = true
                 }
-                drawText(label, paddingStart - 4.dp.toPx(), y + 3.dp.toPx(), paint)
+                drawContext.canvas.nativeCanvas.drawText(label, paddingStart - 4.dp.toPx(), y + 3.dp.toPx(), paint)
             }
         }
 
@@ -121,7 +121,7 @@ fun StreakLineChart(
                     textAlign = android.graphics.Paint.Align.CENTER
                     isAntiAlias = true
                 }
-                drawText(xLabelValues[index], point.x, chartHeight - 4.dp.toPx(), paint)
+                drawContext.canvas.nativeCanvas.drawText(xLabelValues[index], point.x, chartHeight - 4.dp.toPx(), paint)
             }
         }
 
@@ -228,6 +228,7 @@ fun StreakLineChart(
         drawContext.canvas.restore()
     }
 }
+
 
 
 

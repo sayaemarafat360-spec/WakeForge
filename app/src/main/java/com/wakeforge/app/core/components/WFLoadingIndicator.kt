@@ -70,7 +70,7 @@ fun WFLoadingIndicator(
         contentAlignment = Alignment.Center,
     ) {
         Canvas(modifier = Modifier.matchParentSize()) {
-            val arcSize = size.minDimension
+            val arcSize = size.size
             val strokeWidth = arcSize * 0.1f
             val topLeft = Offset(
                 x = (size.width - arcSize) / 2f,
@@ -107,3 +107,4 @@ fun WFLoadingIndicator(
         }
     }
 }
+

@@ -35,7 +35,7 @@ class MissionEngine @Inject constructor(
         return when (type) {
             MissionType.MATH -> {
                 val problems = mathGenerator.generate(difficulty)
-                Mission.MathMission(
+                Mission.MathMission(difficulty = difficulty, 
                     id = missionId,
                     type = MissionType.MATH,
                     difficulty = difficulty,
@@ -47,7 +47,7 @@ class MissionEngine @Inject constructor(
 
             MissionType.MEMORY -> {
                 val memory = memoryGenerator.generate(difficulty)
-                Mission.MemoryMission(
+                Mission.MemoryMission(difficulty = difficulty, 
                     id = missionId,
                     type = MissionType.MEMORY,
                     difficulty = difficulty,
@@ -61,7 +61,7 @@ class MissionEngine @Inject constructor(
 
             MissionType.TYPE_PHRASE -> {
                 val phrase = phraseGenerator.generate(difficulty)
-                Mission.TypePhraseMission(
+                Mission.TypePhraseMission(difficulty = difficulty, 
                     id = missionId,
                     type = MissionType.TYPE_PHRASE,
                     difficulty = difficulty,
@@ -73,8 +73,8 @@ class MissionEngine @Inject constructor(
             }
 
             MissionType.SHAKE -> {
-                val shake = shakeEvaluator.createShakeMission(difficulty)
-                Mission.ShakeMission(
+                val shake = shakeEvaluator.createShakeMission(difficulty = difficulty, difficulty)
+                Mission.ShakeMission(difficulty = difficulty, 
                     id = missionId,
                     type = MissionType.SHAKE,
                     difficulty = difficulty,
@@ -87,8 +87,8 @@ class MissionEngine @Inject constructor(
             }
 
             MissionType.STEP -> {
-                val step = stepEvaluator.createStepMission(difficulty)
-                Mission.StepMission(
+                val step = stepEvaluator.createStepMission(difficulty = difficulty, difficulty)
+                Mission.StepMission(difficulty = difficulty, 
                     id = missionId,
                     type = MissionType.STEP,
                     difficulty = difficulty,
@@ -131,5 +131,6 @@ class MissionEngine @Inject constructor(
         }
     }
 }
+
 
 

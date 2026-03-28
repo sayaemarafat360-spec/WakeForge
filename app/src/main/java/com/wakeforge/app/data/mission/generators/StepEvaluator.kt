@@ -28,7 +28,7 @@ class StepEvaluator @Inject constructor(
 
     private var initialStepCount: Int = -1
 
-    fun createStepMission(difficulty = difficulty, difficulty: MissionDifficulty): Mission.StepMission {
+    fun createStepMission(difficulty: MissionDifficulty): Mission.StepMission {
         val requiredSteps = configurator.getStepCount(difficulty)
         val timeLimitMs = configurator.getStepTimeLimit(difficulty)
 
@@ -91,5 +91,6 @@ class StepEvaluator @Inject constructor(
         initialStepCount = -1
     }
 }
+
 
 
