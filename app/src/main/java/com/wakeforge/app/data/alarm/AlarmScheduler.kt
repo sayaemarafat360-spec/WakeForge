@@ -9,7 +9,7 @@ import android.util.Log
 import com.wakeforge.app.data.database.dao.AlarmDao
 import com.wakeforge.app.domain.models.Alarm
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.time.DayOfWeek
+import com.wakeforge.app.domain.models.DayOfWeek as DomainDayOfWeek
 import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -145,8 +145,9 @@ class AlarmScheduler @Inject constructor(
         for (i in 0..7) {
             val checkDate = now.toLocalDate().plusDays(i.toLong())
             val checkDay = checkDate.dayOfWeek
+            val domainCheckDay = javaTimeToDomainDay(checkDay)
 
-            if (checkDay in repeatDaysSet) {
+            if (domainCheckDay in repeatDaysSet) {
                 val alarmDateTime = checkDate.atTime(alarmTime)
 
                 if (i == 0 && now.toLocalTime().isAfter(alarmTime)) {
@@ -163,8 +164,9 @@ class AlarmScheduler @Inject constructor(
             }
         }
 
-        val firstRepeatDay = alarm.repeatDays.minByOrNull { it.value } ?: return null
-        val daysUntilFirst = (firstRepeatDay.value - todayDayOfWeek.value + 7) % 7
+        val firstRepeatDay = alarm.repeatDays.minByOrNull { it.calendarDay } ?: return null
+        val todayDomainDay = javaTimeToDomainDay(todayDayOfWeek)
+        val daysUntilFirst = (firstRepeatDay.calendarDay - todayDomainDay.calendarDay + 7) % 7
         val nextDate = if (daysUntilFirst == 0L && now.toLocalTime().isAfter(alarmTime)) {
             now.toLocalDate().plusWeeks(1).atTime(alarmTime)
         } else {
@@ -193,6 +195,19 @@ class AlarmScheduler @Inject constructor(
             intent,
             flags
         )
+    }
+
+    private fun javaTimeToDomainDay(jtDay: java.time.DayOfWeek): DomainDayOfWeek {
+        val calendarDay = when (jtDay) {
+            java.time.DayOfWeek.MONDAY -> java.util.Calendar.MONDAY
+            java.time.DayOfWeek.TUESDAY -> java.util.Calendar.TUESDAY
+            java.time.DayOfWeek.WEDNESDAY -> java.util.Calendar.WEDNESDAY
+            java.time.DayOfWeek.THURSDAY -> java.util.Calendar.THURSDAY
+            java.time.DayOfWeek.FRIDAY -> java.util.Calendar.FRIDAY
+            java.time.DayOfWeek.SATURDAY -> java.util.Calendar.SATURDAY
+            java.time.DayOfWeek.SUNDAY -> java.util.Calendar.SUNDAY
+        }
+        return DomainDayOfWeek.from(calendarDay)
     }
 
     private fun getRequestCode(alarmId: String): Int {

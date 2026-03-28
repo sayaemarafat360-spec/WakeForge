@@ -35,7 +35,7 @@ data class AnalyticsData(
      * Returns the total number of successful wake-ups.
      */
     val totalSuccesses: Int
-        get() = totalWakeUps - totalFailures - totalSnoozes.coerceAtMost(totalWakeUps)
+        get() = maxOf(0, totalWakeUps - totalFailures - totalSnoozes)
 }
 
 /**

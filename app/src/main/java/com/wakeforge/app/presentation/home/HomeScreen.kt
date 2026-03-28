@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -54,9 +55,8 @@ import com.wakeforge.app.core.theme.Success
 import com.wakeforge.app.core.theme.Warning
 import com.wakeforge.app.core.theme.Error
 import com.wakeforge.app.core.utils.TimeUtils
+import com.wakeforge.app.domain.models.DailyStats
 import com.wakeforge.app.domain.models.DayOfWeek
-import com.wakeforge.app.domain.models.MissionDifficulty
-import com.wakeforge.app.domain.models.WakeOutcome
 import com.wakeforge.app.presentation.home.components.NextAlarmCard
 import com.wakeforge.app.presentation.home.components.QuickStatsRow
 import java.util.Calendar
@@ -278,13 +278,18 @@ fun HomeScreen(
             }
         }
 
-        // Recent wake history — show recent entries or empty state
-        val hasHistory = false // Will be populated from StatsRepository when wake records exist
+        // Recent wake history — show daily summaries or empty state
+        val recentDays = uiState.weeklyData
+            .filter { it.successes > 0 || it.failures > 0 || it.snoozes > 0 }
+            .reversed()
+            .take(5)
+        val hasHistory = recentDays.isNotEmpty()
         if (hasHistory) {
             items(
-                count = 3,
-                key = { index -> "history_$index" },
+                count = recentDays.size,
+                key = { index -> "history_${recentDays[index].date}" },
             ) { index ->
+                val day = recentDays[index]
                 AnimatedVisibility(
                     visible = true,
                     enter = slideInVertically(
@@ -302,18 +307,7 @@ fun HomeScreen(
                     ),
                 ) {
                     RecentWakeItem(
-                        outcome = when (index) {
-                            0 -> WakeOutcome.SUCCESS
-                            1 -> WakeOutcome.SNOOZE
-                            else -> WakeOutcome.FAILURE
-                        },
-                        time = "7:${30 + index * 15} AM",
-                        missionType = when (index) {
-                            0 -> "Math Challenge"
-                            1 -> "Memory Pattern"
-                            else -> "Type Phrase"
-                        },
-                        date = "Today",
+                        dayStats = day,
                     )
                 }
             }
@@ -368,30 +362,28 @@ private fun getGreeting(): String {
 }
 
 /**
- * A single wake history item card with a colored left border.
+ * A single wake history item card summarizing one day's wake-up activity.
  */
 @Composable
 private fun RecentWakeItem(
-    outcome: WakeOutcome,
-    time: String,
-    missionType: String,
-    date: String,
+    dayStats: DailyStats,
 ) {
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
 
-    // Left border color based on outcome
-    val borderColor = when (outcome) {
-        WakeOutcome.SUCCESS -> Success
-        WakeOutcome.SNOOZE -> Warning
-        WakeOutcome.FAILURE -> Error
+    val totalEvents = dayStats.successes + dayStats.failures
+    val successRate = if (totalEvents > 0) dayStats.successes.toFloat() / totalEvents else 0f
+
+    // Border and label color based on success rate
+    val (borderColor, outcomeLabel) = when {
+        successRate >= 0.8f -> Success to "Great Day"
+        successRate >= 0.5f -> Warning to "Mixed"
+        else -> Error to "Tough Day"
     }
 
-    val outcomeLabel = when (outcome) {
-        WakeOutcome.SUCCESS -> "Success"
-        WakeOutcome.SNOOZE -> "Snoozed"
-        WakeOutcome.FAILURE -> "Failed"
-    }
+    // Format the date from the timestamp
+    val dateText = java.text.SimpleDateFormat("EEE, MMM d", java.util.Locale.getDefault())
+        .format(java.util.Date(dayStats.date))
 
     WFCard(
         modifier = Modifier.fillMaxWidth(),
@@ -416,27 +408,27 @@ private fun RecentWakeItem(
                 )
             }
 
-            // Center: time and mission type
+            // Center: stats summary
             Column(
                 modifier = Modifier.weight(1f),
             ) {
                 Text(
-                    text = time,
+                    text = dateText,
                     style = typography.titleLarge,
                     color = colors.primaryText,
                 )
                 Text(
-                    text = missionType,
+                    text = "${dayStats.successes} succeeded · ${dayStats.failures} failed · ${dayStats.snoozes} snoozed",
                     style = typography.bodyMedium,
                     color = colors.secondaryText,
                 )
             }
 
-            // Right: date
+            // Right: success rate
             Text(
-                text = date,
+                text = "${(successRate * 100).toInt()}%",
                 style = typography.labelMedium,
-                color = colors.secondaryText,
+                color = borderColor,
             )
         }
     }

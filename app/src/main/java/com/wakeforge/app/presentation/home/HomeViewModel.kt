@@ -43,6 +43,7 @@ class HomeViewModel @Inject constructor(
         val averageSnooze: Float = 0f,
         val timeUntilNextAlarm: String? = null,
         val isLoading: Boolean = true,
+        val weeklyData: List<DailyStats> = emptyList(),
     )
 
     private val _state = MutableStateFlow(HomeUiState())
@@ -101,6 +102,7 @@ class HomeViewModel @Inject constructor(
 
                 _state.value = _state.value.copy(
                     weeklySuccessRate = successRate,
+                    weeklyData = weeklyStats,
                 )
             } catch (_: Exception) {
                 // Silently handle errors; use default 0f

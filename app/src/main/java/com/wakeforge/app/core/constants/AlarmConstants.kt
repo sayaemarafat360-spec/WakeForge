@@ -11,7 +11,7 @@ object AlarmConstants {
     const val ALARM_ACTION_EXTRA_ALARM_ID = "extra_alarm_id"
 
     /** Action string: start ringing the alarm. */
-    const val ALARM_ACTION_RING = "com.wakeforge.app.action.RING"
+    const val ALARM_ACTION_RING = "com.wakeforge.app.ACTION_ALARM_RING"
 
     /** Action string: dismiss / turn off the alarm. */
     const val ALARM_ACTION_DISMISS = "com.wakeforge.app.action.DISMISS"

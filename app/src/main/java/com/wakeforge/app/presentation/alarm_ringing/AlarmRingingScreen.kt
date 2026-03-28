@@ -141,12 +141,7 @@ fun AlarmRingingScreen(
         when (event) {
             is AlarmRingingViewModel.AlarmRingingEvent.StartMission -> {
                 navController.navigate(
-                    "mission_challenge" +
-                        "/${event.alarmId}" +
-                        "/${event.missionType}" +
-                        "/${event.escalatedDifficulty}" +
-                        "/${event.snoozeCount}" +
-                        "/${event.isTimed}"
+                    "mission_challenge?alarmId=${event.alarmId}&missionType=${event.missionType}&difficulty=${event.escalatedDifficulty}&snoozeCount=${event.snoozeCount}"
                 )
             }
             is AlarmRingingViewModel.AlarmRingingEvent.Snooze -> {

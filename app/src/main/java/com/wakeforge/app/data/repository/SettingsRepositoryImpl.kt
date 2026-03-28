@@ -41,6 +41,10 @@ class SettingsRepositoryImpl @Inject constructor(
         settingsDataStore.updateSoundVolume(volume)
     }
 
+    override suspend fun updateVibrationIntensity(intensity: Int) {
+        settingsDataStore.updateVibrationIntensity(intensity)
+    }
+
     override suspend fun markOnboardingCompleted() {
         settingsDataStore.updateOnboardingCompleted(true)
     }

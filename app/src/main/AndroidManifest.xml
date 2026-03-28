@@ -111,16 +111,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"
-            tools:replace="android:value" />
-
-        <!-- ============================================================ -->
-        <!-- Compose Compiler                                              -->
-        <!-- ============================================================ -->
-
-        <meta-data
-            android:name="androidx.compose.compiler"
-            android:value="1.5.10" />
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
     </application>
 

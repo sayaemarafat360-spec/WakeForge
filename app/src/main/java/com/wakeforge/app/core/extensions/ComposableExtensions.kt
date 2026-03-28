@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -109,26 +110,40 @@ fun Modifier.pressEffect(): Modifier = composed {
  * Applies a loading shimmer gradient that sweeps horizontally across the element.
  * The element should have a solid background color; the shimmer overlays on top.
  */
-fun Modifier.shimmerEffect(): Modifier = this
-    .drawBehind {
+fun Modifier.shimmerEffect(): Modifier = composed {
+    val transition = rememberInfiniteTransition(label = "shimmer")
+    val translateX by transition.animateFloat(
+        initialValue = -300f,
+        targetValue = 300f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 1200, easing = LinearOutSlowInEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "shimmer_offset"
+    )
+
+    this.drawBehind {
         val brush = Brush.linearGradient(
             colors = listOf(
-                Color.Transparent.copy(alpha = 0f),
+                Color.Transparent,
                 Color.White.copy(alpha = 0.08f),
-                Color.Transparent.copy(alpha = 0f)
+                Color.White.copy(alpha = 0.15f),
+                Color.White.copy(alpha = 0.08f),
+                Color.Transparent
             ),
-            start = Offset(size.width * -1f, 0f),
-            end = Offset(size.width * 2f, 0f)
+            start = Offset(translateX, 0f),
+            end = Offset(translateX + size.width / 3f, 0f)
         )
         drawRect(brush = brush)
     }
+}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Slide Transitions
 // ──────────────────────────────────────────────────────────────────────────────
 
 /** Slide in from the right edge (e.g. forward navigation). */
-fun Modifier.slideInFromRight(
+fun slideInFromRight(
     durationMs: Int = FadeMs,
 ): EnterTransition = slideInHorizontally(
     initialOffsetX = { fullWidth -> (fullWidth * 0.25f).toInt() },
@@ -138,7 +153,7 @@ fun Modifier.slideInFromRight(
 )
 
 /** Slide out to the left edge (e.g. forward navigation exit). */
-fun Modifier.slideOutToLeft(
+fun slideOutToLeft(
     durationMs: Int = FadeMs,
 ): ExitTransition = slideOutHorizontally(
     targetOffsetX = { fullWidth -> -(fullWidth * 0.25f).toInt() },
@@ -148,7 +163,7 @@ fun Modifier.slideOutToLeft(
 )
 
 /** Slide in from the bottom (e.g. bottom sheet or list items). */
-fun Modifier.slideInFromBottom(
+fun slideInFromBottom(
     durationMs: Int = FadeMs,
 ): EnterTransition = slideInVertically(
     initialOffsetY = { fullHeight -> (fullHeight * 0.3f).toInt() },
@@ -158,7 +173,7 @@ fun Modifier.slideInFromBottom(
 )
 
 /** Slide out to the bottom (e.g. bottom sheet dismiss). */
-fun Modifier.slideOutToBottom(
+fun slideOutToBottom(
     durationMs: Int = FadeMs,
 ): ExitTransition = slideOutVertically(
     targetOffsetY = { fullHeight -> (fullHeight * 0.3f).toInt() },

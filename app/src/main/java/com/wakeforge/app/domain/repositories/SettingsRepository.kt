@@ -55,6 +55,13 @@ interface SettingsRepository {
     suspend fun updateSoundVolume(volume: Float)
 
     /**
+     * Updates the vibration intensity.
+     *
+     * @param intensity Vibration intensity level between 0 and 100.
+     */
+    suspend fun updateVibrationIntensity(intensity: Int)
+
+    /**
      * Marks the onboarding flow as completed.
      */
     suspend fun markOnboardingCompleted()

@@ -67,6 +67,16 @@ class DifficultyConfigurator @Inject constructor() {
         }
     }
 
+    fun getMathTimeLimit(difficulty: MissionDifficulty): Long {
+        return when (difficulty) {
+            MissionDifficulty.TRIVIAL -> 30_000L
+            MissionDifficulty.EASY -> 45_000L
+            MissionDifficulty.MEDIUM -> 60_000L
+            MissionDifficulty.HARD -> 90_000L
+            MissionDifficulty.EXTREME -> 120_000L
+        }
+    }
+
     fun getShakeTimeLimit(difficulty: MissionDifficulty): Long {
         return when (difficulty) {
             MissionDifficulty.TRIVIAL -> 30_000L

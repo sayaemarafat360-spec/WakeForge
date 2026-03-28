@@ -31,7 +31,7 @@ interface WakeRecordDao {
     suspend fun getFailureCountSince(startDate: Long): Int
 
     @Query("SELECT AVG(completionTimeMs) FROM wake_records WHERE outcome = 'SUCCESS' AND timestamp >= :startDate")
-    suspend fun getAverageCompletionTimeSince(startDate: Long): Long?
+    suspend fun getAverageCompletionTimeSince(startDate: Long): Double?
 
     @Query("SELECT * FROM wake_records WHERE alarmId = :alarmId ORDER BY timestamp DESC")
     fun getRecordsForAlarm(alarmId: String): Flow<List<WakeRecordEntity>>

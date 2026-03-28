@@ -28,7 +28,7 @@ class MemoryGenerator @Inject constructor(
             type = com.wakeforge.app.domain.models.MissionType.MEMORY,
             difficulty = difficulty,
             isTimed = true,
-            timeLimitMs = configurator.getShakeTimeLimit(difficulty),
+            timeLimitMs = configurator.getMathTimeLimit(difficulty),
             gridSize = gridSize,
             pattern = pattern,
             patternLength = patternLength

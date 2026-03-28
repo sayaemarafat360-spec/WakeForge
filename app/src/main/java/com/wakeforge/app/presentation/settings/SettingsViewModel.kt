@@ -108,11 +108,9 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun updateVibrationIntensity(intensity: Int) {
-        // Vibration intensity is persisted through vibration settings.
-        // The UpdateSettingsUseCase doesn't have a dedicated method,
-        // so we update it through the settings data store flow.
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(vibrationIntensity = intensity)
+            try { updateSettingsUseCase.updateVibrationIntensity(intensity) } catch (_: Exception) {}
         }
     }
 

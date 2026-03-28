@@ -7,6 +7,7 @@ import com.wakeforge.app.domain.models.Alarm
 import com.wakeforge.app.domain.models.DayOfWeek
 import com.wakeforge.app.domain.models.MissionDifficulty
 import com.wakeforge.app.domain.models.MissionType
+import com.wakeforge.app.domain.repositories.AlarmRepository
 import com.wakeforge.app.domain.usecases.alarm.DeleteAlarmUseCase
 import com.wakeforge.app.domain.usecases.alarm.UpdateAlarmUseCase
 import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
@@ -34,7 +35,8 @@ class EditAlarmViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val updateAlarmUseCase: UpdateAlarmUseCase,
     private val deleteAlarmUseCase: DeleteAlarmUseCase,
-    private val getSettingsUseCase: GetSettingsUseCase
+    private val getSettingsUseCase: GetSettingsUseCase,
+    private val alarmRepository: AlarmRepository
 ) : ViewModel() {
 
     companion object {
@@ -104,19 +106,18 @@ class EditAlarmViewModel @Inject constructor(
 
         viewModelScope.launch {
             try {
-                val settings = getSettingsUseCase().first()
-                _uiState.value = _uiState.value.copy(is24HourFormat = settings.is24HourFormat)
-            } catch (_: Exception) {
-                // Keep defaults
+                alarmRepository.getAlarmById(alarmId).first { alarm ->
+                    if (alarm != null) {
+                        loadAlarmData(alarm)
+                        true
+                    } else {
+                        _events.emit(EditAlarmEvent.AlarmNotFound)
+                        true
+                    }
+                }
+            } catch (e: Exception) {
+                _events.emit(EditAlarmEvent.AlarmNotFound)
             }
-
-            // Load alarm — using SettingsUseCase flow pattern but alarm comes from repository
-            // We rely on the caller to pass the alarm data or use a getAlarmById use case
-            // For now, set loading to false; the screen will handle navigation if alarmId is invalid
-            _uiState.value = _uiState.value.copy(
-                alarmId = alarmId,
-                isLoading = false
-            )
         }
     }
 

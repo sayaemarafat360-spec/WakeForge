@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.wakeforge.app.domain.models.Alarm
 import com.wakeforge.app.domain.models.MissionDifficulty
 import com.wakeforge.app.domain.models.MissionType
-import java.time.DayOfWeek
+import com.wakeforge.app.domain.models.DayOfWeek
 
 @Entity(tableName = "alarms")
 data class AlarmEntity(
@@ -39,7 +39,7 @@ data class AlarmEntity(
             .filter { it.isNotBlank() }
             .mapNotNull { dayStr ->
                 dayStr.toIntOrNull()?.let { dayIndex ->
-                    DayOfWeek.of(dayIndex)
+                    DayOfWeek.entries.firstOrNull { it.calendarDay == dayIndex }
                 }
             }
 
@@ -79,8 +79,8 @@ data class AlarmEntity(
     companion object {
         fun fromDomain(alarm: Alarm): AlarmEntity {
             val repeatDaysStr = alarm.repeatDays
-                .sortedBy { it.value }
-                .joinToString(",") { it.value.toString() }
+                .sortedBy { it.calendarDay }
+                .joinToString(",") { it.calendarDay.toString() }
 
             return AlarmEntity(
                 id = alarm.id,

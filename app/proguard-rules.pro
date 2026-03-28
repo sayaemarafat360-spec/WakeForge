@@ -5,7 +5,7 @@
 # ================================================================
 # Room - Keep all entities and data classes
 # ================================================================
--keep class com.wakeforge.app.data.local.entity.** { *; }
+-keep class com.wakeforge.app.data.database.entity.** { *; }
 -keep class * extends androidx.room.RoomDatabase
 -dontwarn androidx.room.paging.**
 
@@ -13,7 +13,7 @@
 -keep @androidx.room.Entity class * { *; }
 
 # Keep enum types used in Room entities
--keepclassmembers enum com.wakeforge.app.data.local.entity.** { *; }
+-keepclassmembers enum com.wakeforge.app.data.database.entity.** { *; }
 
 # Keep Room column info and type converters
 -keepclassmembers class * {
@@ -29,7 +29,7 @@
 -keepclassmembers class * { @androidx.room.TypeConverter *; }
 
 # Keep Room DAO interfaces
--keep interface com.wakeforge.app.data.local.dao.** { *; }
+-keep interface com.wakeforge.app.data.database.dao.** { *; }
 
 # ================================================================
 # Hilt - Dependency Injection
@@ -86,33 +86,21 @@
 # ================================================================
 # WakeForge Enums
 # ================================================================
--keepclassmembers enum com.wakeforge.app.domain.model.** {
+-keepclassmembers enum com.wakeforge.app.domain.models.** {
     **[] values();
     public *;
 }
 
--keep enum com.wakeforge.app.domain.model.MissionType { *; }
--keep enum com.wakeforge.app.domain.model.MissionDifficulty { *; }
--keep enum com.wakeforge.app.domain.model.AlarmStatus { *; }
--keep enum com.wakeforge.app.domain.model.DayOfWeek { *; }
--keep enum com.wakeforge.app.domain.model.RepeatMode { *; }
--keep enum com.wakeforge.app.domain.model.SnoozeBehavior { *; }
--keep enum com.wakeforge.app.domain.model.ThemeMode { *; }
--keep enum com.wakeforge.app.domain.model.VolumeCurve { *; }
+-keep enum com.wakeforge.app.domain.models.MissionType { *; }
+-keep enum com.wakeforge.app.domain.models.MissionDifficulty { *; }
+-keep enum com.wakeforge.app.domain.models.DayOfWeek { *; }
+-keep enum com.wakeforge.app.domain.models.ThemeMode { *; }
 
 # Keep all enum values() and valueOf() methods
 -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-
-# ================================================================
-# Data Serialization (Moshi/Gson safe-keeping)
-# ================================================================
--keepattributes Signature
--keepattributes *Annotation*
--keep class com.wakeforge.app.domain.model.** { *; }
--keep class com.wakeforge.app.data.dto.** { *; }
 
 # ================================================================
 # Kotlin Coroutines
@@ -126,9 +114,6 @@
 # ================================================================
 # AndroidX & Jetpack Compose
 # ================================================================
--keep class androidx.compose.** { *; }
--keep class com.google.accompanist.** { *; }
--keepclassmembers class androidx.compose.** { *; }
 
 # Keep Compose navigation arguments
 -keepclassmembers class * {
@@ -140,9 +125,6 @@
 # ================================================================
 -dontwarn javax.annotation.**
 -dontwarn kotlin.Unit
--dontwarn retrofit2.**
--dontwarn okhttp3.**
--dontwarn okio.**
 -dontwarn com.google.protobuf.**
 -dontwarn org.conscrypt.**
 -dontwarn org.bouncycastle.**
@@ -168,11 +150,11 @@
     public static *** i(...);
 }
 
-# Keep Parcelable and Serializable
--keepclassmembers class * implements android.os.Parcelable {
+# Keep Parcelable and Serializable (scoped to app package)
+-keepclassmembers class com.wakeforge.app.** implements android.os.Parcelable {
     public static final ** CREATOR;
 }
--keepclassmembers class * implements java.io.Serializable {
+-keepclassmembers class com.wakeforge.app.** implements java.io.Serializable {
     static final long serialVersionUID;
     private static final java.io.ObjectStreamField[] serialPersistentFields;
     !static !transient <fields>;

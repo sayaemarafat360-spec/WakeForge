@@ -1,5 +1,7 @@
 package com.wakeforge.app.presentation.settings
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Info
@@ -39,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.wakeforge.app.core.components.ButtonType
 import com.wakeforge.app.core.components.WFButton
 import com.wakeforge.app.core.components.WFCard
 import com.wakeforge.app.core.components.WFChip
@@ -47,6 +51,7 @@ import com.wakeforge.app.core.components.WFToggle
 import com.wakeforge.app.core.components.WFTopBar
 import com.wakeforge.app.core.theme.LocalWakeForgeColors
 import com.wakeforge.app.core.theme.LocalWakeForgeTypography
+import com.wakeforge.app.core.theme.WakeForgeShapes
 import com.wakeforge.app.domain.models.AppSettings
 import com.wakeforge.app.domain.models.MissionDifficulty
 import com.wakeforge.app.domain.models.MissionType
@@ -458,6 +463,7 @@ fun SettingsScreen(
 
 /**
  * Dialog for configuring snooze interval and max snooze count.
+ * Shows two sliders: interval (1–30 min) and max count (0–10).
  */
 @Composable
 private fun SnoozeConfigDialog(
@@ -469,25 +475,94 @@ private fun SnoozeConfigDialog(
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
 
-    var interval by remember { mutableStateOf(currentInterval) }
-    var maxCount by remember { mutableStateOf(currentMaxCount) }
+    var interval by remember { mutableStateOf(currentInterval.toFloat()) }
+    var maxCount by remember { mutableStateOf(currentMaxCount.toFloat()) }
 
-    val intervalOptions = listOf(1, 3, 5, 7, 10, 15, 20, 30)
-    val maxCountOptions = listOf(0, 1, 2, 3, 5, 7, 10)
-
-    WFDialog(
+    AlertDialog(
         onDismissRequest = onDismiss,
-        title = "Snooze Settings",
-        message = "Configure default snooze behavior for new alarms.",
-        confirmText = "Save",
-        dismissText = "Cancel",
-        onConfirm = { onConfirm(interval, maxCount) },
-        onDismiss = onDismiss
+        containerColor = colors.surface,
+        shape = WakeForgeShapes.medium,
+        title = {
+            Text(
+                text = "Snooze Settings",
+                style = typography.headlineMedium,
+                color = colors.primaryText
+            )
+        },
+        text = {
+            Column {
+                Text(
+                    text = "Snooze Interval",
+                    style = typography.labelLarge,
+                    color = colors.primaryText
+                )
+                Slider(
+                    value = interval,
+                    onValueChange = { interval = it },
+                    valueRange = 1f..30f,
+                    steps = 28,
+                    colors = SliderDefaults.colors(
+                        thumbColor = colors.primaryAccent,
+                        activeTrackColor = colors.primaryAccent,
+                        inactiveTrackColor = colors.surfaceVariant
+                    ),
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Text(
+                    text = "${interval.toInt()} min",
+                    style = typography.labelMedium,
+                    color = colors.secondaryText
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Max Snooze Count",
+                    style = typography.labelLarge,
+                    color = colors.primaryText
+                )
+                Slider(
+                    value = maxCount,
+                    onValueChange = { maxCount = it },
+                    valueRange = 0f..10f,
+                    steps = 9,
+                    colors = SliderDefaults.colors(
+                        thumbColor = colors.primaryAccent,
+                        activeTrackColor = colors.primaryAccent,
+                        inactiveTrackColor = colors.surfaceVariant
+                    ),
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Text(
+                    text = "${maxCount.toInt()} times",
+                    style = typography.labelMedium,
+                    color = colors.secondaryText
+                )
+            }
+        },
+        confirmButton = {
+            WFButton(
+                text = "Save",
+                onClick = {
+                    onConfirm(interval.toInt(), maxCount.toInt())
+                    onDismiss()
+                },
+                type = ButtonType.Primary
+            )
+        },
+        dismissButton = {
+            WFButton(
+                text = "Cancel",
+                onClick = onDismiss,
+                type = ButtonType.Ghost
+            )
+        }
     )
 }
 
 /**
  * Dialog for selecting the default mission type.
+ * Shows a column of selectable items for each MissionType enum value.
  */
 @Composable
 private fun MissionTypeDialog(
@@ -497,18 +572,63 @@ private fun MissionTypeDialog(
 ) {
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
+    val types = MissionType.entries
 
-    WFDialog(
+    AlertDialog(
         onDismissRequest = onDismiss,
-        title = "Default Mission Type",
-        message = "Choose the default mission type for new alarms.",
-        confirmText = "OK",
-        onConfirm = onDismiss
+        containerColor = colors.surface,
+        shape = WakeForgeShapes.medium,
+        title = {
+            Text(
+                text = "Default Mission Type",
+                style = typography.headlineMedium,
+                color = colors.primaryText
+            )
+        },
+        text = {
+            Column {
+                types.forEach { type ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onSelect(type)
+                                onDismiss()
+                            }
+                            .padding(vertical = 10.dp, horizontal = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = formatMissionType(type),
+                            style = typography.bodyLarge,
+                            color = if (type == currentType) colors.primaryAccent else colors.primaryText,
+                            fontWeight = if (type == currentType) FontWeight.Bold else FontWeight.Normal
+                        )
+                        if (type == currentType) {
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "●",
+                                color = colors.primaryAccent,
+                                style = typography.labelLarge
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            WFButton(
+                text = "Cancel",
+                onClick = onDismiss,
+                type = ButtonType.Ghost
+            )
+        }
     )
 }
 
 /**
  * Dialog for selecting the default difficulty level.
+ * Shows a column of selectable items for each MissionDifficulty enum value.
  */
 @Composable
 private fun DifficultyDialog(
@@ -516,12 +636,59 @@ private fun DifficultyDialog(
     onDismiss: () -> Unit,
     onSelect: (MissionDifficulty) -> Unit
 ) {
-    WFDialog(
+    val colors = LocalWakeForgeColors.current
+    val typography = LocalWakeForgeTypography.current
+    val difficulties = MissionDifficulty.entries
+
+    AlertDialog(
         onDismissRequest = onDismiss,
-        title = "Default Difficulty",
-        message = "Choose the default difficulty for new alarm missions.",
-        confirmText = "OK",
-        onConfirm = onDismiss
+        containerColor = colors.surface,
+        shape = WakeForgeShapes.medium,
+        title = {
+            Text(
+                text = "Default Difficulty",
+                style = typography.headlineMedium,
+                color = colors.primaryText
+            )
+        },
+        text = {
+            Column {
+                difficulties.forEach { difficulty ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onSelect(difficulty)
+                                onDismiss()
+                            }
+                            .padding(vertical = 10.dp, horizontal = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = formatDifficulty(difficulty),
+                            style = typography.bodyLarge,
+                            color = if (difficulty == currentDifficulty) colors.primaryAccent else colors.primaryText,
+                            fontWeight = if (difficulty == currentDifficulty) FontWeight.Bold else FontWeight.Normal
+                        )
+                        if (difficulty == currentDifficulty) {
+                            Spacer(modifier = Modifier.weight(1f))
+                            Text(
+                                text = "●",
+                                color = colors.primaryAccent,
+                                style = typography.labelLarge
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            WFButton(
+                text = "Cancel",
+                onClick = onDismiss,
+                type = ButtonType.Ghost
+            )
+        }
     )
 }
 
@@ -536,10 +703,6 @@ private fun formatMissionType(type: MissionType): String {
 private fun formatDifficulty(difficulty: MissionDifficulty): String {
     return difficulty.displayName.replaceFirstChar { it.uppercase() }
 }
-
-// ── Placeholder imports for unused but referenced items ─────────────────
-
-private val Arrangement = androidx.compose.foundation.layout.Arrangement
 
 /**
  * Thin divider line between settings rows.

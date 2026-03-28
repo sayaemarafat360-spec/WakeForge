@@ -48,6 +48,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeforge.app.core.components.AnimatedCounter
 import com.wakeforge.app.core.components.WFCard
@@ -73,6 +74,7 @@ import com.wakeforge.app.presentation.stats.components.WeeklyBarChart
  */
 @Composable
 fun StatsScreen(
+    navController: NavController? = null,
     viewModel: StatsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()

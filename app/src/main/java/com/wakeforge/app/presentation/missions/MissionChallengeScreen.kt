@@ -100,7 +100,7 @@ fun MissionChallengeScreen(
                 navController.navigate(
                     Route.WakeSuccess.createRoute(alarmId, wakeRecordId)
                 ) {
-                    popUpTo(Route.AlarmRinging::class.java.name) { inclusive = true }
+                    popUpTo("alarm_ringing/{alarmId}") { inclusive = true }
                 }
             },
         )
@@ -118,7 +118,7 @@ fun MissionChallengeScreen(
                 navController.navigate(
                     Route.WakeSuccess.createRoute(alarmId, wakeRecordId)
                 ) {
-                    popUpTo(Route.AlarmRinging::class.java.name) { inclusive = true }
+                    popUpTo("alarm_ringing/{alarmId}") { inclusive = true }
                 }
             },
             title = "Time's Up!",
@@ -131,7 +131,7 @@ fun MissionChallengeScreen(
                 navController.navigate(
                     Route.WakeSuccess.createRoute(alarmId, wakeRecordId)
                 ) {
-                    popUpTo(Route.AlarmRinging::class.java.name) { inclusive = true }
+                    popUpTo("alarm_ringing/{alarmId}") { inclusive = true }
                 }
             },
         )

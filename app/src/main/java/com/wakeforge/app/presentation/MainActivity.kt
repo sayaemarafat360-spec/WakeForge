@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.wakeforge.app.core.theme.WakeForgeTheme
 import com.wakeforge.app.data.alarm.AlarmReceiver
@@ -37,7 +35,6 @@ class MainActivity : ComponentActivity() {
 
         // ── Edge-to-edge display ───────────────────────────────────────────────
         enableEdgeToEdge()
-        WindowCompat.enableCompatInsetForApi31Above(window)
 
         // ── Determine start destination ────────────────────────────────────────
         val alarmId = intent.getStringExtra(AlarmReceiver.EXTRA_ALARM_ID)

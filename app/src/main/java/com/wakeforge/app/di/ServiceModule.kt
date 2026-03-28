@@ -1,7 +1,6 @@
 package com.wakeforge.app.di
 
 import android.content.Context
-import com.wakeforge.app.data.ad.AdManager
 import com.wakeforge.app.data.alarm.AlarmScheduler
 import com.wakeforge.app.data.database.dao.AlarmDao
 import com.wakeforge.app.data.mission.MissionEngine
@@ -10,7 +9,7 @@ import com.wakeforge.app.data.mission.generators.MemoryGenerator
 import com.wakeforge.app.data.mission.generators.PhraseGenerator
 import com.wakeforge.app.data.mission.generators.ShakeEvaluator
 import com.wakeforge.app.data.mission.generators.StepEvaluator
-import com.wakeforge.app.data.premium.PremiumManager
+import com.wakeforge.app.data.mission.DifficultyConfigurator
 import com.wakeforge.app.data.sound.SoundManager
 import dagger.Module
 import dagger.Provides
@@ -21,7 +20,7 @@ import javax.inject.Singleton
 
 /**
  * Hilt module that provides service-layer singletons:
- * [AlarmScheduler], [SoundManager], [MissionEngine], and [AdManager].
+ * [AlarmScheduler], [SoundManager], and [MissionEngine].
  *
  * Each provider returns the concrete class directly. Where the class
  * already carries an `@Inject constructor` Hilt could satisfy the
@@ -75,32 +74,17 @@ object ServiceModule {
         memoryGenerator: MemoryGenerator,
         phraseGenerator: PhraseGenerator,
         shakeEvaluator: ShakeEvaluator,
-        stepEvaluator: StepEvaluator
+        stepEvaluator: StepEvaluator,
+        difficultyConfigurator: DifficultyConfigurator
     ): MissionEngine {
         return MissionEngine(
             mathGenerator = mathGenerator,
             memoryGenerator = memoryGenerator,
             phraseGenerator = phraseGenerator,
             shakeEvaluator = shakeEvaluator,
-            stepEvaluator = stepEvaluator
+            stepEvaluator = stepEvaluator,
+            difficultyConfigurator = difficultyConfigurator
         )
     }
 
-    /**
-     * Provides the [AdManager] singleton.
-     *
-     * [AdManager] depends on [PremiumManager] to gate ad display for premium
-     * users. We explicitly declare the provider here so the dependency is
-     * visible in the DI graph and can be swapped in tests.
-     *
-     * NOTE: If you prefer to let Hilt auto-provision [AdManager] via its
-     * `@Inject constructor`, you may safely remove this method.
-     */
-    @Provides
-    @Singleton
-    fun provideAdManager(
-        premiumManager: PremiumManager
-    ): AdManager {
-        return AdManager(premiumManager)
-    }
 }

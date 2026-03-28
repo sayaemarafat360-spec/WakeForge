@@ -77,6 +77,19 @@ class UpdateSettingsUseCase @Inject constructor(
     }
 
     /**
+     * Updates the vibration intensity.
+     *
+     * @param intensity Vibration intensity level between 0 and 100.
+     * @throws IllegalArgumentException if intensity is out of range.
+     */
+    suspend fun updateVibrationIntensity(intensity: Int) {
+        require(intensity in 0..100) {
+            "Vibration intensity must be between 0 and 100, but was $intensity."
+        }
+        repository.updateVibrationIntensity(intensity)
+    }
+
+    /**
      * Marks the onboarding flow as completed.
      */
     suspend fun markOnboardingCompleted() {

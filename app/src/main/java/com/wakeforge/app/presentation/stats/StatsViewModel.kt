@@ -88,23 +88,8 @@ class StatsViewModel @Inject constructor(
         )
     }
 
-    private fun formatDayOfWeek(dayOfWeek: java.time.DayOfWeek): String {
-        val calendar = Calendar.getInstance().apply {
-            set(Calendar.DAY_OF_WEEK, dayOfWeekToCalendarDay(dayOfWeek))
-        }
-        return SimpleDateFormat("EEEE", Locale.getDefault()).format(calendar.time)
-    }
-
-    private fun dayOfWeekToCalendarDay(dayOfWeek: java.time.DayOfWeek): Int {
-        return when (dayOfWeek) {
-            java.time.DayOfWeek.MONDAY -> Calendar.MONDAY
-            java.time.DayOfWeek.TUESDAY -> Calendar.TUESDAY
-            java.time.DayOfWeek.WEDNESDAY -> Calendar.WEDNESDAY
-            java.time.DayOfWeek.THURSDAY -> Calendar.THURSDAY
-            java.time.DayOfWeek.FRIDAY -> Calendar.FRIDAY
-            java.time.DayOfWeek.SATURDAY -> Calendar.SATURDAY
-            java.time.DayOfWeek.SUNDAY -> Calendar.SUNDAY
-        }
+    private fun formatDayOfWeek(dayOfWeek: com.wakeforge.app.domain.models.DayOfWeek): String {
+        return dayOfWeek.abbreviation
     }
 
     /**

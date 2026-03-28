@@ -12,15 +12,11 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-import com.wakeforge.app.data.premium.PremiumManager
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdManager @Inject constructor(
-    private val premiumManager: PremiumManager
-) {
+class AdManager @Inject constructor() {
 
     companion object {
         private const val TAG = "AdManager"
@@ -41,6 +37,14 @@ class AdManager @Inject constructor(
     private var isRewardedLoading: Boolean = false
 
     private var isInitialized: Boolean = false
+
+    @Volatile
+    private var isUserPremium: Boolean = false
+
+    /** Call this from PremiumManager whenever premium status changes */
+    fun setPremiumStatus(isPremium: Boolean) {
+        isUserPremium = isPremium
+    }
 
     fun initialize() {
         if (isInitialized) {
@@ -64,19 +68,7 @@ class AdManager @Inject constructor(
     }
 
     fun shouldShowAds(): Boolean {
-        if (!isInitialized) {
-            return false
-        }
-
-        return try {
-            val isPremium = runBlocking {
-                premiumManager.isPremiumOnce()
-            }
-            !isPremium
-        } catch (e: Exception) {
-            Log.e(TAG, "Error checking premium status for ads", e)
-            true
-        }
+        return !isInitialized || !isUserPremium
     }
 
     fun loadInterstitialAd() {

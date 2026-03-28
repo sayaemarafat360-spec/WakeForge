@@ -1,7 +1,5 @@
 package com.wakeforge.app.core.utils
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -104,65 +102,6 @@ object NotificationUtils {
     // ────────────────────────────────────────────────────────────────────────
     // Notification Builders
     // ────────────────────────────────────────────────────────────────────────
-
-    /**
-     * Builds the foreground-service notification shown while an alarm is ringing.
-     *
-     * @param context   Application context.
-     * @param alarmId   Unique alarm identifier.
-     * @param alarmLabel User-defined alarm label (e.g. "Morning Workout").
-     * @param timeText  Formatted time string (e.g. "6:30 AM").
-     */
-    @SuppressLint("LaunchActivityFromNotification")
-    fun buildActiveAlarmNotification(
-        context: Context,
-        alarmId: String,
-        alarmLabel: String,
-        timeText: String,
-    ): Notification {
-        val dismissIntent = Intent(AlarmConstants.ALARM_ACTION_DISMISS).apply {
-            setPackage(context.packageName)
-            putExtra(AlarmConstants.ALARM_ACTION_EXTRA_ALARM_ID, alarmId)
-        }
-        val snoozeIntent = Intent(AlarmConstants.ALARM_ACTION_SNOOZE).apply {
-            setPackage(context.packageName)
-            putExtra(AlarmConstants.ALARM_ACTION_EXTRA_ALARM_ID, alarmId)
-        }
-
-        val dismissPendingIntent = PendingIntent.getBroadcast(
-            context,
-            alarmId.hashCode() and 0xFFFF,
-            dismissIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-        )
-        val snoozePendingIntent = PendingIntent.getBroadcast(
-            context,
-            (alarmId.hashCode() and 0xFFFF) + 1,
-            snoozeIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-        )
-
-        return NotificationCompat.Builder(context, CHANNEL_ALARM_ACTIVE)
-            .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-            .setContentTitle("Alarm: $alarmLabel")
-            .setContentText(timeText)
-            .setSubText("Tap to manage")
-            .setCategory(NotificationCompat.CATEGORY_ALARM)
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .setOngoing(true)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .addAction(
-                android.R.drawable.ic_media_pause,
-                "Snooze",
-                snoozePendingIntent,
-            )
-            .addAction(
-                android.R.drawable.ic_delete,
-                "Dismiss",
-                dismissPendingIntent,
-            )
-            .build()
-    }
 
     /**
      * Builds a notification shown when the alarm is snoozed.

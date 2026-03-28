@@ -4,15 +4,15 @@ import androidx.room.TypeConverter
 import com.wakeforge.app.domain.models.MissionDifficulty
 import com.wakeforge.app.domain.models.MissionType
 import com.wakeforge.app.domain.models.WakeOutcome
-import java.time.DayOfWeek
+import com.wakeforge.app.domain.models.DayOfWeek
 
 class Converters {
 
     @TypeConverter
     fun fromDayOfWeekList(list: List<DayOfWeek>): String {
         return list
-            .sortedBy { it.value }
-            .joinToString(",") { it.value.toString() }
+            .sortedBy { it.calendarDay }
+            .joinToString(",") { it.calendarDay.toString() }
     }
 
     @TypeConverter
@@ -24,7 +24,7 @@ class Converters {
             .mapNotNull { dayStr ->
                 dayStr.toIntOrNull()?.let { dayIndex ->
                     try {
-                        DayOfWeek.of(dayIndex)
+                        DayOfWeek.entries.firstOrNull { it.calendarDay == dayIndex }
                     } catch (e: IllegalArgumentException) {
                         null
                     }
