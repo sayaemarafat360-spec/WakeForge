@@ -1,0 +1,121 @@
+# ================================================================
+# WakeForge - Codemagic CI/CD Configuration
+# ================================================================
+
+workflows:
+  # ==============================================================
+  # Debug Workflow
+  # ==============================================================
+  debug:
+    name: WakeForge Debug Build
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+        - pattern: develop
+          include: true
+        - pattern: feature/*
+          include: true
+      pull_request:
+        - pattern: main
+          include: true
+
+    environment:
+      vars:
+        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      xcode: latest
+    cache:
+      paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+    scripts:
+      - name: Set up Java 17
+        script: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+
+      - name: Make gradlew executable
+        script: chmod +x gradlew
+
+      - name: Download Android dependencies
+        script: |
+          ./gradlew --no-daemon dependencies --configuration debugRuntimeClasspath || true
+          ./gradlew --no-daemon androidDependencies
+
+      - name: Run unit tests
+        script: |
+          ./gradlew --no-daemon testDebugUnitTest --stacktrace
+
+      - name: Build debug APK
+        script: |
+          ./gradlew --no-daemon assembleDebug --stacktrace
+
+    artifacts:
+      - build/outputs/apk/debug/*.apk
+      - build/reports/tests/
+
+    publishing:
+      reports:
+        report_files: "build/reports/tests/**/TEST-*.xml"
+
+  # ==============================================================
+  # Release Workflow
+  # ==============================================================
+  release:
+    name: WakeForge Release Build
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+        - pattern: release/*
+          include: true
+      tag_patterns:
+        - pattern: "v[0-9]+\\.[0-9]+\\.[0-9]+"
+          include: true
+
+    environment:
+      vars:
+        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      xcode: latest
+    cache:
+      paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+    scripts:
+      - name: Set up Java 17
+        script: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+
+      - name: Make gradlew executable
+        script: chmod +x gradlew
+
+      - name: Download Android dependencies
+        script: |
+          ./gradlew --no-daemon dependencies --configuration releaseRuntimeClasspath || true
+          ./gradlew --no-daemon androidDependencies
+
+      - name: Run lint checks
+        script: |
+          ./gradlew --no-daemon lintRelease --stacktrace
+
+      - name: Run unit tests
+        script: |
+          ./gradlew --no-daemon testReleaseUnitTest --stacktrace
+
+      - name: Build release APK
+        script: |
+          ./gradlew --no-daemon assembleRelease --stacktrace
+
+    artifacts:
+      - build/outputs/apk/release/*.apk
+      - build/reports/tests/
+      - build/reports/lint-results-release.html
+
+    publishing:
+      reports:
+        report_files: "build/reports/tests/**/TEST-*.xml"

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ================================================================ -->
+    <!-- WakeForge Dark Theme Colors (Default)                            -->
+    <!-- ================================================================ -->
+
+    <!-- Background Colors -->
+    <color name="wf_background_primary">#0B0F14</color>
+    <color name="wf_background_secondary">#121821</color>
+    <color name="wf_background_tertiary">#171F2B</color>
+    <color name="wf_background_elevated">#1C2533</color>
+    <color name="wf_surface">#1A2230</color>
+    <color name="wf_surface_variant">#212B3B</color>
+    <color name="wf_surface_overlay">#263244</color>
+
+    <!-- Accent Colors -->
+    <color name="wf_accent_primary">#7C5CFF</color>
+    <color name="wf_accent_primary_light">#9D83FF</color>
+    <color name="wf_accent_primary_dark">#5A3AD4</color>
+    <color name="wf_accent_secondary">#00D4FF</color>
+    <color name="wf_accent_success">#36D98A</color>
+    <color name="wf_accent_warning">#FFB84D</color>
+    <color name="wf_accent_error">#FF5C7A</color>
+
+    <!-- Text Colors -->
+    <color name="wf_text_primary">#FFFFFF</color>
+    <color name="wf_text_secondary">#A8B3C7</color>
+    <color name="wf_text_tertiary">#6B7A94</color>
+    <color name="wf_text_disabled">#4A5568</color>
+    <color name="wf_text_on_accent">#FFFFFF</color>
+
+    <!-- Divider & Border -->
+    <color name="wf_divider">#1E2A3A</color>
+    <color name="wf_border">#253040</color>
+
+    <!-- Status / Chip Colors -->
+    <color name="wf_status_active">#36D98A</color>
+    <color name="wf_status_inactive">#6B7A94</color>
+    <color name="wf_status_snoozed">#FFB84D</color>
+    <color name="wf_status_missed">#FF5C7A</color>
+
+    <!-- Gradient Colors -->
+    <color name="wf_gradient_start">#7C5CFF</color>
+    <color name="wf_gradient_end">#00D4FF</color>
+
+    <!-- Streak / Achievement -->
+    <color name="wf_streak_gold">#FFD700</color>
+    <color name="wf_streak_silver">#C0C0C0</color>
+    <color name="wf_streak_bronze">#CD7F32</color>
+
+    <!-- Overlay -->
+    <color name="wf_scrim">#99000000</color>
+    <color name="wf_scrim_light">#66000000</color>
+
+    <!-- ================================================================ -->
+    <!-- WakeForge Light Theme Colors                                     -->
+    <!-- ================================================================ -->
+
+    <!-- Light Background Colors -->
+    <color name="wf_light_background_primary">#F5F7FA</color>
+    <color name="wf_light_background_secondary">#FFFFFF</color>
+    <color name="wf_light_background_tertiary">#F0F2F5</color>
+    <color name="wf_light_surface">#FFFFFF</color>
+    <color name="wf_light_surface_variant">#F0F2F5</color>
+    <color name="wf_light_surface_overlay">#E8EBF0</color>
+
+    <!-- Light Text Colors -->
+    <color name="wf_light_text_primary">#1A1A2E</color>
+    <color name="wf_light_text_secondary">#6B7280</color>
+    <color name="wf_light_text_tertiary">#9CA3AF</color>
+    <color name="wf_light_text_disabled">#D1D5DB</color>
+
+    <!-- Light Divider & Border -->
+    <color name="wf_light_divider">#E5E7EB</color>
+    <color name="wf_light_border">#D1D5DB</color>
+
+    <!-- ================================================================ -->
+    <!-- Difficulty Colors                                                -->
+    <!-- ================================================================ -->
+    <color name="difficulty_trivial">#36D98A</color>
+    <color name="difficulty_easy">#00D4FF</color>
+    <color name="difficulty_medium">#FFB84D</color>
+    <color name="difficulty_hard">#FF8C42</color>
+    <color name="difficulty_extreme">#FF5C7A</color>
+
+    <!-- ================================================================ -->
+    <!-- Mission Type Colors                                              -->
+    <!-- ================================================================ -->
+    <color name="mission_math_bg">#2D1F5E</color>
+    <color name="mission_memory_bg">#1F3A5E</color>
+    <color name="mission_type_bg">#1F5E3A</color>
+    <color name="mission_shake_bg">#5E3A1F</color>
+    <color name="mission_step_bg">#5E1F4A</color>
+
+    <!-- ================================================================ -->
+    <!-- Alpha / Transparent Variants                                     -->
+    <!-- ================================================================ -->
+    <color name="wf_accent_primary_12">#1F7C5CFF</color>
+    <color name="wf_accent_primary_20">#337C5CFF</color>
+    <color name="wf_accent_primary_30">#4D7C5CFF</color>
+    <color name="wf_accent_primary_50">#807C5CFF</color>
+    <color name="wf_accent_error_12">#1FFF5C7A</color>
+    <color name="wf_accent_success_12">#1F36D98A</color>
+    <color name="wf_accent_warning_12">#1FFFB84D</color>
+
+    <!-- ================================================================ -->
+    <!-- Semantic Colors                                                  -->
+    <!-- ================================================================ -->
+    <color name="shadow_color">#1A000000</color>
+    <color name="ripple_color">#FFFFFF</color>
+    <color name="ripple_color_light">#000000</color>
+
+    <!-- Notification Colors -->
+    <color name="notification_accent">#7C5CFF</color>
+</resources>

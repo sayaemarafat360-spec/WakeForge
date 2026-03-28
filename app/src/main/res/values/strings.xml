@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ================================================================ -->
+    <!-- App Basics                                                       -->
+    <!-- ================================================================ -->
+    <string name="app_name">WakeForge</string>
+
+    <!-- ================================================================ -->
+    <!-- Navigation Labels                                                -->
+    <!-- ================================================================ -->
+    <string name="nav_home">Home</string>
+    <string name="nav_alarms">Alarms</string>
+    <string name="nav_stats">Stats</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- ================================================================ -->
+    <!-- Onboarding                                                       -->
+    <!-- ================================================================ -->
+    <string name="onboarding_title_1">Forge Your Morning</string>
+    <string name="onboarding_description_1">WakeForge transforms your mornings with smart alarms that demand full consciousness before dismissing.</string>
+    <string name="onboarding_title_2">Challenge to Dismiss</string>
+    <string name="onboarding_description_2">Complete missions like math problems, memory games, or shake challenges to prove you are truly awake.</string>
+    <string name="onboarding_title_3">Track Your Progress</string>
+    <string name="onboarding_description_3">Monitor your wake-up streaks, success rates, and snooze habits to build a better morning routine.</string>
+    <string name="onboarding_title_4">Take Control</string>
+    <string name="onboarding_description_4">Customize difficulty, sounds, snooze behavior, and more. Upgrade to Premium for unlimited alarms and advanced missions.</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_page_indicator">%1$d of %2$d</string>
+
+    <!-- ================================================================ -->
+    <!-- Alarm Labels                                                     -->
+    <!-- ================================================================ -->
+    <string name="create_alarm">Create Alarm</string>
+    <string name="edit_alarm">Edit Alarm</string>
+    <string name="alarm_label">Label</string>
+    <string name="alarm_label_hint">e.g., Morning Workout</string>
+    <string name="repeat_days">Repeat</string>
+    <string name="sound">Alarm Sound</string>
+    <string name="sound_default">Default</string>
+    <string name="sound_gentle">Gentle Rise</string>
+    <string name="sound_classic">Classic Alarm</string>
+    <string name="sound_digital">Digital Beep</string>
+    <string name="sound_nature">Nature Sounds</string>
+    <string name="sound_custom">Custom Sound</string>
+    <string name="vibration">Vibration</string>
+    <string name="vibration_off">Off</string>
+    <string name="vibration_short">Short Pulse</string>
+    <string name="vibration_long">Long Pulse</string>
+    <string name="vibration_pattern">Heartbeat</string>
+    <string name="gradual_volume">Gradual Volume</string>
+    <string name="gradual_volume_description">Alarm volume increases gradually over time</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="mission">Mission</string>
+    <string name="mission_none">No Mission</string>
+    <string name="snooze_settings">Snooze Settings</string>
+    <string name="snooze_enabled">Enable Snooze</string>
+    <string name="snooze_duration">Snooze Duration</string>
+    <string name="snooze_count">Max Snoozes</string>
+    <string name="strict_mode">Strict Mode</string>
+    <string name="strict_mode_description">Alarm continues until mission is completed</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="duplicate">Duplicate</string>
+    <string name="delete_alarm_confirm">Are you sure you want to delete this alarm?</string>
+    <string name="alarm_saved">Alarm saved</string>
+    <string name="alarm_deleted">Alarm deleted</string>
+    <string name="alarm_activated">Alarm activated</string>
+    <string name="alarm_deactivated">Alarm deactivated</string>
+    <string name="alarm_enabled">Enabled</string>
+    <string name="alarm_disabled">Disabled</string>
+    <string name="alarm_repeat_once">Once</string>
+    <string name="alarm_repeat_weekdays">Weekdays</string>
+    <string name="alarm_repeat_weekends">Weekends</string>
+    <string name="alarm_repeat_every_day">Every Day</string>
+    <string name="alarm_repeat_custom">Custom</string>
+    <string name="next_alarm">Next alarm in %1$s</string>
+    <string name="no_next_alarm">No alarms set</string>
+
+    <!-- ================================================================ -->
+    <!-- Days of Week                                                     -->
+    <!-- ================================================================ -->
+    <string name="day_monday">Mon</string>
+    <string name="day_tuesday">Tue</string>
+    <string name="day_wednesday">Wed</string>
+    <string name="day_thursday">Thu</string>
+    <string name="day_friday">Fri</string>
+    <string name="day_saturday">Sat</string>
+    <string name="day_sunday">Sun</string>
+    <string name="day_monday_full">Monday</string>
+    <string name="day_tuesday_full">Tuesday</string>
+    <string name="day_wednesday_full">Wednesday</string>
+    <string name="day_thursday_full">Thursday</string>
+    <string name="day_friday_full">Friday</string>
+    <string name="day_saturday_full">Saturday</string>
+    <string name="day_sunday_full">Sunday</string>
+
+    <!-- ================================================================ -->
+    <!-- Difficulty Names                                                 -->
+    <!-- ================================================================ -->
+    <string name="difficulty_trivial">Trivial</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="difficulty_extreme">Extreme</string>
+    <string name="difficulty_trivial_desc">Very simple tasks, gentle wake-up</string>
+    <string name="difficulty_easy_desc">Basic challenges to clear the fog</string>
+    <string name="difficulty_medium_desc">Requires focus and attention</string>
+    <string name="difficulty_hard_desc">Challenging tasks, deep thinking required</string>
+    <string name="difficulty_extreme_desc">Intense missions for maximum alertness</string>
+
+    <!-- ================================================================ -->
+    <!-- Mission Types                                                    -->
+    <!-- ================================================================ -->
+    <string name="mission_math">Math Challenge</string>
+    <string name="mission_memory">Memory Pattern</string>
+    <string name="mission_type_phrase">Type Phrase</string>
+    <string name="mission_shake">Shake Challenge</string>
+    <string name="mission_step">Step Challenge</string>
+    <string name="mission_math_description">Solve math problems to dismiss the alarm</string>
+    <string name="mission_memory_description">Remember and repeat a pattern sequence</string>
+    <string name="mission_type_phrase_description">Type a randomly generated phrase accurately</string>
+    <string name="mission_shake_description">Shake your device a specific number of times</string>
+    <string name="mission_step_description">Walk a certain number of steps to dismiss</string>
+    <string name="mission_math_hint">Solve: %1$s</string>
+    <string name="mission_memory_hint">Watch and repeat the pattern</string>
+    <string name="mission_type_phrase_hint">Type: %1$s</string>
+    <string name="mission_shake_hint">Shake %1$d more times</string>
+    <string name="mission_step_hint">Walk %1$d more steps</string>
+    <string name="mission_retry">Try Again</string>
+    <string name="mission_success">Mission Complete!</string>
+    <string name="mission_failed">Mission Failed</string>
+    <string name="mission_count_label">Missions required: %1$d</string>
+    <string name="mission_current_count">Mission %1$d of %2$d</string>
+
+    <!-- ================================================================ -->
+    <!-- Stats Labels                                                     -->
+    <!-- ================================================================ -->
+    <string name="stats_title">Your Stats</string>
+    <string name="stats_current_streak">Current Streak</string>
+    <string name="stats_longest_streak">Longest Streak</string>
+    <string name="stats_weekly_success">Weekly Success</string>
+    <string name="stats_total_wakeups">Total Wake-ups</string>
+    <string name="stats_snooze_usage">Snooze Usage</string>
+    <string name="stats_failure_rate">Failure Rate</string>
+    <string name="stats_average_wake_time">Average Wake Time</string>
+    <string name="stats_best_day">Best Day</string>
+    <string name="stats_worst_day">Needs Work</string>
+    <string name="stats_this_week">This Week</string>
+    <string name="stats_this_month">This Month</string>
+    <string name="stats_all_time">All Time</string>
+    <string name="stats_days_suffix">%1$d days</string>
+    <string name="stats_percentage">%1$d%%</string>
+    <string name="stats_snooze_times">%1$d snoozes</string>
+    <string name="stats_wakeups">%1$d wake-ups</string>
+    <string name="stats_no_data">No data yet. Set an alarm to start tracking!</string>
+    <string name="stats_streak_fire">On fire! Keep it going!</string>
+    <string name="stats_new_record">New personal record!</string>
+    <string name="stats_improving">You are improving!</string>
+    <string name="stats_keep_going">Keep going, you can do better!</string>
+
+    <!-- ================================================================ -->
+    <!-- Settings                                                         -->
+    <!-- ================================================================ -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_alarm_defaults">Alarm Defaults</string>
+    <string name="settings_default_sound">Default Alarm Sound</string>
+    <string name="settings_default_volume">Default Volume</string>
+    <string name="settings_sound_preferences">Sound Preferences</string>
+    <string name="settings_vibration_preferences">Vibration Preferences</string>
+    <string name="settings_vibration_default">Default Vibration Pattern</string>
+    <string name="settings_strict_mode_defaults">Strict Mode Defaults</string>
+    <string name="settings_default_difficulty">Default Difficulty</string>
+    <string name="settings_default_mission">Default Mission Type</string>
+    <string name="settings_default_snooze">Default Snooze Settings</string>
+    <string name="settings_snooze_duration_default">Default Snooze Duration</string>
+    <string name="settings_snooze_limit_default">Default Max Snoozes</string>
+    <string name="settings_gradual_volume_default">Gradual Volume Default</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_dark_mode">Dark</string>
+    <string name="settings_light_mode">Light</string>
+    <string name="settings_system_default">System Default</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notification_settings">Notification Settings</string>
+    <string name="settings_pre_alarm">Pre-Alarm Reminder</string>
+    <string name="settings_pre_alarm_description">Get a reminder before your alarm</string>
+    <string name="settings_bedtime">Bedtime Reminder</string>
+    <string name="settings_bedtime_description">Get reminded when it is time to sleep</string>
+    <string name="settings_about">About</string>
+    <string name="settings_premium_upgrade">Upgrade to Premium</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_terms_of_service">Terms of Service</string>
+    <string name="settings_app_version">App Version</string>
+    <string name="settings_open_source_licenses">Open Source Licenses</string>
+    <string name="settings_contact_support">Contact Support</string>
+    <string name="settings_rate_app">Rate WakeForge</string>
+    <string name="settings_share_app">Share WakeForge</string>
+    <string name="settings_backup_restore">Backup and Restore</string>
+    <string name="settings_export_data">Export Data</string>
+    <string name="settings_import_data">Import Data</string>
+    <string name="settings_reset_stats">Reset Statistics</string>
+    <string name="settings_reset_stats_confirm">This will permanently delete all your statistics. Continue?</string>
+    <string name="settings_permissions">Permissions</string>
+    <string name="settings_battery_optimization">Battery Optimization</string>
+    <string name="settings_alarm_permission">Alarm Permission</string>
+    <string name="settings_notification_permission">Notification Permission</string>
+    <string name="settings_dnd_access">Do Not Disturb Access</string>
+    <string name="settings_activity_recognition">Activity Recognition</string>
+
+    <!-- ================================================================ -->
+    <!-- Premium Screen                                                   -->
+    <!-- ================================================================ -->
+    <string name="premium_title">WakeForge Premium</string>
+    <string name="premium_subtitle">Unlock your full potential</string>
+    <string name="premium_feature_1">Unlimited Alarms</string>
+    <string name="premium_feature_1_desc">Set as many alarms as you need</string>
+    <string name="premium_feature_2">All Mission Types</string>
+    <string name="premium_feature_2_desc">Access every challenge including step tracking</string>
+    <string name="premium_feature_3">Advanced Statistics</string>
+    <string name="premium_feature_3_desc">Detailed analytics and trend insights</string>
+    <string name="premium_feature_4">No Advertisements</string>
+    <string name="premium_feature_4_desc">Clean, distraction-free experience</string>
+    <string name="premium_feature_5">Custom Themes</string>
+    <string name="premium_feature_5_desc">Personalize your wake-up experience</string>
+    <string name="premium_feature_6">Cloud Sync</string>
+    <string name="premium_feature_6_desc">Sync alarms across all your devices</string>
+    <string name="premium_subscribe">Subscribe Now</string>
+    <string name="premium_restore">Restore Purchase</string>
+    <string name="premium_monthly">Monthly</string>
+    <string name="premium_yearly">Yearly</string>
+    <string name="premium_lifetime">Lifetime</string>
+    <string name="premium_best_value">Best Value</string>
+    <string name="premium_per_month">%1$s/month</string>
+    <string name="premium_per_year">%1$s/year</string>
+    <string name="premium_free_trial">Start with %1$d-day free trial</string>
+    <string name="premium_already_subscribed">You are already a Premium member!</string>
+    <string name="premium_thank_you">Thank you for subscribing!</string>
+    <string name="premium_manage">Manage Subscription</string>
+
+    <!-- ================================================================ -->
+    <!-- Alarm Ringing Screen                                             -->
+    <!-- ================================================================ -->
+    <string name="alarm_ringtone_playing">Alarm is ringing…</string>
+    <string name="alarm_dismiss">Dismiss</string>
+    <string name="alarm_complete_mission">Complete Mission</string>
+    <string name="snooze_button">Snooze</string>
+    <string name="snooze_active">Snoozing for %1$d minutes</string>
+    <string name="snooze_remaining">%1$d snoozes remaining</string>
+    <string name="snooze_exhausted">No more snoozes!</string>
+    <string name="alarm_time_up">Time is up! Complete the mission to dismiss.</string>
+    <string name="alarm_will_ring_in">Next alarm in %1$s</string>
+
+    <!-- ================================================================ -->
+    <!-- Success / Motivation Messages                                    -->
+    <!-- ================================================================ -->
+    <string name="success_alarm_dismissed">Alarm dismissed! Great job!</string>
+    <string name="success_mission_completed">Mission completed! You are awake!</string>
+    <string name="success_streak_milestone">%1$d-day streak! Amazing discipline!</string>
+    <string name="success_personal_best">New personal best! Keep pushing!</string>
+    <string name="success_good_morning">Good morning! Ready to conquer the day!</string>
+    <string name="success_no_snooze">Dismissed on the first try! Impressive!</string>
+    <string name="motivation_early_bird">The early bird catches the worm!</string>
+    <string name="motivation_new_day">A brand new day full of possibilities.</string>
+    <string name="motivation_conquer">Today is the day you conquer your goals.</string>
+
+    <!-- ================================================================ -->
+    <!-- Permission Explanations                                          -->
+    <!-- ================================================================ -->
+    <string name="permission_alarm_title">Alarm Permission Required</string>
+    <string name="permission_alarm_description">WakeForge needs permission to schedule exact alarms. Without this, alarms may not ring at the exact time you set.</string>
+    <string name="permission_notification_title">Notification Permission</string>
+    <string name="permission_notification_description">Notifications are needed to show alarm reminders and upcoming alarm alerts.</string>
+    <string name="permission_battery_title">Battery Optimization</string>
+    <string name="permission_battery_description">To ensure alarms ring reliably, please disable battery optimization for WakeForge.</string>
+    <string name="permission_dnd_title">Do Not Disturb Access</string>
+    <string name="permission_dnd_description">WakeForge needs Do Not Disturb access to override silent mode and ring alarms when you need them.</string>
+    <string name="permission_activity_title">Activity Recognition</string>
+    <string name="permission_activity_description">Step Challenge missions require activity recognition to count your steps.</string>
+    <string name="permission_overlay_title">Display Over Other Apps</string>
+    <string name="permission_overlay_description">WakeForge needs to display the alarm screen over other apps to ensure you see and respond to alarms.</string>
+    <string name="permission_grant">Grant Permission</string>
+    <string name="permission_deny">Not Now</string>
+    <string name="permission_denied_message">This permission is needed for full functionality. You can enable it in Settings.</string>
+    <string name="permission_go_to_settings">Go to Settings</string>
+
+    <!-- ================================================================ -->
+    <!-- Empty States                                                     -->
+    <!-- ================================================================ -->
+    <string name="empty_no_alarms">No Alarms Set</string>
+    <string name="empty_no_alarms_description">Tap the button below to create your first alarm and start your WakeForge journey.</string>
+    <string name="empty_no_alarms_hint">Your alarms will appear here</string>
+    <string name="empty_no_stats">No Statistics Yet</string>
+    <string name="empty_no_stats_description">Complete your first alarm to start tracking your wake-up performance.</string>
+    <string name="empty_no_history">No Alarm History</string>
+    <string name="empty_no_history_description">Your past alarm records will show up here.</string>
+    <string name="empty_no_achievements">No Achievements Yet</string>
+    <string name="empty_no_achievements_description">Start waking up on time to earn badges and milestones.</string>
+
+    <!-- ================================================================ -->
+    <!-- Error Messages                                                   -->
+    <!-- ================================================================ -->
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_alarm_not_saved">Could not save alarm. Please try again.</string>
+    <string name="error_alarm_not_deleted">Could not delete alarm.</string>
+    <string name="error_permission_denied">Permission denied. Please enable it in Settings.</string>
+    <string name="error_alarm_permission_denied">Cannot schedule alarm without exact alarm permission.</string>
+    <string name="error_no_sound">Alarm sound file not found.</string>
+    <string name="error_service_failed">Alarm service failed to start.</string>
+    <string name="error_data_load_failed">Failed to load data.</string>
+    <string name="error_data_save_failed">Failed to save data.</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_purchase_failed">Purchase failed. Please try again.</string>
+    <string name="error_restore_failed">Could not restore purchase. Please try again later.</string>
+    <string name="error_export_failed">Failed to export data.</string>
+    <string name="error_import_failed">Failed to import data.</string>
+    <string name="error_import_invalid_format">Invalid backup file format.</string>
+    <string name="error_alarm_in_past">Cannot set alarm in the past.</string>
+    <string name="error_max_alarms">You have reached the maximum number of alarms. Upgrade to Premium for unlimited alarms.</string>
+
+    <!-- ================================================================ -->
+    <!-- Time Picker                                                      -->
+    <!-- ================================================================ -->
+    <string name="time_hours">Hours</string>
+    <string name="time_minutes">Minutes</string>
+    <string name="time_am">AM</string>
+    <string name="time_pm">PM</string>
+    <string name="time_format_12h">12-hour</string>
+    <string name="time_format_24h">24-hour</string>
+    <string name="time_remaining">%1$d hours %2$d minutes</string>
+    <string name="time_less_than_minute">Less than a minute</string>
+
+    <!-- ================================================================ -->
+    <!-- Ad-related Strings                                               -->
+    <!-- ================================================================ -->
+    <string name="ad_banner_label">Advertisement</string>
+    <string name="ad_interstitial_loading">Loading…</string>
+    <string name="ad_rewarded_title">Watch Ad for Reward</string>
+    <string name="ad_rewarded_description">Watch a short video to unlock this feature for free.</string>
+    <string name="ad_rewarded_watch">Watch Now</string>
+    <string name="ad_rewarded_skip">No Thanks</string>
+    <string name="ad_rewarded_error">Failed to load ad. Please try again later.</string>
+    <string name="ad_remove_cta">Remove Ads</string>
+    <string name="ad_remove_description">Upgrade to Premium for an ad-free experience</string>
+
+    <!-- ================================================================ -->
+    <!-- Home Screen                                                      -->
+    <!-- ================================================================ -->
+    <string name="home_greeting_morning">Good Morning</string>
+    <string name="home_greeting_afternoon">Good Afternoon</string>
+    <string name="home_greeting_evening">Good Evening</string>
+    <string name="home_next_alarm_label">Next Alarm</string>
+    <string name="home_quick_actions">Quick Actions</string>
+    <string name="home_add_alarm">Add Alarm</string>
+    <string name="home_tonight_sleep">Tonight\'s Sleep</string>
+    <string name="home_no_sleep_goal">Set a sleep goal in settings</string>
+    <string name="home_recent_achievements">Recent Achievements</string>
+
+    <!-- ================================================================ -->
+    <!-- Achievements                                                     -->
+    <!-- ================================================================ -->
+    <string name="achievement_title">Achievements</string>
+    <string name="achievement_first_alarm">First Steps</string>
+    <string name="achievement_first_alarm_desc">Set your first alarm</string>
+    <string name="achievement_3_day_streak">Getting Started</string>
+    <string name="achievement_3_day_streak_desc">Maintain a 3-day wake-up streak</string>
+    <string name="achievement_7_day_streak">Week Warrior</string>
+    <string name="achievement_7_day_streak_desc">Maintain a 7-day wake-up streak</string>
+    <string name="achievement_30_day_streak">Monthly Master</string>
+    <string name="achievement_30_day_streak_desc">Maintain a 30-day wake-up streak</string>
+    <string name="achievement_no_snooze_week">Snooze-Free Week</string>
+    <string name="achievement_no_snooze_week_desc">Go a full week without snoozing</string>
+    <string name="achievement_hard_mission_master">Challenge Accepted</string>
+    <string name="achievement_hard_mission_master_desc">Complete 10 hard missions</string>
+    <string name="achievement_early_bird">Early Bird</string>
+    <string name="achievement_early_bird_desc">Wake up before 6 AM for 5 days</string>
+    <string name="achievement_unlocked">Unlocked!</string>
+    <string name="achievement_locked">Locked</string>
+    <string name="achievement_progress">%1$d%% complete</string>
+
+    <!-- ================================================================ -->
+    <!-- General / Common                                                 -->
+    <!-- ================================================================ -->
+    <string name="general_confirm">Confirm</string>
+    <string name="general_delete">Delete</string>
+    <string name="general_close">Close</string>
+    <string name="general_ok">OK</string>
+    <string name="general_yes">Yes</string>
+    <string name="general_no">No</string>
+    <string name="general_done">Done</string>
+    <string name="general_retry">Retry</string>
+    <string name="general_loading">Loading…</string>
+    <string name="general_error">Error</string>
+    <string name="general_warning">Warning</string>
+    <string name="general_info">Information</string>
+    <string name="general_search">Search</string>
+    <string name="general_filter">Filter</string>
+    <string name="general_sort">Sort</string>
+    <string name="general_copied">Copied to clipboard</string>
+    <string name="general_unsupported">Feature not supported on this device</string>
+    <string name="general_free">Free</string>
+    <string name="general_premium">Premium</string>
+
+    <!-- ================================================================ -->
+    <!-- Notifications                                                    -->
+    <!-- ================================================================ -->
+    <string name="notification_channel_alarms">Alarms</string>
+    <string name="notification_channel_alarms_desc">Alarm notifications</string>
+    <string name="notification_channel_reminders">Reminders</string>
+    <string name="notification_channel_reminders_desc">Bedtime and pre-alarm reminders</string>
+    <string name="notification_channel_service">Alarm Service</string>
+    <string name="notification_channel_service_desc">Foreground service for active alarms</string>
+    <string name="notification_upcoming_alarm">Upcoming Alarm</string>
+    <string name="notification_upcoming_alarm_text">Your alarm will ring in %1$d minutes</string>
+    <string name="notification_bedtime_reminder">Time to Sleep</string>
+    <string name="notification_bedtime_text">Get ready for bed to meet your sleep goal</string>
+    <string name="notification_alarm_active">Alarm Active</string>
+    <string name="notification_alarm_active_text">WakeForge alarm is ringing</string>
+
+    <!-- ================================================================ -->
+    <!-- Accessibility                                                    -->
+    <!-- ================================================================ -->
+    <string name="accessibility_alarm_toggle">Toggle alarm on or off</string>
+    <string name="accessibility_alarm_time">Alarm time: %1$s</string>
+    <string name="accessibility_alarm_label">Alarm label: %1$s</string>
+    <string name="accessibility_alarm_repeat">Repeats: %1$s</string>
+    <string name="accessibility_alarm_active">Alarm is active</string>
+    <string name="accessibility_alarm_inactive">Alarm is inactive</string>
+    <string name="accessibility_switch_toggle">Switch toggle</string>
+    <string name="accessibility_slider">Adjustable slider</string>
+    <string name="accessibility_navigate_back">Navigate back</string>
+    <string name="accessibility_menu">Open menu</string>
+    <string name="accessibility_delete_item">Delete item</string>
+</resources>

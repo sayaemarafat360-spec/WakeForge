@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ================================================================ -->
+    <!-- WakeForge Light Theme                                            -->
+    <!-- ================================================================ -->
+    <style name="Theme.WakeForge" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Status bar transparent for edge-to-edge -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Edge-to-edge display -->
+        <item name="android:fitsSystemWindows">false</item>
+
+        <!-- Window attributes -->
+        <item name="android:windowBackground">@color/wf_light_background_primary</item>
+        <item name="android:colorBackground">@color/wf_light_background_primary</item>
+        <item name="android:windowActivityTransitions">true</item>
+
+        <!-- Text appearance -->
+        <item name="android:textColorPrimary">@color/wf_light_text_primary</item>
+        <item name="android:textColorSecondary">@color/wf_light_text_secondary</item>
+    </style>
+
+    <!-- Splash screen variant -->
+    <style name="Theme.WakeForge.Splash" parent="Theme.WakeForge">
+        <item name="android:windowBackground">@color/wf_light_background_primary</item>
+    </style>
+</resources>

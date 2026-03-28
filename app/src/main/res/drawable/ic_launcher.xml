@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Alarm bell / forge icon -->
+    <path
+        android:fillColor="#7C5CFF"
+        android:pathData="M54,24 C53.2,24 52.5,24.3 52,24.8 L52,40 C52,40 40,42 38,52 C36,62 38,72 38,72 L42,72 C42,72 42,78 46,80 L62,80 C66,78 66,72 66,72 L70,72 C70,72 72,62 70,52 C68,42 56,40 56,40 L56,24.8 C55.5,24.3 54.8,24 54,24 Z"/>
+    <path
+        android:fillColor="#00D4FF"
+        android:pathData="M38,72 L70,72 L70,76 C70,78 68,80 66,80 L42,80 C40,80 38,78 38,76 Z"/>
+</vector>
