@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.create_alarm
+import androidx.compose.animation.core.Visual
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -124,7 +125,7 @@ fun CreateAlarmScreen(
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
-        containerColor = colors.background,
+        
     ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
@@ -172,14 +173,14 @@ fun CreateAlarmScreen(
                                 imeAction = ImeAction.Done,
                             ),
                             colors = OutlinedTextFieldDefaults.colors(
-                                focusedTextColor = colors.primaryText,
-                                unfocusedTextColor = colors.primaryText,
-                                focusedBorderColor = colors.primaryAccent,
-                                unfocusedBorderColor = colors.border,
-                                focusedPlaceholderColor = colors.secondaryText,
-                                unfocusedPlaceholderColor = colors.secondaryText,
-                                cursorColor = colors.primaryAccent,
-                                containerColor = colors.surfaceVariant,
+                                
+                                un
+                                
+                                un
+                                
+                                un
+                                
+                                
                             ),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier.fillMaxWidth(),
@@ -545,3 +546,4 @@ fun CreateAlarmScreen(
         }
     }
 }
+

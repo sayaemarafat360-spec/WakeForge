@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.navigation
+import androidx.navigation.findStartDestination
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -52,7 +53,7 @@ fun WakeForgeNavGraph(
                     onNavigate = { route ->
                         navController.navigate(route) {
                             popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
+                                // saveState = true
                             }
                             launchSingleTop = true
                             restoreState = true
@@ -177,4 +178,5 @@ fun WakeForgeNavGraph(
         }
     }
 }
+
 

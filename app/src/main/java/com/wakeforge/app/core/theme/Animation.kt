@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.core.theme
+import androidx.compose.animation.core.Visual
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
@@ -98,4 +99,5 @@ fun easeOutTween(durationMs: Int = FadeMs) = tween<Float>(durationMillis = durat
 /** Ease-in-out tween using [EaseInOutCubic]. */
 fun easeInOutTween(durationMs: Int = NavTransitionMs) =
     tween<Float>(durationMillis = durationMs, easing = EaseInOutCubic)
+
 

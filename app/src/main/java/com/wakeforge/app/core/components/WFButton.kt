@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.core.components
+import androidx.compose.animation.core.Visual
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
@@ -143,3 +144,4 @@ fun WFButton(
         }
     }
 }
+

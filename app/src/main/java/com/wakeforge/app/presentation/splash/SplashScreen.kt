@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.splash
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
@@ -172,3 +173,4 @@ fun SplashScreen(
         }
     }
 }
+

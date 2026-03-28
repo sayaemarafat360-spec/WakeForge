@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.core.components 
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -69,3 +70,4 @@ fun AnimatedCounter(
         ) 
     } 
 } 
+

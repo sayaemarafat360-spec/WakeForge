@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.missions
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
@@ -260,3 +261,4 @@ private data class Particle(
     val size: Float,
     val color: Color,
 )
+

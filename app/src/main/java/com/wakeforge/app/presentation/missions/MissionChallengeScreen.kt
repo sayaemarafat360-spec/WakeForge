@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.missions
+import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -302,3 +303,4 @@ private fun TimerCountdownRing(
         )
     }
 }
+

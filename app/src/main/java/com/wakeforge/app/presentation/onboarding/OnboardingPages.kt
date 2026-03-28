@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.onboarding
+import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -539,3 +540,4 @@ private fun ShieldIllustration() {
         }
     }
 }
+

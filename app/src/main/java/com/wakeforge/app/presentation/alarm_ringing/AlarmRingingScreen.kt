@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.alarm_ringing
+import androidx.compose.foundation.layout.asPaddingValues
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -358,3 +359,4 @@ fun AlarmRingingScreen(
         }
     }
 }
+

@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.wake_success
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
@@ -478,3 +479,4 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawFlame(
         color = Color.White.copy(alpha = 0.4f),
     )
 }
+

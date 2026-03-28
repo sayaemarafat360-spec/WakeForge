@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.missions
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
@@ -290,3 +291,4 @@ private fun DrawScope.drawFootprint(
         )
     }
 }
+

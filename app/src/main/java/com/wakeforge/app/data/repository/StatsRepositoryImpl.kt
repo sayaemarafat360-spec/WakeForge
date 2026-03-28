@@ -122,14 +122,14 @@ class StatsRepositoryImpl @Inject constructor(
             .eachCount()
             .maxByOrNull { it.value }
             ?.key
-            ?.let { safeValueOf(MissionType::class.java, it) }
+            ?.let { safeValueOf(MissionType::class, it) }
 
         val mostUsedDifficulty = allRecords
             .groupingBy { it.difficulty }
             .eachCount()
             .maxByOrNull { it.value }
             ?.key
-            ?.let { safeValueOf(MissionDifficulty::class.java, it) }
+            ?.let { safeValueOf(MissionDifficulty::class, it) }
 
         val bestDayOfWeek = computeBestDayOfWeek(allRecords)
 
@@ -273,4 +273,5 @@ class StatsRepositoryImpl @Inject constructor(
         }
     }
 }
+
 

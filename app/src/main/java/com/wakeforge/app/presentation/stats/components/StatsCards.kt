@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.stats.components
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
@@ -140,3 +141,4 @@ object StatsIconMap {
         else -> Icons.Default.Star
     }
 }
+

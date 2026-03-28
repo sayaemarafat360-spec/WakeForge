@@ -791,7 +791,7 @@ private fun SettingsRow(
  * Settings row with a toggle control on the right side.
  */
 @Composable
-private fun SettingsToggleRow(
+// private fun SettingsToggleRow(
     label: String,
     subtitle: String?,
     checked: Boolean,
@@ -832,7 +832,7 @@ private fun SettingsToggleRow(
  * Section header label for settings groups.
  */
 @Composable
-private fun SettingsSectionHeader(title: String) {
+// private fun SettingsSectionHeader(title: String) {
     val typography = LocalWakeForgeTypography.current
     val colors = LocalWakeForgeColors.current
 
@@ -843,3 +843,4 @@ private fun SettingsSectionHeader(title: String) {
         modifier = Modifier.padding(start = 4.dp, bottom = 4.dp, top = 4.dp)
     )
 }
+

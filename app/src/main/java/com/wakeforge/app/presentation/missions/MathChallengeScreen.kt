@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.missions
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
@@ -276,3 +277,4 @@ fun MathChallengeScreen(viewModel: MissionViewModel) {
         }
     }
 }
+

@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.core.components
+import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
@@ -268,3 +269,4 @@ private fun DrawScope.drawStar(
     }
     drawPath(starPath, color)
 }
+

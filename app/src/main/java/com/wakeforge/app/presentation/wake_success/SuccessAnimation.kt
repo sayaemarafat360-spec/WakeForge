@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.wake_success
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
@@ -71,10 +72,10 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
 
     LaunchedEffect(Unit) {
         // 1. Expanding circle
-        kotlinx.coroutines.launch {
+        kotlinx.coroutines.LaunchedEffect(Unit) {
             circleExpansion.animateTo(1f, animationSpec = tween(1000))
         }
-        kotlinx.coroutines.launch {
+        kotlinx.coroutines.LaunchedEffect(Unit) {
             circleAlpha.animateTo(0f, animationSpec = tween(1200))
         }
 
@@ -85,7 +86,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
 
         // 3. Firework bursts at staggered delays
         for (i in 0 until burstCount) {
-            kotlinx.coroutines.launch {
+            kotlinx.coroutines.LaunchedEffect(Unit) {
                 kotlinx.coroutines.delay(i * 200L)
                 burstProgresses[i].animateTo(1f, animationSpec = tween(600))
                 burstAlphas[i].animateTo(0f, animationSpec = tween(400, delayMillis = 200))
@@ -94,7 +95,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
 
         // 4. Fire flicker for new records (continuous)
         if (isNewRecord) {
-            kotlinx.coroutines.launch {
+            kotlinx.coroutines.LaunchedEffect(Unit) {
                 fireFlicker.animateTo(1f, animationSpec = tween(300))
                 infiniteRepeatable(
                     animation = tween(150),
@@ -210,4 +211,5 @@ private data class CelebrationParticle(
     val color: Color,
     val delayMs: Long = 0L,
 )
+
 

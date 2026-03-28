@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.stats
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -545,5 +546,6 @@ private fun getMotivationalMessage(weeklySuccessRate: Float, currentStreak: Int)
         else -> "Keep at it! Consistency is the key to building lasting habits."
     }
 }
+
 
 

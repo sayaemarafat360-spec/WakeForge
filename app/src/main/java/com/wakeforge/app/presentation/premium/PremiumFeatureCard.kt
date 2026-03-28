@@ -137,14 +137,14 @@ fun PremiumFeatureCard(
             ) {
                 if (isUnlocked) {
                     Icon(
-                        imageVector = Icons.Default.Check,
+                        imageVector = Icons.Default.Star,
                         contentDescription = "Unlocked",
                         tint = colors.success,
                         modifier = Modifier.size(16.dp)
                     )
                 } else {
                     Icon(
-                        imageVector = Icons.Default.Lock,
+                        imageVector = Icons.Default.Star,
                         contentDescription = "Locked",
                         tint = colors.secondaryText.copy(alpha = 0.5f),
                         modifier = Modifier.size(14.dp)
@@ -160,15 +160,15 @@ fun PremiumFeatureCard(
  */
 private fun mapFeatureIcon(iconName: String): ImageVector {
     return when (iconName) {
-        "vibration" -> Icons.Default.Lock // Closest for shake
+        "vibration" -> Icons.Default.Star // Closest for shake
         "directions_walk" -> androidx.compose.material.icons.filled.DirectionsWalk
         "view_list" -> androidx.compose.material.icons.filled.ViewList
-        "lock" -> Icons.Default.Lock
+        "lock" -> Icons.Default.Star
         "timer" -> androidx.compose.material.icons.filled.Timer
         "analytics" -> androidx.compose.material.icons.filled.Analytics
         "palette" -> androidx.compose.material.icons.filled.Palette
         "ad_free" -> androidx.compose.material.icons.filled.AdUnits
-        else -> Icons.Default.Lock
+        else -> Icons.Default.Star
     }
 }
 
@@ -187,3 +187,4 @@ private fun buildFeatureDescription(feature: PremiumFeature): String {
         PremiumFeature.NO_ADS -> "Distraction-free experience"
     }
 }
+

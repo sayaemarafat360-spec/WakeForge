@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.core.extensions
+import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.core.animateFloat
@@ -195,4 +196,5 @@ fun Modifier.fadeInWithDelay(
         easing = FastOutSlowInEasing,
     ),
 )
+
 

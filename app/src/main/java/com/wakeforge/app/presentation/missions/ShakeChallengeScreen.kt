@@ -1,4 +1,6 @@
 ﻿package com.wakeforge.app.presentation.missions
+import androidx.compose.animation.core.animateTo
+import androidx.compose.animation.core.Visual
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
@@ -276,3 +278,4 @@ private fun DrawScope.drawPhoneIcon(
         cornerRadius = CornerRadius(strokeWidth * 0.4f),
     )
 }
+

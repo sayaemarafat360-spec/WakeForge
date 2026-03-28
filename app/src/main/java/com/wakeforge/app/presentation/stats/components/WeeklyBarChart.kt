@@ -177,7 +177,7 @@ fun WeeklyBarChart(
                 }
 
                 // Draw day label below bar
-                drawContext.canvas.nativeCanvas.apply {
+                drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
                     val label = dayLabels.getOrNull(index) ?: ""
                     val textX = barX + barWidth.toPx() / 2f
                     val textY = chartBottom + 16.dp.toPx()
@@ -259,3 +259,4 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRoundedBar(
     }
     drawPath(path, color)
 }
+

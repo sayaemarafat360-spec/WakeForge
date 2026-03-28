@@ -164,7 +164,7 @@ fun EditAlarmScreen(
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
-        containerColor = colors.background,
+        
     ) { innerPadding ->
         if (state.isLoading) {
             // Loading state
@@ -232,14 +232,14 @@ fun EditAlarmScreen(
                                     imeAction = ImeAction.Done,
                                 ),
                                 colors = OutlinedTextFieldDefaults.colors(
-                                    focusedTextColor = colors.primaryText,
-                                    unfocusedTextColor = colors.primaryText,
-                                    focusedBorderColor = colors.primaryAccent,
-                                    unfocusedBorderColor = colors.border,
-                                    focusedPlaceholderColor = colors.secondaryText,
-                                    unfocusedPlaceholderColor = colors.secondaryText,
-                                    cursorColor = colors.primaryAccent,
-                                    containerColor = colors.surfaceVariant,
+                                    
+                                    un
+                                    
+                                    un
+                                    
+                                    un
+                                    
+                                    
                                 ),
                                 shape = RoundedCornerShape(12.dp),
                                 modifier = Modifier.fillMaxWidth(),
@@ -605,3 +605,4 @@ fun EditAlarmScreen(
         }
     }
 }
+

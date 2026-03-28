@@ -1,4 +1,5 @@
 ﻿package com.wakeforge.app.presentation.home.components
+import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -295,3 +296,4 @@ private fun parseHoursFromCountdown(timeUntil: String?): Int? {
     val match = Regex("""(\d+)h""").find(timeUntil)
     return match?.groupValues?.get(1)?.toIntOrNull()
 }
+
