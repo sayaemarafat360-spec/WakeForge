@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.mission.generators
 
 import android.content.Context
@@ -102,3 +105,4 @@ class ShakeEvaluator @Inject constructor(
         return false
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.edit_alarm
 
 import androidx.lifecycle.SavedStateHandle
@@ -43,7 +46,7 @@ class EditAlarmViewModel @Inject constructor(
         private const val KEY_ALARM_ID = "alarmId"
     }
 
-    // ── UI State (reuses CreateAlarm's shape) ─────────────────────────────
+    // â”€â”€ UI State (reuses CreateAlarm's shape) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     data class EditAlarmUiState(
         val alarmId: String = "",
@@ -72,7 +75,7 @@ class EditAlarmViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(EditAlarmUiState())
     val uiState: StateFlow<EditAlarmUiState> = _uiState.asStateFlow()
 
-    // ── Events ─────────────────────────────────────────────────────────────
+    // â”€â”€ Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     sealed interface EditAlarmEvent {
         data object SaveSuccess : EditAlarmEvent
@@ -85,7 +88,7 @@ class EditAlarmViewModel @Inject constructor(
     private val _events = MutableSharedFlow<EditAlarmEvent>()
     val events: SharedFlow<EditAlarmEvent> = _events.asSharedFlow()
 
-    // ── Init: Load alarm ──────────────────────────────────────────────────
+    // â”€â”€ Init: Load alarm â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val alarmId: String = savedStateHandle.get<String>(KEY_ALARM_ID)
         ?: savedStateHandle.get<String>("alarmId")
@@ -163,7 +166,7 @@ class EditAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Time ───────────────────────────────────────────────────────────────
+    // â”€â”€ Time â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateHour(hour: Int) {
         _uiState.value = _uiState.value.copy(hour = hour.coerceIn(0, 23))
@@ -173,13 +176,13 @@ class EditAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(minute = minute.coerceIn(0, 59))
     }
 
-    // ── Label ──────────────────────────────────────────────────────────────
+    // â”€â”€ Label â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateLabel(label: String) {
         _uiState.value = _uiState.value.copy(label = label.take(50))
     }
 
-    // ── Repeat Days ────────────────────────────────────────────────────────
+    // â”€â”€ Repeat Days â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleRepeatDay(day: DayOfWeek) {
         val currentDays = _uiState.value.repeatDays.toMutableList()
@@ -214,7 +217,7 @@ class EditAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Sound & Vibration ──────────────────────────────────────────────────
+    // â”€â”€ Sound & Vibration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateSound(uri: String) {
         _uiState.value = _uiState.value.copy(soundUri = uri)
@@ -226,7 +229,7 @@ class EditAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Gradual Volume ─────────────────────────────────────────────────────
+    // â”€â”€ Gradual Volume â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleGradualVolume() {
         _uiState.value = _uiState.value.copy(
@@ -240,7 +243,7 @@ class EditAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Mission & Difficulty ───────────────────────────────────────────────
+    // â”€â”€ Mission & Difficulty â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun setMissionType(type: MissionType) {
         _uiState.value = _uiState.value.copy(missionType = type)
@@ -250,7 +253,7 @@ class EditAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(difficulty = difficulty)
     }
 
-    // ── Snooze ─────────────────────────────────────────────────────────────
+    // â”€â”€ Snooze â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateSnoozeInterval(interval: Int) {
         _uiState.value = _uiState.value.copy(snoozeInterval = interval.coerceIn(1, 30))
@@ -260,7 +263,7 @@ class EditAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(maxSnoozeCount = count.coerceIn(0, 10))
     }
 
-    // ── Toggles ────────────────────────────────────────────────────────────
+    // â”€â”€ Toggles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleSmartEscalation() {
         _uiState.value = _uiState.value.copy(
@@ -292,7 +295,7 @@ class EditAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(multiStepCount = count.coerceIn(2, 5))
     }
 
-    // ── Save ───────────────────────────────────────────────────────────────
+    // â”€â”€ Save â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun saveAlarm() {
         val state = _uiState.value
@@ -333,7 +336,7 @@ class EditAlarmViewModel @Inject constructor(
         }
     }
 
-    // ── Delete ─────────────────────────────────────────────────────────────
+    // â”€â”€ Delete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun deleteAlarm() {
         val state = _uiState.value
@@ -349,3 +352,4 @@ class EditAlarmViewModel @Inject constructor(
         }
     }
 }
+

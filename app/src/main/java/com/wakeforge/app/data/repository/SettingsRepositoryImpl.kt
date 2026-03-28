@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.repository
 
 import com.wakeforge.app.data.datastore.SettingsDataStore
@@ -69,3 +72,4 @@ class SettingsRepositoryImpl @Inject constructor(
         settingsDataStore.updateBatteryOptimizationRequested(true)
     }
 }
+

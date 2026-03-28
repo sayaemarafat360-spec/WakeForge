@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 import java.util.UUID
@@ -55,7 +58,7 @@ sealed class Mission(
      * Typing-based mission requiring accurate phrase reproduction.
      *
      * @property phrase The text the user must type.
-     * @property requiredAccuracy Minimum accuracy (0.0–1.0) to pass.
+     * @property requiredAccuracy Minimum accuracy (0.0â€“1.0) to pass.
      */
     data class TypePhraseMission(
         val id: String = UUID.randomUUID().toString(),
@@ -131,3 +134,4 @@ data class MathProblem(
     val question: String,
     val answer: Int
 )
+

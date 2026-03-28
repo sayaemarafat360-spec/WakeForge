@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.navigation
 
 import androidx.compose.animation.EnterTransition
@@ -27,6 +30,8 @@ import com.wakeforge.app.presentation.settings.SettingsScreen
 import com.wakeforge.app.presentation.splash.SplashScreen
 import com.wakeforge.app.presentation.stats.StatsScreen
 import com.wakeforge.app.presentation.wake_success.WakeSuccessScreen
+
+
 
 @Composable
 fun WakeForgeNavGraph(
@@ -177,3 +182,4 @@ fun WakeForgeNavGraph(
         }
     }
 }
+

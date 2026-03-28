@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.service
 
 import android.app.Notification
@@ -57,7 +60,7 @@ class AlarmService : Service() {
         const val ACTION_STOP_SOUND = "com.wakeforge.app.service.ACTION_STOP_SOUND"
     }
 
-    // ── Injected Dependencies ────────────────────────────────────────────────
+    // â”€â”€ Injected Dependencies â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     @Inject
     lateinit var soundManager: SoundManager
@@ -71,7 +74,7 @@ class AlarmService : Service() {
     @Inject
     lateinit var notificationHelper: AlarmNotificationHelper
 
-    // ── Internal State ───────────────────────────────────────────────────────
+    // â”€â”€ Internal State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private var wakeLock: PowerManager.WakeLock? = null
     private var currentAlarmId: String? = null
@@ -82,7 +85,7 @@ class AlarmService : Service() {
     private val mainHandler = Handler(Looper.getMainLooper())
     private var snoozeRunnable: Runnable? = null
 
-    // ── Service Lifecycle ────────────────────────────────────────────────────
+    // â”€â”€ Service Lifecycle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     override fun onCreate() {
         super.onCreate()
@@ -157,7 +160,7 @@ class AlarmService : Service() {
         Log.d(TAG, "AlarmService destroyed")
     }
 
-    // ── Alarm Handlers ───────────────────────────────────────────────────────
+    // â”€â”€ Alarm Handlers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Starts the alarm: posts foreground notification, acquires wake lock,
@@ -269,7 +272,7 @@ class AlarmService : Service() {
         stopAlarm()
     }
 
-    // ── Public API (callable from other components via LocalBroadcast / intent) ──
+    // â”€â”€ Public API (callable from other components via LocalBroadcast / intent) â”€â”€
 
     /**
      * Fully stops the alarm service: silences sound, releases wake lock,
@@ -319,7 +322,7 @@ class AlarmService : Service() {
      */
     fun getCurrentAlarm(): Alarm? = currentAlarm
 
-    // ── Internal Helpers ─────────────────────────────────────────────────────
+    // â”€â”€ Internal Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Acquires a [PowerManager.PARTIAL_WAKE_LOCK] to ensure the CPU stays
@@ -388,3 +391,4 @@ class AlarmService : Service() {
         return "$displayHour:$minuteStr $amPm"
     }
 }
+

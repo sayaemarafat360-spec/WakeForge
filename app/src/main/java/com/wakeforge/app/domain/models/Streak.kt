@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 import java.text.SimpleDateFormat
@@ -66,13 +69,14 @@ data class Streak(
         }
 
         return buildString {
-            appendLine("🔥 Current Streak: $currentStreak day${if (currentStreak != 1) "s" else ""}")
-            appendLine("⭐ Longest Streak: $longestStreak day${if (longestStreak != 1) "s" else ""}")
-            appendLine("📅 Last Success: $lastSuccessStr")
-            appendLine("✅ Total Successes: $totalSuccesses")
-            appendLine("❌ Total Failures: $totalFailures")
-            appendLine("😴 Total Snoozes: $totalSnoozes")
-            appendLine("📊 Success Rate: $successRate%")
+            appendLine("ðŸ”¥ Current Streak: $currentStreak day${if (currentStreak != 1) "s" else ""}")
+            appendLine("â­ Longest Streak: $longestStreak day${if (longestStreak != 1) "s" else ""}")
+            appendLine("ðŸ“… Last Success: $lastSuccessStr")
+            appendLine("âœ… Total Successes: $totalSuccesses")
+            appendLine("âŒ Total Failures: $totalFailures")
+            appendLine("ðŸ˜´ Total Snoozes: $totalSnoozes")
+            appendLine("ðŸ“Š Success Rate: $successRate%")
         }
     }
 }
+

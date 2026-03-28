@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.database.entity
 
 import androidx.room.Entity
@@ -80,3 +83,4 @@ data class WakeRecordEntity(
         }
     }
 }
+

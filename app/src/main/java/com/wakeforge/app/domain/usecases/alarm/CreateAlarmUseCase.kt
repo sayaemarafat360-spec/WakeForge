@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.usecases.alarm
 
 import com.wakeforge.app.domain.models.Alarm
@@ -20,11 +23,11 @@ class CreateAlarmUseCase @Inject constructor(
      * Creates and schedules a new alarm after validating its fields.
      *
      * @param alarm The [Alarm] to create. Fields are validated as follows:
-     *   - [Alarm.hour] must be in range 0–23
-     *   - [Alarm.minute] must be in range 0–59
-     *   - [Alarm.snoozeIntervalMinutes] must be in range 1–30
-     *   - [Alarm.maxSnoozeCount] must be in range 0–10
-     *   - [Alarm.multiStepCount] must be in range 2–5 when [Alarm.multiStepEnabled] is true
+     *   - [Alarm.hour] must be in range 0â€“23
+     *   - [Alarm.minute] must be in range 0â€“59
+     *   - [Alarm.snoozeIntervalMinutes] must be in range 1â€“30
+     *   - [Alarm.maxSnoozeCount] must be in range 0â€“10
+     *   - [Alarm.multiStepCount] must be in range 2â€“5 when [Alarm.multiStepEnabled] is true
      * @throws IllegalArgumentException if any field fails validation.
      */
     suspend operator fun invoke(alarm: Alarm) {
@@ -61,3 +64,4 @@ class CreateAlarmUseCase @Inject constructor(
         }
     }
 }
+

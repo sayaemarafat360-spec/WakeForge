@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.components
 
 import androidx.compose.foundation.background
@@ -63,13 +66,13 @@ fun WFCard(
     ) {
         // Layered background for glass-like depth
         Box {
-            // Base layer — solid background
+            // Base layer â€” solid background
             Box(
                 modifier = Modifier
                     .matchParentSize()
                     .background(backgroundColor, shape),
             )
-            // Subtle overlay — slight lighter tint for glass feel
+            // Subtle overlay â€” slight lighter tint for glass feel
             Box(
                 modifier = Modifier
                     .matchParentSize()
@@ -92,3 +95,4 @@ fun WFCard(
         }
     }
 }
+

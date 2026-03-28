@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.missions
 
 import com.wakeforge.app.domain.models.MathProblem
@@ -21,8 +24,8 @@ import com.wakeforge.app.domain.models.MissionType
  * @property memoryPattern        The sequence of tile indices the user must memorize.
  * @property userPattern          The sequence of tile indices the user has tapped so far.
  * @property isShowingPattern     Whether the memory pattern is currently being shown.
- * @property revealedTileIndex    Index of the tile currently being revealed (–1 if none).
- * @property memoryErrorIndex     Index of the last incorrectly tapped tile (–1 if none).
+ * @property revealedTileIndex    Index of the tile currently being revealed (â€“1 if none).
+ * @property memoryErrorIndex     Index of the last incorrectly tapped tile (â€“1 if none).
  * @property targetPhrase         The phrase the user must type (type missions only).
  * @property typedPhrase          What the user has typed so far.
  * @property showHint             Whether the first-letter hint is visible.
@@ -97,3 +100,4 @@ sealed interface MissionEvent {
     /** One step in a multi-step chain completed; the next mission is ready. */
     data class StepCompleted(val nextMission: Mission) : MissionEvent
 }
+

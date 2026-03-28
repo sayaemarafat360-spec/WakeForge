@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.create_alarm
 
 import androidx.lifecycle.ViewModel
@@ -31,7 +34,7 @@ class CreateAlarmViewModel @Inject constructor(
     private val getSettingsUseCase: GetSettingsUseCase
 ) : ViewModel() {
 
-    // ── UI State ───────────────────────────────────────────────────────────
+    // â”€â”€ UI State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     data class CreateAlarmUiState(
         val hour: Int = 7,
@@ -58,7 +61,7 @@ class CreateAlarmViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(CreateAlarmUiState())
     val uiState: StateFlow<CreateAlarmUiState> = _uiState.asStateFlow()
 
-    // ── Events ─────────────────────────────────────────────────────────────
+    // â”€â”€ Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     sealed interface CreateAlarmEvent {
         data object SaveSuccess : CreateAlarmEvent
@@ -68,7 +71,7 @@ class CreateAlarmViewModel @Inject constructor(
     private val _events = MutableSharedFlow<CreateAlarmEvent>()
     val events: SharedFlow<CreateAlarmEvent> = _events.asSharedFlow()
 
-    // ── Init ───────────────────────────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     init {
         loadDefaultsFromSettings()
@@ -92,7 +95,7 @@ class CreateAlarmViewModel @Inject constructor(
         }
     }
 
-    // ── Time ───────────────────────────────────────────────────────────────
+    // â”€â”€ Time â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateHour(hour: Int) {
         _uiState.value = _uiState.value.copy(hour = hour.coerceIn(0, 23))
@@ -102,13 +105,13 @@ class CreateAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(minute = minute.coerceIn(0, 59))
     }
 
-    // ── Label ──────────────────────────────────────────────────────────────
+    // â”€â”€ Label â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateLabel(label: String) {
         _uiState.value = _uiState.value.copy(label = label.take(50))
     }
 
-    // ── Repeat Days ────────────────────────────────────────────────────────
+    // â”€â”€ Repeat Days â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleRepeatDay(day: DayOfWeek) {
         val currentDays = _uiState.value.repeatDays.toMutableList()
@@ -145,7 +148,7 @@ class CreateAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Sound & Vibration ──────────────────────────────────────────────────
+    // â”€â”€ Sound & Vibration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateSound(uri: String) {
         _uiState.value = _uiState.value.copy(soundUri = uri)
@@ -157,7 +160,7 @@ class CreateAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Gradual Volume ─────────────────────────────────────────────────────
+    // â”€â”€ Gradual Volume â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleGradualVolume() {
         _uiState.value = _uiState.value.copy(
@@ -171,7 +174,7 @@ class CreateAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Mission & Difficulty ───────────────────────────────────────────────
+    // â”€â”€ Mission & Difficulty â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun setMissionType(type: MissionType) {
         _uiState.value = _uiState.value.copy(missionType = type)
@@ -181,7 +184,7 @@ class CreateAlarmViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(difficulty = difficulty)
     }
 
-    // ── Snooze ─────────────────────────────────────────────────────────────
+    // â”€â”€ Snooze â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun updateSnoozeInterval(interval: Int) {
         _uiState.value = _uiState.value.copy(
@@ -195,7 +198,7 @@ class CreateAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Toggles ────────────────────────────────────────────────────────────
+    // â”€â”€ Toggles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun toggleSmartEscalation() {
         _uiState.value = _uiState.value.copy(
@@ -229,7 +232,7 @@ class CreateAlarmViewModel @Inject constructor(
         )
     }
 
-    // ── Save ───────────────────────────────────────────────────────────────
+    // â”€â”€ Save â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     fun saveAlarm() {
         val state = _uiState.value
@@ -269,3 +272,4 @@ class CreateAlarmViewModel @Inject constructor(
         }
     }
 }
+

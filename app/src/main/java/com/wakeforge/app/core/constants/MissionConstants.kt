@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.constants
 
 /**
@@ -5,7 +8,7 @@ package com.wakeforge.app.core.constants
  */
 object MissionConstants {
 
-    // ── Mission Type Keys ─────────────────────────────────────────────────
+    // â”€â”€ Mission Type Keys â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     const val MATH       = "math"
     const val MEMORY     = "memory"
@@ -16,24 +19,24 @@ object MissionConstants {
     /** All valid mission type keys. */
     val ALL_MISSION_TYPES = listOf(MATH, MEMORY, TYPE_PHRASE, SHAKE, STEP)
 
-    // ── Shake Mission ─────────────────────────────────────────────────────
+    // â”€â”€ Shake Mission â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** Minimum acceleration magnitude (m/s²) to register as a valid shake. */
+    /** Minimum acceleration magnitude (m/sÂ²) to register as a valid shake. */
     const val SHAKE_THRESHOLD_ACCELERATION = 12f
 
     /** Minimum time between two consecutive shake registrations (ms). */
     const val SHAKE_COOLDOWN_MS = 500L
 
-    // ── Step Mission ──────────────────────────────────────────────────────
+    // â”€â”€ Step Mission â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Interval at which the step counter sensor is polled (ms). */
     const val STEP_CHECK_INTERVAL_MS = 1_000L
 
-    // ── Difficulty Configuration ──────────────────────────────────────────
+    // â”€â”€ Difficulty Configuration â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     //
     // Each difficulty tier defines min/max bounds for mission parameters.
     // Tiers: EASY, MEDIUM, HARD, EXTREME.
-    // ─────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Math mission difficulty:
@@ -103,3 +106,4 @@ object MissionConstants {
         val EXTREME = Tier(stepCount = 70..100)
     }
 }
+

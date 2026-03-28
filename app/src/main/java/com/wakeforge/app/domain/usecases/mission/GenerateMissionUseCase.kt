@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.usecases.mission
 
 import com.wakeforge.app.domain.models.Mission
@@ -34,11 +37,11 @@ class GenerateMissionUseCase @Inject constructor(
      *
      * When [isTimed] is true, a time limit is calculated based on the
      * difficulty multiplier:
-     * - TRIVIAL (0.5×): 30 seconds
-     * - EASY (0.75×): 45 seconds
-     * - MEDIUM (1.0×): 60 seconds
-     * - HARD (1.5×): 90 seconds
-     * - EXTREME (2.0×): 120 seconds
+     * - TRIVIAL (0.5Ã—): 30 seconds
+     * - EASY (0.75Ã—): 45 seconds
+     * - MEDIUM (1.0Ã—): 60 seconds
+     * - HARD (1.5Ã—): 90 seconds
+     * - EXTREME (2.0Ã—): 120 seconds
      *
      * @param type The [MissionType] to generate.
      * @param difficulty The [MissionDifficulty] tier.
@@ -76,3 +79,4 @@ class GenerateMissionUseCase @Inject constructor(
         }
     }
 }
+

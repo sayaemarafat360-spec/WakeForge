@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 /**
@@ -13,7 +16,7 @@ enum class MissionDifficulty(
     TRIVIAL(
         tier = 1,
         displayName = "trivial",
-        description = "A gentle wake-up. Minimal effort required — perfect for light sleepers.",
+        description = "A gentle wake-up. Minimal effort required â€” perfect for light sleepers.",
         multiplier = 0.5f
     ),
     EASY(
@@ -54,3 +57,4 @@ enum class MissionDifficulty(
         }
     }
 }
+

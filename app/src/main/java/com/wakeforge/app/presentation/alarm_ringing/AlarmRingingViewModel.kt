@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.alarm_ringing
 
 import androidx.lifecycle.SavedStateHandle
@@ -43,12 +46,12 @@ class AlarmRingingViewModel @Inject constructor(
         private const val CLOCK_UPDATE_INTERVAL_MS = 1000L
     }
 
-    // ── State ─────────────────────────────────────────────────────────────
+    // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val _uiState = MutableStateFlow(AlarmRingingUiState())
     val uiState: StateFlow<AlarmRingingUiState> = _uiState.asStateFlow()
 
-    // ── Events ─────────────────────────────────────────────────────────────
+    // â”€â”€ Events â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     sealed interface AlarmRingingEvent {
         data class StartMission(
@@ -68,7 +71,7 @@ class AlarmRingingViewModel @Inject constructor(
     private val _events = MutableSharedFlow<AlarmRingingEvent>()
     val events: SharedFlow<AlarmRingingEvent> = _events.asSharedFlow()
 
-    // ── Private state ─────────────────────────────────────────────────────
+    // â”€â”€ Private state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val alarmId: String = savedStateHandle.get<String>(KEY_ALARM_ID)
         ?: savedStateHandle.get<String>("alarmId")
@@ -80,7 +83,7 @@ class AlarmRingingViewModel @Inject constructor(
     private var timedMode: Boolean = true
     private var snoozeIntervalMinutes: Int = 5
 
-    // ── Init ───────────────────────────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     init {
         loadAlarm()
@@ -143,7 +146,7 @@ class AlarmRingingViewModel @Inject constructor(
         }
     }
 
-    // ── Clock ──────────────────────────────────────────────────────────────
+    // â”€â”€ Clock â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun startClockUpdates() {
         clockUpdateJob?.cancel()
@@ -157,7 +160,7 @@ class AlarmRingingViewModel @Inject constructor(
         }
     }
 
-    // ── Actions ────────────────────────────────────────────────────────────
+    // â”€â”€ Actions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Initiates the mission challenge with escalated difficulty based on
@@ -216,10 +219,11 @@ class AlarmRingingViewModel @Inject constructor(
         }
     }
 
-    // ── Cleanup ────────────────────────────────────────────────────────────
+    // â”€â”€ Cleanup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     override fun onCleared() {
         super.onCleared()
         clockUpdateJob?.cancel()
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.utils
 
 import android.content.Context
@@ -12,21 +15,21 @@ import kotlin.math.abs
  */
 object TimeUtils {
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Next Alarm Calculation
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Calculates the next [Calendar] instance at which the alarm should fire.
      *
      * Rules:
-     * - If [repeatDays] is empty the alarm fires once — today if the time hasn't
+     * - If [repeatDays] is empty the alarm fires once â€” today if the time hasn't
      *   passed yet, otherwise tomorrow.
      * - If [repeatDays] is non-empty the alarm fires on the next matching day
      *   (including today if the time hasn't passed).
      *
-     * @param hour       Hour of day (0–23).
-     * @param minute     Minute of hour (0–59).
+     * @param hour       Hour of day (0â€“23).
+     * @param minute     Minute of hour (0â€“59).
      * @param repeatDays Days the alarm repeats on; empty = one-time alarm.
      * @return A [Calendar] set to the next alarm fire time.
      */
@@ -50,7 +53,7 @@ object TimeUtils {
             }
             candidate
         } else {
-            // Repeating alarm — find the next matching day
+            // Repeating alarm â€” find the next matching day
             findNextMatchingDay(candidate, now, repeatDays)
         }
     }
@@ -64,7 +67,7 @@ object TimeUtils {
         now: Calendar,
         repeatDays: List<DayOfWeek>,
     ): Calendar {
-        // Convert DayOfWeek to Calendar day constants (Calendar.SUNDAY = 1 … SATURDAY = 7)
+        // Convert DayOfWeek to Calendar day constants (Calendar.SUNDAY = 1 â€¦ SATURDAY = 7)
         val calendarDays = repeatDays.map { it.toCalendarDay() }.toSet()
 
         // Check up to 7 days ahead
@@ -76,7 +79,7 @@ object TimeUtils {
             candidate.add(Calendar.DAY_OF_MONTH, 1)
         }
 
-        // Fallback — shouldn't happen if repeatDays is valid
+        // Fallback â€” shouldn't happen if repeatDays is valid
         return candidate
     }
 
@@ -90,9 +93,9 @@ object TimeUtils {
         return if (diff > 0) diff else 0L
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Today / Tomorrow checks
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Returns `true` if the given [hour]:[minute] is today and hasn't passed yet.
@@ -131,9 +134,9 @@ object TimeUtils {
             alarm.get(Calendar.YEAR) == tomorrow.get(Calendar.YEAR)
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Countdown formatting
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Formats a duration in milliseconds into a compact countdown string.
@@ -155,9 +158,9 @@ object TimeUtils {
         }
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Day of week helpers
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Returns the current day of the week as a [DayOfWeek].
@@ -173,13 +176,13 @@ object TimeUtils {
         return android.text.format.DateFormat.is24HourFormat(context)
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Internal helpers
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Maps java.time [DayOfWeek] to `java.util.Calendar` day-of-week constant.
-     * Calendar.SUNDAY = 1, … Calendar.SATURDAY = 7.
+     * Calendar.SUNDAY = 1, â€¦ Calendar.SATURDAY = 7.
      */
     internal fun DayOfWeek.toCalendarDay(): Int = when (this) {
         DayOfWeek.SUNDAY    -> Calendar.SUNDAY
@@ -191,3 +194,4 @@ object TimeUtils {
         DayOfWeek.SATURDAY  -> Calendar.SATURDAY
     }
 }
+

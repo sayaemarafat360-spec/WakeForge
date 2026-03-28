@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.usecases.settings
 
 import com.wakeforge.app.domain.models.AppSettings
@@ -30,8 +33,8 @@ class UpdateSettingsUseCase @Inject constructor(
     /**
      * Updates the default snooze configuration for new alarms.
      *
-     * @param interval Minutes between snoozes (1–30).
-     * @param maxCount Maximum number of snoozes allowed (0–10).
+     * @param interval Minutes between snoozes (1â€“30).
+     * @param maxCount Maximum number of snoozes allowed (0â€“10).
      * @throws IllegalArgumentException if values are out of range.
      */
     suspend fun updateDefaultSnooze(interval: Int, maxCount: Int) {
@@ -132,3 +135,4 @@ class UpdateSettingsUseCase @Inject constructor(
         repository.markBatteryOptimizationRequested()
     }
 }
+

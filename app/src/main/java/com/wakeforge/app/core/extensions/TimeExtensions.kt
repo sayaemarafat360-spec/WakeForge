@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.extensions
 
 import android.content.Context
@@ -8,9 +11,9 @@ import java.util.Date
 import java.util.Locale
 import kotlin.math.abs
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Int → Formatted Time / Duration
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Int â†’ Formatted Time / Duration
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Converts an [Int] representing total minutes-since-midnight to a formatted
@@ -37,9 +40,9 @@ fun Int.toFormattedTime(is24Hour: Boolean = false): String {
  * Converts a total number of seconds into a human-readable duration string.
  *
  * Examples:
- * - 3661 → "1h 1m"
- * - 125   → "2m 5s"
- * - 45    → "45s"
+ * - 3661 â†’ "1h 1m"
+ * - 125   â†’ "2m 5s"
+ * - 45    â†’ "45s"
  *
  * @receiver Duration in seconds.
  */
@@ -56,9 +59,9 @@ fun Int.toFormattedDuration(): String {
     }.trim()
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Long (timestamp) → Formatted Date / Time
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Long (timestamp) â†’ Formatted Date / Time
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 private val dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())
 
@@ -77,9 +80,9 @@ fun Long.toDateString(): String = dateFormat.format(Date(this))
  */
 fun Long.toTimeString(): String = timeFormat.format(Date(this))
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // DayOfWeek helpers
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Maps a Java [java.time.DayOfWeek] to a 3-letter short name (e.g. "Mon").
@@ -98,11 +101,11 @@ fun java.time.DayOfWeek.toShortName(): String = when (this) {
  * Converts a list of [java.time.DayOfWeek] into a comma-separated repeat label.
  *
  * Examples:
- * - [MON, WED, FRI]           → "Mon, Wed, Fri"
- * - [MON,TUE,WED,THU,FRI]    → "Weekdays"
- * - [SAT, SUN]                → "Weekends"
- * - all 7 days                → "Every day"
- * - empty list                → "Once"
+ * - [MON, WED, FRI]           â†’ "Mon, Wed, Fri"
+ * - [MON,TUE,WED,THU,FRI]    â†’ "Weekdays"
+ * - [SAT, SUN]                â†’ "Weekends"
+ * - all 7 days                â†’ "Every day"
+ * - empty list                â†’ "Once"
  */
 fun List<java.time.DayOfWeek>.toRepeatLabel(): String {
     if (isEmpty()) return "Once"
@@ -130,7 +133,7 @@ fun List<java.time.DayOfWeek>.toRepeatLabel(): String {
  * Converts a bitmask (as used by Android's Calendar) into a list of
  * [java.time.DayOfWeek] values.
  *
- * Android convention: bit 0 = Sunday, bit 1 = Monday, … bit 6 = Saturday.
+ * Android convention: bit 0 = Sunday, bit 1 = Monday, â€¦ bit 6 = Saturday.
  *
  * @receiver Bitmask where set bits represent active days.
  */
@@ -170,9 +173,9 @@ fun List<java.time.DayOfWeek>.toBitMask(): Int {
 
 private fun <E> List<E>.intersects(other: List<E>): Boolean = any { it in other }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Calendar helpers
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Returns `true` if this [Calendar] represents today's date.
@@ -192,9 +195,9 @@ fun Calendar.isTomorrow(): Boolean {
         get(Calendar.DAY_OF_YEAR) == tomorrow.get(Calendar.DAY_OF_YEAR)
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Relative time string
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Converts a Unix epoch millis timestamp into a human-readable relative time string.
@@ -223,3 +226,4 @@ fun Long.toRelativeTimeString(context: Context): String {
         else               -> toDateString()
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.premium
 
 import androidx.lifecycle.ViewModel
@@ -35,7 +38,7 @@ class PremiumViewModel @Inject constructor(
 
     enum class PricingPlan(val displayName: String, val price: String, val subtitle: String) {
         MONTHLY(displayName = "Monthly", price = "$4.99", subtitle = "/month"),
-        YEARLY(displayName = "Yearly", price = "$39.99", subtitle = "/year — Save 33%"),
+        YEARLY(displayName = "Yearly", price = "$39.99", subtitle = "/year â€” Save 33%"),
         LIFETIME(displayName = "Lifetime", price = "$79.99", subtitle = "One-time purchase")
     }
 
@@ -148,3 +151,4 @@ class PremiumViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(purchaseError = null)
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.mission.generators
 
 import com.wakeforge.app.data.mission.DifficultyConfigurator
@@ -189,3 +192,4 @@ class MathGenerator @Inject constructor(
         }
     }
 }
+

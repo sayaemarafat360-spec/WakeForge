@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.extensions
 
 import androidx.compose.animation.AnimatedVisibilityScope
@@ -30,9 +33,9 @@ import com.wakeforge.app.core.theme.ButtonPressMs
 import com.wakeforge.app.core.theme.DefaultSpringSpec
 import com.wakeforge.app.core.theme.FadeMs
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Pulse Animation
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Applies a continuous pulsing alpha + slight scale animation to the element.
@@ -43,7 +46,7 @@ fun Modifier.pulseAnimation(
     maxAlpha: Float = 1f,
     minScale: Float = 0.97f,
     maxScale: Float = 1.03f,
-    durationMs: Int = 1000,
+    durationMillis: Int = 1000,
 ): Modifier = composed {
     val infiniteTransition = rememberInfiniteTransition(label = "pulse")
 
@@ -51,7 +54,7 @@ fun Modifier.pulseAnimation(
         initialValue = minAlpha,
         targetValue = maxAlpha,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMs = durationMs, easing = FastOutSlowInEasing),
+            animation = tween(durationMillis = durationMillis, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Reverse,
         ),
         label = "pulseAlpha",
@@ -61,7 +64,7 @@ fun Modifier.pulseAnimation(
         initialValue = minScale,
         targetValue = maxScale,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMs = durationMs, easing = FastOutSlowInEasing),
+            animation = tween(durationMillis = durationMillis, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Reverse,
         ),
         label = "pulseScale",
@@ -71,12 +74,12 @@ fun Modifier.pulseAnimation(
         .graphicsLayer { this.alpha = alpha; scaleX = scale; scaleY = scale }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Press Effect
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
- * Scales the element down on press (0.96×) and springs back on release.
+ * Scales the element down on press (0.96Ã—) and springs back on release.
  * Gives tactile, material-like press feedback without ripple noise.
  */
 fun Modifier.pressEffect(): Modifier = composed {
@@ -102,9 +105,9 @@ fun Modifier.pressEffect(): Modifier = composed {
         }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Shimmer Effect
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Applies a loading shimmer gradient that sweeps horizontally across the element.
@@ -138,48 +141,48 @@ fun Modifier.shimmerEffect(): Modifier = composed {
     }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Slide Transitions
-// ──────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /** Slide in from the right edge (e.g. forward navigation). */
 fun slideInFromRight(
-    durationMs: Int = FadeMs,
+    durationMillis: Int = FadeMs,
 ): EnterTransition = slideInHorizontally(
     initialOffsetX = { fullWidth -> (fullWidth * 0.25f).toInt() },
-    animationSpec = tween(durationMs, easing = FastOutSlowInEasing),
+    animationSpec = tween(durationMillis, easing = FastOutSlowInEasing),
 ) + fadeIn(
-    animationSpec = tween(durationMs / 2),
+    animationSpec = tween(durationMillis / 2),
 )
 
 /** Slide out to the left edge (e.g. forward navigation exit). */
 fun slideOutToLeft(
-    durationMs: Int = FadeMs,
+    durationMillis: Int = FadeMs,
 ): ExitTransition = slideOutHorizontally(
     targetOffsetX = { fullWidth -> -(fullWidth * 0.25f).toInt() },
-    animationSpec = tween(durationMs, easing = FastOutSlowInEasing),
+    animationSpec = tween(durationMillis, easing = FastOutSlowInEasing),
 ) + fadeOut(
-    animationSpec = tween(durationMs / 2),
+    animationSpec = tween(durationMillis / 2),
 )
 
 /** Slide in from the bottom (e.g. bottom sheet or list items). */
 fun slideInFromBottom(
-    durationMs: Int = FadeMs,
+    durationMillis: Int = FadeMs,
 ): EnterTransition = slideInVertically(
     initialOffsetY = { fullHeight -> (fullHeight * 0.3f).toInt() },
-    animationSpec = tween(durationMs, easing = FastOutSlowInEasing),
+    animationSpec = tween(durationMillis, easing = FastOutSlowInEasing),
 ) + fadeIn(
-    animationSpec = tween(durationMs / 2),
+    animationSpec = tween(durationMillis / 2),
 )
 
 /** Slide out to the bottom (e.g. bottom sheet dismiss). */
 fun slideOutToBottom(
-    durationMs: Int = FadeMs,
+    durationMillis: Int = FadeMs,
 ): ExitTransition = slideOutVertically(
     targetOffsetY = { fullHeight -> (fullHeight * 0.3f).toInt() },
-    animationSpec = tween(durationMs, easing = FastOutSlowInEasing),
+    animationSpec = tween(durationMillis, easing = FastOutSlowInEasing),
 ) + fadeOut(
-    animationSpec = tween(durationMs / 2),
+    animationSpec = tween(durationMillis / 2),
 )
 
 /**
@@ -187,11 +190,12 @@ fun slideOutToBottom(
  */
 fun Modifier.fadeInWithDelay(
     delayMs: Int,
-    durationMs: Int = FadeMs,
+    durationMillis: Int = FadeMs,
 ): EnterTransition = fadeIn(
     animationSpec = tween(
-        durationMillis = durationMs,
+        durationMillis = durationMillis,
         delayMillis = delayMs,
         easing = FastOutSlowInEasing,
     ),
 )
+

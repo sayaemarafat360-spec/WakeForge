@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation
 
 import android.content.Intent
@@ -33,10 +36,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ── Edge-to-edge display ───────────────────────────────────────────────
+        // â”€â”€ Edge-to-edge display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         enableEdgeToEdge()
 
-        // ── Determine start destination ────────────────────────────────────────
+        // â”€â”€ Determine start destination â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         val alarmId = intent.getStringExtra(AlarmReceiver.EXTRA_ALARM_ID)
         val startDestination = if (!alarmId.isNullOrBlank()) {
             Route.AlarmRinging.createRoute(alarmId)
@@ -44,7 +47,7 @@ class MainActivity : ComponentActivity() {
             Route.Splash.route
         }
 
-        // ── Compose content ───────────────────────────────────────────────────
+        // â”€â”€ Compose content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         setContent {
             WakeForgeTheme {
                 Surface(
@@ -67,3 +70,4 @@ class MainActivity : ComponentActivity() {
         // is computed from the current intent.
     }
 }
+

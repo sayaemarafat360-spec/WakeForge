@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.sound
 
 import android.content.Context
@@ -199,3 +202,4 @@ class SoundManager @Inject constructor(
         return currentSoundUri
     }
 }
+

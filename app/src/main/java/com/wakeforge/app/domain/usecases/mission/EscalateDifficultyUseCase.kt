@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.usecases.mission
 
 import com.wakeforge.app.domain.models.MissionDifficulty
@@ -10,7 +13,7 @@ import javax.inject.Inject
  * by one tier, making it progressively harder to go back to sleep.
  * The difficulty is capped at [MissionDifficulty.EXTREME].
  *
- * @property repository No repository dependency needed — this is pure domain logic.
+ * @property repository No repository dependency needed â€” this is pure domain logic.
  */
 class EscalateDifficultyUseCase @Inject constructor() {
 
@@ -37,3 +40,4 @@ class EscalateDifficultyUseCase @Inject constructor() {
         return difficulty
     }
 }
+

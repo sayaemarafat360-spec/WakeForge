@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.onboarding
 
 import androidx.lifecycle.ViewModel
@@ -83,3 +86,4 @@ class OnboardingViewModel @Inject constructor(
         }
     }
 }
+

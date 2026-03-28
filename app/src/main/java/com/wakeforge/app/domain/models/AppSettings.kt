@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 /**
@@ -10,8 +13,8 @@ package com.wakeforge.app.domain.models
  * @property defaultMissionType Default mission type for new alarms.
  * @property defaultDifficulty Default difficulty level for new alarms.
  * @property strictModeDefault Whether strict mode is enabled by default for new alarms.
- * @property soundVolume Alarm sound volume level (0.0–1.0).
- * @property vibrationIntensity Vibration intensity level (0–100).
+ * @property soundVolume Alarm sound volume level (0.0â€“1.0).
+ * @property vibrationIntensity Vibration intensity level (0â€“100).
  * @property notificationPermissionRequested Whether the notification permission has been requested.
  * @property batteryOptimizationRequested Whether battery optimization exemption has been requested.
  * @property is24HourFormat Whether times should be displayed in 24-hour format.
@@ -69,3 +72,4 @@ data class AppSettings(
                 defaultMaxSnoozeCount in 0..10
     }
 }
+

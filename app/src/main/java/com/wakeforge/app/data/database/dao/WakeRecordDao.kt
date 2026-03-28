@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.data.database.dao
 
 import androidx.room.Dao
@@ -36,3 +39,4 @@ interface WakeRecordDao {
     @Query("SELECT * FROM wake_records WHERE alarmId = :alarmId ORDER BY timestamp DESC")
     fun getRecordsForAlarm(alarmId: String): Flow<List<WakeRecordEntity>>
 }
+

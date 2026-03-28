@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 import java.util.Calendar
@@ -7,8 +10,8 @@ import java.util.UUID
  * Represents a single alarm configured by the user.
  *
  * @property id Unique identifier generated via UUID.
- * @property hour Hour of day in 24-hour format (0–23).
- * @property minute Minute of the hour (0–59).
+ * @property hour Hour of day in 24-hour format (0â€“23).
+ * @property minute Minute of the hour (0â€“59).
  * @property label User-facing name for the alarm.
  * @property repeatDays Days of the week on which the alarm repeats.
  * @property soundUri URI or identifier for the alarm sound.
@@ -150,3 +153,4 @@ enum class DayOfWeek(val calendarDay: Int, val abbreviation: String) {
         }
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.constants
 
 /**
@@ -5,7 +8,7 @@ package com.wakeforge.app.core.constants
  */
 object AlarmConstants {
 
-    // ── Intent / Bundle Extras ─────────────────────────────────────────────
+    // â”€â”€ Intent / Bundle Extras â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Key for the alarm ID passed through intents. */
     const val ALARM_ACTION_EXTRA_ALARM_ID = "extra_alarm_id"
@@ -19,12 +22,12 @@ object AlarmConstants {
     /** Action string: snooze the alarm. */
     const val ALARM_ACTION_SNOOZE = "com.wakeforge.app.action.SNOOZE"
 
-    // ── Foreground Service ────────────────────────────────────────────────
+    // â”€â”€ Foreground Service â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Notification ID for the alarm foreground service. */
     const val FOREGROUND_NOTIFICATION_ID = 2001
 
-    // ── Mission Chain / Escalation ────────────────────────────────────────
+    // â”€â”€ Mission Chain / Escalation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Maximum number of missions in a single alarm's chain. */
     const val MAX_MISSION_CHAIN_LENGTH = 4
@@ -35,8 +38,9 @@ object AlarmConstants {
     /** Minimum possible alarm interval after full escalation (30 s). */
     const val ESCALATION_MIN_INTERVAL_MS = 30_000L
 
-    // ── Gradual Volume ────────────────────────────────────────────────────
+    // â”€â”€ Gradual Volume â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Default duration over which volume ramps from silent to max (seconds). */
     const val DEFAULT_GRADUAL_VOLUME_DURATION_SECONDS = 60
 }
+

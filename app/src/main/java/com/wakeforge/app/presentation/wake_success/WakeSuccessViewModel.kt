@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.wake_success
 
 import androidx.lifecycle.SavedStateHandle
@@ -37,17 +40,17 @@ class WakeSuccessViewModel @Inject constructor(
         private const val KEY_WAKE_RECORD_ID = "wakeRecordId"
     }
 
-    // ── State ─────────────────────────────────────────────────────────
+    // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val _uiState = MutableStateFlow(WakeSuccessUiState())
     val uiState: StateFlow<WakeSuccessUiState> = _uiState.asStateFlow()
 
-    // ── Navigation args ──────────────────────────────────────────────
+    // â”€â”€ Navigation args â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val alarmId: String = savedStateHandle[KEY_ALARM_ID] ?: ""
     private val wakeRecordId: String = savedStateHandle[KEY_WAKE_RECORD_ID] ?: ""
 
-    // ── Init ─────────────────────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     init {
         loadStreakAndAnalytics()
@@ -105,3 +108,4 @@ data class WakeSuccessUiState(
     val snoozeCount: Int = 0,
     val isLoading: Boolean = true,
 )
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.missions
 
 import android.hardware.SensorEventListener
@@ -69,7 +72,7 @@ class MissionViewModel @Inject constructor(
         private const val HINT_DELAY_FRACTION = 0.6f
     }
 
-    // ── State ─────────────────────────────────────────────────────────────
+    // â”€â”€ State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val _uiState = MutableStateFlow(MissionUiState())
     val uiState: StateFlow<MissionUiState> = _uiState.asStateFlow()
@@ -77,7 +80,7 @@ class MissionViewModel @Inject constructor(
     private val _events = MutableSharedFlow<MissionEvent>()
     val events: SharedFlow<MissionEvent> = _events.asSharedFlow()
 
-    // ── Navigation args ──────────────────────────────────────────────────
+    // â”€â”€ Navigation args â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private val alarmId: String = savedStateHandle[KEY_ALARM_ID] ?: ""
     private val missionTypeName: String = savedStateHandle[KEY_MISSION_TYPE] ?: MissionType.MATH.name
@@ -96,7 +99,7 @@ class MissionViewModel @Inject constructor(
         MissionDifficulty.MEDIUM
     }
 
-    // ── Private fields ───────────────────────────────────────────────────
+    // â”€â”€ Private fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private var timerJob: Job? = null
     private var memoryRevealJob: Job? = null
@@ -106,14 +109,14 @@ class MissionViewModel @Inject constructor(
     private var shakeListener: SensorEventListener? = null
     private var stepListener: SensorEventListener? = null
 
-    // ── Init ─────────────────────────────────────────────────────────────
+    // â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     init {
         Timber.d("MissionViewModel init: type=$missionType, difficulty=$difficulty, snooze=$snoozeCount")
         generateMission()
     }
 
-    // ── Mission Generation ───────────────────────────────────────────────
+    // â”€â”€ Mission Generation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun generateMission() {
         viewModelScope.launch {
@@ -170,7 +173,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Math ──────────────────────────────────────────────────────────────
+    // â”€â”€ Math â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun initMathMission(mission: Mission.MathMission) {
         if (mission.problems.isNotEmpty()) {
@@ -216,7 +219,7 @@ class MissionViewModel @Inject constructor(
                 answerFeedback = AnswerFeedback.Idle,
             )
         } else {
-            // All math problems solved — mission step complete
+            // All math problems solved â€” mission step complete
             completeCurrentStep()
         }
     }
@@ -225,7 +228,7 @@ class MissionViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(userAnswer = answer.filter { it.isDigit() || it == '-' })
     }
 
-    // ── Memory ────────────────────────────────────────────────────────────
+    // â”€â”€ Memory â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun initMemoryMission(mission: Mission.MemoryMission) {
         _uiState.value = _uiState.value.copy(
@@ -287,7 +290,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Type Phrase ───────────────────────────────────────────────────────
+    // â”€â”€ Type Phrase â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun initTypeMission(mission: Mission.TypePhraseMission) {
         _uiState.value = _uiState.value.copy(targetPhrase = mission.phrase)
@@ -318,7 +321,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Shake ─────────────────────────────────────────────────────────────
+    // â”€â”€ Shake â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun initShakeMission(mission: Mission.ShakeMission) {
         _uiState.value = _uiState.value.copy(
@@ -344,7 +347,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Step ──────────────────────────────────────────────────────────────
+    // â”€â”€ Step â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun initStepMission(mission: Mission.StepMission) {
         val sensorAvailable = stepEvaluator.isSensorAvailable()
@@ -374,7 +377,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Timer ─────────────────────────────────────────────────────────────
+    // â”€â”€ Timer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun startTimer() {
         timerJob?.cancel()
@@ -401,7 +404,7 @@ class MissionViewModel @Inject constructor(
         timerJob = null
     }
 
-    // ── Step Completion / Multi-Step ──────────────────────────────────────
+    // â”€â”€ Step Completion / Multi-Step â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun completeCurrentStep() {
         cancelTimer()
@@ -412,7 +415,7 @@ class MissionViewModel @Inject constructor(
         val currentStep = state.currentStepIndex
 
         if (currentStep + 1 < totalSteps) {
-            // More steps remain — generate a different mission type for next step
+            // More steps remain â€” generate a different mission type for next step
             viewModelScope.launch {
                 try {
                     val nextType = pickDifferentType(state.missionType)
@@ -485,7 +488,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Recording ─────────────────────────────────────────────────────────
+    // â”€â”€ Recording â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun recordWakeSuccess() {
         val state = _uiState.value
@@ -528,7 +531,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Event Emission ────────────────────────────────────────────────────
+    // â”€â”€ Event Emission â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private fun emitEvent(event: MissionEvent) {
         viewModelScope.launch {
@@ -536,7 +539,7 @@ class MissionViewModel @Inject constructor(
         }
     }
 
-    // ── Public getters for screen use ─────────────────────────────────────
+    // â”€â”€ Public getters for screen use â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** The alarm ID associated with this mission. */
     fun getAlarmId(): String = alarmId
@@ -550,7 +553,7 @@ class MissionViewModel @Inject constructor(
     /** Current [MissionDifficulty]. */
     fun getDifficulty(): MissionDifficulty = difficulty
 
-    // ── Cleanup ───────────────────────────────────────────────────────────
+    // â”€â”€ Cleanup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Stop all sensor listeners and timers. Called from the UI layer's
@@ -572,3 +575,4 @@ class MissionViewModel @Inject constructor(
         Timber.d("MissionViewModel cleared")
     }
 }
+

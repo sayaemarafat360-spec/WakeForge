@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.wake_success
 
 import androidx.compose.animation.core.Animatable
@@ -54,7 +57,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
         }
     }
 
-    // ── Animation state ───────────────────────────────────────────────
+    // â”€â”€ Animation state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     val circleExpansion = remember { Animatable(0f) }
     val circleAlpha = remember { Animatable(0.3f) }
@@ -116,7 +119,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
         val cx = size.width / 2f
         val cy = size.height / 2f
 
-        // ── Expanding circle ──────────────────────────────────────────
+        // â”€â”€ Expanding circle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
         val maxCircleRadius = size.minDimension * 0.8f
         val currentRadius = maxCircleRadius * circleExpansion.value
@@ -128,7 +131,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
             )
         }
 
-        // ── Particles ─────────────────────────────────────────────────
+        // â”€â”€ Particles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
         if (particleProgress.value > 0f) {
             particles.forEach { particle ->
@@ -145,7 +148,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
             }
         }
 
-        // ── Firework bursts ───────────────────────────────────────────
+        // â”€â”€ Firework bursts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
         val burstColors = listOf(colors.success, colors.primaryAccent, colors.secondaryAccent, colors.warning)
         for (i in 0 until burstCount) {
@@ -178,7 +181,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
             }
         }
 
-        // ── Streak fire overlay ───────────────────────────────────────
+        // â”€â”€ Streak fire overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
         if (isNewRecord && fireFlicker.value > 0.01f) {
             // Flickering orange/red glow at bottom
@@ -210,3 +213,4 @@ private data class CelebrationParticle(
     val color: Color,
     val delayMs: Long = 0L,
 )
+

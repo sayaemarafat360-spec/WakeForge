@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.stats
 
 import androidx.lifecycle.ViewModel
@@ -129,3 +132,4 @@ class StatsViewModel @Inject constructor(
         return history.take(30)
     }
 }
+

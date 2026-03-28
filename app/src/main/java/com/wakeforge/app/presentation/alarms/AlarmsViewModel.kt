@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.alarms
 
 import androidx.lifecycle.ViewModel
@@ -106,7 +109,7 @@ class AlarmsViewModel @Inject constructor(
         undoJob?.cancel()
         undoJob = viewModelScope.launch {
             delay(5000L)
-            // Time expired — permanently delete
+            // Time expired â€” permanently delete
             try {
                 deleteAlarmUseCase(alarmId)
             } catch (_: Exception) {
@@ -156,3 +159,4 @@ class AlarmsViewModel @Inject constructor(
         undoJob?.cancel()
     }
 }
+

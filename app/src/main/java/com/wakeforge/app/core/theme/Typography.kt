@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.theme
 
 import androidx.compose.material3.Typography
@@ -14,9 +17,9 @@ import androidx.compose.ui.unit.sp
  */
 object TextStyles {
 
-    // ── Display ───────────────────────────────────────────────────────────
+    // â”€â”€ Display â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** 36 sp bold — Home screen clock, hero numbers. */
+    /** 36 sp bold â€” Home screen clock, hero numbers. */
     val displayLarge = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Bold,
@@ -25,9 +28,9 @@ object TextStyles {
         lineHeight    = 42.sp,
     )
 
-    // ── Headlines ─────────────────────────────────────────────────────────
+    // â”€â”€ Headlines â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** 24 sp semi-bold — Screen titles, large headers. */
+    /** 24 sp semi-bold â€” Screen titles, large headers. */
     val headlineLarge = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.SemiBold,
@@ -36,7 +39,7 @@ object TextStyles {
         lineHeight    = 30.sp,
     )
 
-    /** 20 sp semi-bold — Section headers, card group titles. */
+    /** 20 sp semi-bold â€” Section headers, card group titles. */
     val headlineMedium = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.SemiBold,
@@ -45,9 +48,9 @@ object TextStyles {
         lineHeight    = 26.sp,
     )
 
-    // ── Titles ────────────────────────────────────────────────────────────
+    // â”€â”€ Titles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** 18 sp medium — Alarm time display in cards, prominent labels. */
+    /** 18 sp medium â€” Alarm time display in cards, prominent labels. */
     val titleLarge = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Medium,
@@ -56,9 +59,9 @@ object TextStyles {
         lineHeight    = 24.sp,
     )
 
-    // ── Body ──────────────────────────────────────────────────────────────
+    // â”€â”€ Body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** 16 sp regular — Primary body content, descriptions. */
+    /** 16 sp regular â€” Primary body content, descriptions. */
     val bodyLarge = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Normal,
@@ -67,7 +70,7 @@ object TextStyles {
         lineHeight    = 22.sp,
     )
 
-    /** 14 sp regular — Secondary body content, subtitles. */
+    /** 14 sp regular â€” Secondary body content, subtitles. */
     val bodyMedium = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Normal,
@@ -76,9 +79,9 @@ object TextStyles {
         lineHeight    = 20.sp,
     )
 
-    // ── Labels ────────────────────────────────────────────────────────────
+    // â”€â”€ Labels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** 14 sp medium — Button text, chips, call-to-action labels. */
+    /** 14 sp medium â€” Button text, chips, call-to-action labels. */
     val labelLarge = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Medium,
@@ -87,7 +90,7 @@ object TextStyles {
         lineHeight    = 18.sp,
     )
 
-    /** 12 sp medium — Captions, metadata, timestamps. */
+    /** 12 sp medium â€” Captions, metadata, timestamps. */
     val labelMedium = TextStyle(
         fontFamily    = FontFamily.SansSerif,
         fontWeight    = FontWeight.Medium,
@@ -119,3 +122,4 @@ val WakeForgeTypography = Typography(
     bodySmall      = TextStyles.bodyMedium,
     labelSmall     = TextStyles.labelMedium,
 )
+

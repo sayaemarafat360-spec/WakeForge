@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.utils
 
 import android.Manifest
@@ -17,7 +20,7 @@ import com.wakeforge.app.core.extensions.isNotificationPermissionGranted
  */
 object PermissionUtils {
 
-    // ── Required Permissions ───────────────────────────────────────────────
+    // â”€â”€ Required Permissions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * List of all permissions WakeForge may need at runtime.
@@ -25,11 +28,11 @@ object PermissionUtils {
      * [getMissingPermissions] for a contextual list.
      */
     val REQUIRED_PERMISSIONS: List<String> = buildList {
-        // Notification permission — Android 13+
+        // Notification permission â€” Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             add(Manifest.permission.POST_NOTIFICATIONS)
         }
-        // Activity recognition — Android 10+ (for step-count mission)
+        // Activity recognition â€” Android 10+ (for step-count mission)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             add(Manifest.permission.ACTIVITY_RECOGNITION)
         }
@@ -38,14 +41,14 @@ object PermissionUtils {
         add(Manifest.permission.VIBRATE)
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Query Helpers
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Returns the subset of [REQUIRED_PERMISSIONS] that have NOT yet been granted.
      * This does NOT include special permissions like SCHEDULE_EXACT_ALARM or
-     * battery optimization — use the dedicated extension functions for those.
+     * battery optimization â€” use the dedicated extension functions for those.
      */
     fun getMissingPermissions(context: Context): List<String> {
         return REQUIRED_PERMISSIONS.filter { permission ->
@@ -81,9 +84,9 @@ object PermissionUtils {
             context.isNotificationPermissionGranted()
     }
 
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Intent Builders
-    // ────────────────────────────────────────────────────────────────────────
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /**
      * Creates an [Intent] to open the system's Alarms & Reminders settings page
@@ -134,3 +137,4 @@ object PermissionUtils {
         }
     }
 }
+

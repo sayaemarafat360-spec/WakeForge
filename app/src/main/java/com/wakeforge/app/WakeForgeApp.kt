@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app
 
 import android.app.Application
@@ -33,7 +36,7 @@ class WakeForgeApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // ── Logging ────────────────────────────────────────────────────────────
+        // â”€â”€ Logging â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {
@@ -42,14 +45,14 @@ class WakeForgeApp : Application() {
 
         Timber.i("WakeForge application starting")
 
-        // ── Notification Channels ──────────────────────────────────────────────
+        // â”€â”€ Notification Channels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         NotificationUtils.createAllChannels(applicationContext)
 
-        // ── AdMob Initialization ───────────────────────────────────────────────
+        // â”€â”€ AdMob Initialization â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         adManager.initialize()
         Timber.d("AdMob initialization requested")
 
-        // ── Sync premium status to AdManager ───────────────────────────────────
+        // â”€â”€ Sync premium status to AdManager â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         appScope.launch {
             premiumManager.isPremium().collect { isPremium ->
                 adManager.setPremiumStatus(isPremium)
@@ -75,3 +78,4 @@ class WakeForgeApp : Application() {
         }
     }
 }
+

@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.core.constants
 
 /**
@@ -6,11 +9,11 @@ package com.wakeforge.app.core.constants
  */
 object AppConstants {
 
-    // ── Package ────────────────────────────────────────────────────────────
+    // â”€â”€ Package â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     const val PACKAGE_NAME = "com.wakeforge.app"
 
-    // ── Notification Channel IDs ──────────────────────────────────────────
+    // â”€â”€ Notification Channel IDs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Channel for the foreground service while an alarm is ringing. */
     const val NOTIFICATION_CHANNEL_ALARM_ACTIVE = "alarm_active"
@@ -24,9 +27,9 @@ object AppConstants {
     /** Channel for "next alarm scheduled" informational notifications. */
     const val NOTIFICATION_CHANNEL_SCHEDULED = "scheduled_alarm"
 
-    // ── Alarm Defaults ────────────────────────────────────────────────────
+    // â”€â”€ Alarm Defaults â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /** Base request code for alarm PendingIntent — real code is base + alarmIndex. */
+    /** Base request code for alarm PendingIntent â€” real code is base + alarmIndex. */
     const val ALARM_REQUEST_CODE_BASE = 1000
 
     /** Default snooze interval in minutes. */
@@ -44,7 +47,7 @@ object AppConstants {
     /** Maximum snooze count the user can configure. */
     const val MAX_SNOOZE_COUNT = 10
 
-    // ── Billing / Premium ─────────────────────────────────────────────────
+    // â”€â”€ Billing / Premium â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     /** Cooldown between rewarded ad views in milliseconds (5 minutes). */
     const val REWARDED_AD_COOLDOWN_MS = 300_000L
@@ -52,3 +55,4 @@ object AppConstants {
     /** Number of grace days after which the user is prompted about premium. */
     const val GRACE_PERIOD_DAYS = 3
 }
+

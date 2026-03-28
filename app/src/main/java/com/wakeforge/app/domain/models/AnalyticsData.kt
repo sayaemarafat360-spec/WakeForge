@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.domain.models
 
 /**
@@ -5,7 +8,7 @@ package com.wakeforge.app.domain.models
  *
  * @property currentStreak Current consecutive successful wake-ups.
  * @property longestStreak All-time highest consecutive successes.
- * @property weeklySuccessRate Percentage of successful wake-ups in the last 7 days (0.0–1.0).
+ * @property weeklySuccessRate Percentage of successful wake-ups in the last 7 days (0.0â€“1.0).
  * @property totalWakeUps Total number of alarm events (all outcomes).
  * @property totalSnoozes Total number of snooze events across all alarms.
  * @property totalFailures Total number of failed wake-up attempts.
@@ -13,7 +16,7 @@ package com.wakeforge.app.domain.models
  * @property mostUsedMissionType The most frequently assigned mission type.
  * @property mostUsedDifficulty The most frequently used difficulty tier.
  * @property weeklyData Daily statistics for the last 7 days.
- * @property monthlySuccessRate Percentage of successful wake-ups in the last 30 days (0.0–1.0).
+ * @property monthlySuccessRate Percentage of successful wake-ups in the last 30 days (0.0â€“1.0).
  * @property bestDayOfWeek The day of the week with the highest success rate.
  */
 data class AnalyticsData(
@@ -62,8 +65,9 @@ data class DailyStats(
         get() = successes + failures
 
     /**
-     * Success rate for this day (0.0–1.0). Returns 0 if no events occurred.
+     * Success rate for this day (0.0â€“1.0). Returns 0 if no events occurred.
      */
     val successRate: Float
         get() = if (total > 0) successes.toFloat() / total else 0f
 }
+

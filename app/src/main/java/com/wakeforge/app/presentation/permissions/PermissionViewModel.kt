@@ -1,3 +1,6 @@
+﻿import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.material3.rememberDismissState
 package com.wakeforge.app.presentation.permissions
 
 import android.app.Activity
@@ -156,3 +159,4 @@ class PermissionViewModel @Inject constructor(
         }
     }
 }
+
