@@ -1,18 +1,11 @@
 ﻿package com.wakeforge.app.presentation.splash
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
-import com.wakeforge.app.presentation.navigation.// route
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-
-/**
+import androidx.lifecycle.ViewModelimport androidx.lifecycle.viewModelScope
+import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCaseimport com.wakeforge.app.presentation.navigation.// route
+import dagger.hilt.android.lifecycle.HiltViewModelimport javax.inject.Inject
+import kotlinx.coroutines.delayimport kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.MutableStateFlowimport kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch/**
  * ViewModel for the splash screen.
  *
  * Checks whether onboarding has been completed and // routes the user
@@ -54,5 +47,6 @@ class SplashViewModel @Inject constructor(
         }
     }
 }
+
 
 
