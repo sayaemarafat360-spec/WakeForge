@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Info
@@ -21,23 +22,22 @@ import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.SettingsBrightness
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -178,7 +178,7 @@ fun SettingsScreen(
                             onClick = { showSnoozeDialog = true }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         // Default Max Snooze
                         SettingsRow(
@@ -187,7 +187,7 @@ fun SettingsScreen(
                             onClick = { showSnoozeDialog = true }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         // Default Mission Type
                         SettingsRow(
@@ -196,7 +196,7 @@ fun SettingsScreen(
                             onClick = { showMissionDialog = true }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         // Default Difficulty
                         SettingsRow(
@@ -205,7 +205,7 @@ fun SettingsScreen(
                             onClick = { showDifficultyDialog = true }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         // Strict Mode Default
                         SettingsToggleRow(
@@ -324,7 +324,7 @@ fun SettingsScreen(
                             }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         SettingsRow(
                             label = "About WakeForge",
@@ -340,7 +340,7 @@ fun SettingsScreen(
                             }
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         SettingsRow(
                             label = "Open Source Licenses",
@@ -375,7 +375,7 @@ fun SettingsScreen(
                             labelColor = colors.error
                         )
 
-                        SettingsDivider(colors = colors)
+                        SettingsDivider()
 
                         // Clear All Data
                         SettingsRow(
@@ -708,9 +708,7 @@ private fun formatDifficulty(difficulty: MissionDifficulty): String {
  * Thin divider line between settings rows.
  */
 @Composable
-private fun SettingsDivider(
-    colors: com.wakeforge.app.core.theme.ThemePalette
-) {
+private fun SettingsDivider() {
     Spacer(
         modifier = Modifier
             .fillMaxWidth()
@@ -791,7 +789,7 @@ private fun SettingsRow(
  * Settings row with a toggle control on the right side.
  */
 @Composable
-// private fun SettingsToggleRow(
+private fun SettingsToggleRow(
     label: String,
     subtitle: String?,
     checked: Boolean,
@@ -832,7 +830,7 @@ private fun SettingsRow(
  * Section header label for settings groups.
  */
 @Composable
-// private fun SettingsSectionHeader(title: String) {
+private fun SettingsSectionHeader(title: String) {
     val typography = LocalWakeForgeTypography.current
     val colors = LocalWakeForgeColors.current
 
@@ -843,4 +841,3 @@ private fun SettingsRow(
         modifier = Modifier.padding(start = 4.dp, bottom = 4.dp, top = 4.dp)
     )
 }
-
