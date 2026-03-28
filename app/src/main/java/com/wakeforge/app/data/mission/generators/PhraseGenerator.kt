@@ -69,7 +69,7 @@ class PhraseGenerator @Inject constructor(
         val phrases = getPhrasesForDifficulty(difficulty)
         val selectedPhrase = selectClosestPhrase(phrases, targetLength)
 
-        return Mission.TypePhraseMission(
+        return Mission.TypePhraseMission(difficulty = difficulty, 
             id = java.util.UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.TYPE_PHRASE,
             difficulty = difficulty,
@@ -106,4 +106,5 @@ class PhraseGenerator @Inject constructor(
         }
     }
 }
+
 

@@ -135,7 +135,7 @@ fun SettingsScreen(
                                     },
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size(22.dp)
+                                    modifier = Modifier.size($1.dp)
                                 )
                             }
                         ) {
@@ -295,7 +295,7 @@ fun SettingsScreen(
                                 imageVector = Icons.Default.Star,
                                 contentDescription = null,
                                 tint = if (uiState.isPremium) colors.success else colors.warning,
-                                modifier = Modifier.size(22.dp)
+                                modifier = Modifier.size($1.dp)
                             )
                         }
                     )
@@ -319,7 +319,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.PrivacyTip,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size(22.dp)
+                                    modifier = Modifier.size($1.dp)
                                 )
                             }
                         )
@@ -335,7 +335,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.Info,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size(22.dp)
+                                    modifier = Modifier.size($1.dp)
                                 )
                             }
                         )
@@ -351,7 +351,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.Shield,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size(22.dp)
+                                    modifier = Modifier.size($1.dp)
                                 )
                             }
                         )
@@ -771,7 +771,7 @@ private fun SettingsRow(
                     imageVector = Icons.Default.ChevronRight,
                     contentDescription = null,
                     tint = colors.secondaryText.copy(alpha = 0.5f),
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size($1.dp)
                 )
             }
         } else if (onClick != null) {
@@ -779,7 +779,7 @@ private fun SettingsRow(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
                 tint = colors.secondaryText.copy(alpha = 0.5f),
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size($1.dp)
             )
         }
     }

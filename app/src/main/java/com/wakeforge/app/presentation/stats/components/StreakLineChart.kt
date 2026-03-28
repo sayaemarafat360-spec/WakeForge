@@ -96,7 +96,7 @@ fun StreakLineChart(
 
         // Y-axis labels
         val yLabels = listOf(maxValue.toString(), (maxValue * 3 / 4).toString(), (maxValue / 2).toString(), (maxValue / 4).toString(), "0")
-        drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
+        drawContext.canvas.drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
             yLabels.forEachIndexed { index, label ->
                 val y = paddingTop + (plotHeight * index / 4f)
                 val paint = android.graphics.Paint().apply {
@@ -112,7 +112,7 @@ fun StreakLineChart(
         // X-axis labels (every 5th day)
         val xLabelPositions = listOf(0, 4, 9, 14, 19, 24, 29)
         val xLabelValues = listOf("1", "5", "10", "15", "20", "25", "30")
-        drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
+        drawContext.canvas.drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
             xLabelPositions.forEachIndexed { index, dataIdx ->
                 val point = pointAt(dataIdx)
                 val paint = android.graphics.Paint().apply {
@@ -228,5 +228,6 @@ fun StreakLineChart(
         drawContext.canvas.restore()
     }
 }
+
 
 

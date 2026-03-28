@@ -3,7 +3,7 @@
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
-import com.wakeforge.app.presentation.navigation.Route
+import com.wakeforge.app.presentation.navigation.// route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.delay
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 /**
  * ViewModel for the splash screen.
  *
- * Checks whether onboarding has been completed and routes the user
+ * Checks whether onboarding has been completed and // routes the user
  * to the appropriate destination after a brief delay.
  */
 @HiltViewModel
@@ -45,13 +45,14 @@ class SplashViewModel @Inject constructor(
             val settings = getSettingsUseCase().first()
 
             val destination = if (settings.onboardingCompleted) {
-                Route.Home.route
+                // route.Home.// route
             } else {
-                Route.Onboarding.route
+                // route.Onboarding.// route
             }
 
             _state.value = SplashUiState.Navigate(destination)
         }
     }
 }
+
 

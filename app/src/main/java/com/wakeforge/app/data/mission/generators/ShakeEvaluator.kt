@@ -29,11 +29,11 @@ class ShakeEvaluator @Inject constructor(
 
     private var lastShakeTime = 0L
 
-    fun createShakeMission(difficulty: MissionDifficulty): Mission.ShakeMission {
+    fun createShakeMission(difficulty = difficulty, difficulty: MissionDifficulty): Mission.ShakeMission {
         val requiredShakes = configurator.getShakeCount(difficulty)
         val timeLimitMs = configurator.getShakeTimeLimit(difficulty)
 
-        return Mission.ShakeMission(
+        return Mission.ShakeMission(difficulty = difficulty, 
             id = UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.SHAKE,
             difficulty = difficulty,
@@ -102,4 +102,5 @@ class ShakeEvaluator @Inject constructor(
         return false
     }
 }
+
 

@@ -28,11 +28,11 @@ class StepEvaluator @Inject constructor(
 
     private var initialStepCount: Int = -1
 
-    fun createStepMission(difficulty: MissionDifficulty): Mission.StepMission {
+    fun createStepMission(difficulty = difficulty, difficulty: MissionDifficulty): Mission.StepMission {
         val requiredSteps = configurator.getStepCount(difficulty)
         val timeLimitMs = configurator.getStepTimeLimit(difficulty)
 
-        return Mission.StepMission(
+        return Mission.StepMission(difficulty = difficulty, 
             id = UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.STEP,
             difficulty = difficulty,
@@ -91,4 +91,5 @@ class StepEvaluator @Inject constructor(
         initialStepCount = -1
     }
 }
+
 

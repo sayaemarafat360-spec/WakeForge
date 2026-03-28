@@ -23,7 +23,7 @@ class MemoryGenerator @Inject constructor(
 
         val pattern = generateUniquePositions(totalTiles, patternLength)
 
-        return Mission.MemoryMission(
+        return Mission.MemoryMission(difficulty = difficulty, 
             id = java.util.UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.MEMORY,
             difficulty = difficulty,
@@ -47,4 +47,5 @@ class MemoryGenerator @Inject constructor(
         return positions.sorted()
     }
 }
+
 
