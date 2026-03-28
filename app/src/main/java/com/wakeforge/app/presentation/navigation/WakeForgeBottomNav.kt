@@ -1,9 +1,11 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.navigation
+﻿package com.wakeforge.app.presentation.navigation
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -11,14 +13,9 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
 import com.wakeforge.app.core.theme.LocalWakeForgeColors
 
 /**

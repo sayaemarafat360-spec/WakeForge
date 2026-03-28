@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.create_alarm
+﻿package com.wakeforge.app.presentation.create_alarm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,15 +9,15 @@ import com.wakeforge.app.domain.models.MissionType
 import com.wakeforge.app.domain.usecases.alarm.CreateAlarmUseCase
 import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * ViewModel for the Create Alarm screen.

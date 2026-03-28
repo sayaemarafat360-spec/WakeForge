@@ -1,25 +1,22 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.create_alarm
+﻿package com.wakeforge.app.presentation.create_alarm
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.wakeforge.app.core.components.WFCard
 import com.wakeforge.app.core.components.WFChip
-import com.wakeforge.app.domain.models.DayOfWeek
 import com.wakeforge.app.core.theme.LocalWakeForgeColors
 import com.wakeforge.app.core.theme.LocalWakeForgeTypography
-import androidx.compose.material3.Text
+import com.wakeforge.app.domain.models.DayOfWeek
 
 /**
  * Section for selecting which days of the week the alarm repeats on.

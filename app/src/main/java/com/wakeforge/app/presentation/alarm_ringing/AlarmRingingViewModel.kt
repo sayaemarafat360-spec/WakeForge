@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.alarm_ringing
+﻿package com.wakeforge.app.presentation.alarm_ringing
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -12,18 +9,18 @@ import com.wakeforge.app.domain.models.MissionType
 import com.wakeforge.app.domain.usecases.alarm.GetAlarmsUseCase
 import com.wakeforge.app.domain.usecases.mission.EscalateDifficultyUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
+import java.time.LocalDateTime
+import javax.inject.Inject
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
-import javax.inject.Inject
 
 /**
  * ViewModel for the alarm ringing screen.

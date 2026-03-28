@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.data.repository
+﻿package com.wakeforge.app.data.repository
 
 import com.wakeforge.app.data.database.dao.StreakDao
 import com.wakeforge.app.data.database.dao.WakeRecordDao
@@ -16,17 +13,17 @@ import com.wakeforge.app.domain.models.Streak
 import com.wakeforge.app.domain.models.WakeOutcome
 import com.wakeforge.app.domain.models.WakeRecord
 import com.wakeforge.app.domain.repositories.StatsRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import java.time.Instant
 import java.time.LocalDate
-import java.time.ZoneId
 import java.time.temporal.ChronoUnit
+import java.time.ZoneId
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.reflect.KClass
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class StatsRepositoryImpl @Inject constructor(

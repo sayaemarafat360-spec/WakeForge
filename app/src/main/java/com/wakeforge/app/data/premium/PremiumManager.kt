@@ -1,18 +1,15 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.data.premium
+﻿package com.wakeforge.app.data.premium
 
 import com.wakeforge.app.domain.models.PremiumFeature
 import com.wakeforge.app.domain.models.PremiumStatus
 import com.wakeforge.app.domain.models.PurchaseType
 import com.wakeforge.app.domain.repositories.PremiumRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class PremiumManager @Inject constructor(

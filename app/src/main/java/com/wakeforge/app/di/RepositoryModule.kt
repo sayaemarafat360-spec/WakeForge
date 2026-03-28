@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.di
+﻿package com.wakeforge.app.di
 
 import com.wakeforge.app.data.repository.AlarmRepositoryImpl
 import com.wakeforge.app.data.repository.MissionRepositoryImpl
@@ -14,9 +11,9 @@ import com.wakeforge.app.domain.repositories.PremiumRepository
 import com.wakeforge.app.domain.repositories.SettingsRepository
 import com.wakeforge.app.domain.repositories.StatsRepository
 import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.InstallIn
+import dagger.Module
 import javax.inject.Singleton
 
 /**

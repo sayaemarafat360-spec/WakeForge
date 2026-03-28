@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.permissions
+﻿package com.wakeforge.app.presentation.permissions
 
 import android.app.Activity
 import android.app.Application
@@ -12,11 +9,11 @@ import com.wakeforge.app.core.extensions.isExactAlarmPermissionGranted
 import com.wakeforge.app.core.extensions.isNotificationPermissionGranted
 import com.wakeforge.app.core.utils.PermissionUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * ViewModel for the permission setup screen.

@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.service
+﻿package com.wakeforge.app.service
 
 import android.app.Notification
 import android.app.PendingIntent
@@ -22,12 +19,12 @@ import com.wakeforge.app.data.database.entity.AlarmEntity
 import com.wakeforge.app.data.sound.SoundManager
 import com.wakeforge.app.domain.models.Alarm
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import kotlinx.coroutines.SupervisorJob
 
 /**
  * Foreground [Service] responsible for managing an active alarm session.

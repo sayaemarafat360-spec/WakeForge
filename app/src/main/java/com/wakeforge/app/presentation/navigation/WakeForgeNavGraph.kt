@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.navigation
+﻿package com.wakeforge.app.presentation.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -9,18 +6,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.NavHost
 import androidx.navigation.navArgument
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import com.wakeforge.app.presentation.alarm_ringing.AlarmRingingScreen
 import com.wakeforge.app.presentation.alarms.AlarmsScreen
 import com.wakeforge.app.presentation.create_alarm.CreateAlarmScreen
 import com.wakeforge.app.presentation.edit_alarm.EditAlarmScreen
-import com.wakeforge.app.presentation.alarm_ringing.AlarmRingingScreen
 import com.wakeforge.app.presentation.home.HomeScreen
 import com.wakeforge.app.presentation.missions.MissionChallengeScreen
 import com.wakeforge.app.presentation.onboarding.OnboardingScreen
@@ -30,8 +27,6 @@ import com.wakeforge.app.presentation.settings.SettingsScreen
 import com.wakeforge.app.presentation.splash.SplashScreen
 import com.wakeforge.app.presentation.stats.StatsScreen
 import com.wakeforge.app.presentation.wake_success.WakeSuccessScreen
-
-
 
 @Composable
 fun WakeForgeNavGraph(

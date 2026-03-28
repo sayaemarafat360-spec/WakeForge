@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.presentation.missions
+﻿package com.wakeforge.app.presentation.missions
 
 import android.hardware.SensorEventListener
 import androidx.lifecycle.SavedStateHandle
@@ -11,24 +8,24 @@ import com.wakeforge.app.data.mission.generators.ShakeEvaluator
 import com.wakeforge.app.data.mission.generators.StepEvaluator
 import com.wakeforge.app.domain.models.Mission
 import com.wakeforge.app.domain.models.MissionDifficulty
-import com.wakeforge.app.domain.models.MissionType
 import com.wakeforge.app.domain.models.MissionResult
+import com.wakeforge.app.domain.models.MissionType
 import com.wakeforge.app.domain.usecases.mission.GenerateMissionUseCase
 import com.wakeforge.app.domain.usecases.mission.ValidateMissionCompletionUseCase
 import com.wakeforge.app.domain.usecases.stats.RecordWakeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
+import java.util.UUID
+import javax.inject.Inject
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.UUID
-import javax.inject.Inject
 
 /**
  * ViewModel that orchestrates mission challenge logic.

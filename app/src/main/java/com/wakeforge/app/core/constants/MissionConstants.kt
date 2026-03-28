@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.core.constants
+﻿package com.wakeforge.app.core.constants
 
 /**
  * Constants for mission types, sensor thresholds, and difficulty configurations.

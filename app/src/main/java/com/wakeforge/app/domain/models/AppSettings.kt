@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.domain.models
+﻿package com.wakeforge.app.domain.models
 
 /**
  * Application-wide settings configurable by the user.

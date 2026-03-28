@@ -1,15 +1,12 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.data.mission.generators
+﻿package com.wakeforge.app.data.mission.generators
 
 import com.wakeforge.app.data.mission.DifficultyConfigurator
 import com.wakeforge.app.data.mission.MathOperation
 import com.wakeforge.app.domain.models.MathProblem
 import com.wakeforge.app.domain.models.MissionDifficulty
-import kotlin.random.Random
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.random.Random
 
 @Singleton
 class MathGenerator @Inject constructor(

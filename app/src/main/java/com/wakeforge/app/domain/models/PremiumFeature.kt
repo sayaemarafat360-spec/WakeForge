@@ -1,7 +1,4 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.domain.models
+﻿package com.wakeforge.app.domain.models
 
 /**
  * Enum representing premium features that can be unlocked through purchase or rewarded ads.

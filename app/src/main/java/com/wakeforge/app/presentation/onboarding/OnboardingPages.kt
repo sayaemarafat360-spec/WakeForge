@@ -1,10 +1,10 @@
-package com.wakeforge.app.presentation.onboarding
+﻿package com.wakeforge.app.presentation.onboarding
 
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
@@ -13,21 +13,21 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.StrokeCap
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.wakeforge.app.R
 import com.wakeforge.app.core.theme.LocalWakeForgeColors
 import com.wakeforge.app.core.theme.PrimaryAccent
 import com.wakeforge.app.core.theme.SecondaryAccent
 import com.wakeforge.app.core.theme.Success
 import com.wakeforge.app.core.theme.Warning
+import com.wakeforge.app.R
 
 /**
  * Data class representing a single onboarding page.

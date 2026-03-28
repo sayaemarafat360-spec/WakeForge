@@ -1,12 +1,9 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.domain.usecases.settings
+﻿package com.wakeforge.app.domain.usecases.settings
 
 import com.wakeforge.app.domain.models.AppSettings
 import com.wakeforge.app.domain.repositories.SettingsRepository
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Use case for observing the current application settings.

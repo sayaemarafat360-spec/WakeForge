@@ -1,24 +1,21 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.di
+﻿package com.wakeforge.app.di
 
 import android.content.Context
 import com.wakeforge.app.data.alarm.AlarmScheduler
 import com.wakeforge.app.data.database.dao.AlarmDao
-import com.wakeforge.app.data.mission.MissionEngine
+import com.wakeforge.app.data.mission.DifficultyConfigurator
 import com.wakeforge.app.data.mission.generators.MathGenerator
 import com.wakeforge.app.data.mission.generators.MemoryGenerator
 import com.wakeforge.app.data.mission.generators.PhraseGenerator
 import com.wakeforge.app.data.mission.generators.ShakeEvaluator
 import com.wakeforge.app.data.mission.generators.StepEvaluator
-import com.wakeforge.app.data.mission.DifficultyConfigurator
+import com.wakeforge.app.data.mission.MissionEngine
 import com.wakeforge.app.data.sound.SoundManager
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.InstallIn
+import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 /**

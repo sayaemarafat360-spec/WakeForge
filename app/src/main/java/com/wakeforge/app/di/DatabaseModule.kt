@@ -1,20 +1,17 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.di
+﻿package com.wakeforge.app.di
 
 import android.content.Context
 import androidx.room.Room
-import com.wakeforge.app.data.datastore.SettingsDataStore
-import com.wakeforge.app.data.database.WakeForgeDatabase
 import com.wakeforge.app.data.database.dao.AlarmDao
 import com.wakeforge.app.data.database.dao.StreakDao
 import com.wakeforge.app.data.database.dao.WakeRecordDao
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
+import com.wakeforge.app.data.database.WakeForgeDatabase
+import com.wakeforge.app.data.datastore.SettingsDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.InstallIn
+import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 /**

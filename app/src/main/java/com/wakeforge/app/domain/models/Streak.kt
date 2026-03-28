@@ -1,12 +1,9 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app.domain.models
+﻿package com.wakeforge.app.domain.models
 
 import java.text.SimpleDateFormat
+import java.util.concurrent.TimeUnit
 import java.util.Date
 import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 /**
  * Tracks the user's consecutive success streak for waking up.

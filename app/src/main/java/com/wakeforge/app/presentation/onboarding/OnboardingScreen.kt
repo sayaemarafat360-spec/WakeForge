@@ -1,16 +1,16 @@
-package com.wakeforge.app.presentation.onboarding
+﻿package com.wakeforge.app.presentation.onboarding
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -22,21 +22,21 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.wakeforge.app.R
-import com.wakeforge.app.core.components.WFButton
 import com.wakeforge.app.core.components.ButtonType
+import com.wakeforge.app.core.components.WFButton
 import com.wakeforge.app.core.theme.BackgroundDark
 import com.wakeforge.app.core.theme.LocalWakeForgeColors
 import com.wakeforge.app.core.theme.LocalWakeForgeTypography
 import com.wakeforge.app.core.theme.PrimaryAccent
+import com.wakeforge.app.R
 import kotlinx.coroutines.launch
 
 /**

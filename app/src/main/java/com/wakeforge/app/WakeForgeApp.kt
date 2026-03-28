@@ -1,20 +1,17 @@
-﻿import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.material3.rememberDismissState
-package com.wakeforge.app
+﻿package com.wakeforge.app
 
 import android.app.Application
 import com.wakeforge.app.BuildConfig
 import com.wakeforge.app.core.utils.NotificationUtils
-import dagger.hilt.android.HiltAndroidApp
-import timber.log.Timber
 import com.wakeforge.app.data.ad.AdManager
 import com.wakeforge.app.data.premium.PremiumManager
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import javax.inject.Inject
+import kotlinx.coroutines.SupervisorJob
+import timber.log.Timber
 
 /**
  * Root [Application] subclass for WakeForge.
@@ -36,7 +33,7 @@ class WakeForgeApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // â”€â”€ Logging â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ================================= Logging =================================
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {
@@ -45,14 +42,14 @@ class WakeForgeApp : Application() {
 
         Timber.i("WakeForge application starting")
 
-        // â”€â”€ Notification Channels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ============================= Notification Channels =============================
         NotificationUtils.createAllChannels(applicationContext)
 
-        // â”€â”€ AdMob Initialization â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // =============================== AdMob Initialization ===============================
         adManager.initialize()
         Timber.d("AdMob initialization requested")
 
-        // â”€â”€ Sync premium status to AdManager â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // ========================== Sync premium status to AdManager ==========================
         appScope.launch {
             premiumManager.isPremium().collect { isPremium ->
                 adManager.setPremiumStatus(isPremium)
@@ -78,4 +75,3 @@ class WakeForgeApp : Application() {
         }
     }
 }
-
