@@ -21,8 +21,7 @@ workflows:
           include: true
 
     environment:
-      vars:
-        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      java: 17
       xcode: latest
     cache:
       cache_paths:
@@ -33,6 +32,7 @@ workflows:
         script: |
           echo "JAVA_HOME=$JAVA_HOME"
           java -version
+          /usr/libexec/java_home -V || true
 
       - name: Make gradlew executable
         script: chmod +x gradlew
@@ -72,8 +72,7 @@ workflows:
           include: true
 
     environment:
-      vars:
-        JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      java: 17
       xcode: latest
     cache:
       cache_paths:
@@ -84,6 +83,7 @@ workflows:
         script: |
           echo "JAVA_HOME=$JAVA_HOME"
           java -version
+          /usr/libexec/java_home -V || true
 
       - name: Make gradlew executable
         script: chmod +x gradlew
