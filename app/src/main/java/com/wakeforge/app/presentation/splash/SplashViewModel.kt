@@ -1,14 +1,21 @@
 ﻿package com.wakeforge.app.presentation.splash
 
-import androidx.lifecycle.ViewModelimport androidx.lifecycle.viewModelScope
-import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCaseimport com.wakeforge.app.presentation.navigation.// route
-import dagger.hilt.android.lifecycle.HiltViewModelimport javax.inject.Inject
-import kotlinx.coroutines.delayimport kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.MutableStateFlowimport kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch/**
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
+import com.wakeforge.app.presentation.navigation.Route
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+
+/**
  * ViewModel for the splash screen.
  *
- * Checks whether onboarding has been completed and // routes the user
+ * Checks whether onboarding has been completed and routes the user
  * to the appropriate destination after a brief delay.
  */
 @HiltViewModel
@@ -38,15 +45,12 @@ class SplashViewModel @Inject constructor(
             val settings = getSettingsUseCase().first()
 
             val destination = if (settings.onboardingCompleted) {
-                // route.Home.// route
+                Route.Home.route
             } else {
-                // route.Onboarding.// route
+                Route.Onboarding.route
             }
 
             _state.value = SplashUiState.Navigate(destination)
         }
     }
 }
-
-
-

@@ -1,24 +1,15 @@
-# fix_settingscreen_final.ps1
+# debug_settings.ps1
 $file = "app/src/main/java/com/wakeforge/app/presentation/settings/SettingsScreen.kt"
 
 if (Test-Path $file) {
-    Write-Host "Fixing SettingsScreen.kt..." -ForegroundColor Cyan
+    $lines = Get-Content $file -Encoding UTF8
+    Write-Host "Lines 135-145:" -ForegroundColor Yellow
+    for ($i = 134; $i -lt [Math]::Min(145, $lines.Count); $i++) {
+        Write-Host "$($i+1): $($lines[$i])" -ForegroundColor White
+    }
     
-    $content = Get-Content $file -Raw -Encoding UTF8
-    
-    # Fix the broken size() calls
-    # Pattern: .size(22.dp) is correct, but the error shows something like .size(22.dp) with extra spaces
-    $content = $content -replace '\.size\s*\(\s*(\d+)\.dp\s*\)', '.size($1.dp)'
-    
-    # Fix any size calls that lost their parentheses
-    $content = $content -replace '\.size\s+(\d+)\.dp', '.size($1.dp)'
-    
-    # Fix any lines where the modifier is broken
-    $content = $content -replace 'modifier\s*=\s*Modifier\s*\.\s*size', 'modifier = Modifier.size'
-    
-    # Save the fixed file
-    $content | Out-File $file -Encoding UTF8
-    Write-Host "Fixed SettingsScreen.kt" -ForegroundColor Green
-} else {
-    Write-Host "SettingsScreen.kt not found" -ForegroundColor Red
+    Write-Host "`nLines 295-305:" -ForegroundColor Yellow
+    for ($i = 294; $i -lt [Math]::Min(305, $lines.Count); $i++) {
+        Write-Host "$($i+1): $($lines[$i])" -ForegroundColor White
+    }
 }

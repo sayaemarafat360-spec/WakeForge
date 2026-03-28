@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LightMode
-import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.SettingsBrightness
 import androidx.compose.material.icons.filled.Shield
@@ -135,7 +134,7 @@ fun SettingsScreen(
                                     },
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size($1.dp)
+                                    modifier = Modifier.size(22.dp)
                                 )
                             }
                         ) {
@@ -295,7 +294,7 @@ fun SettingsScreen(
                                 imageVector = Icons.Default.Star,
                                 contentDescription = null,
                                 tint = if (uiState.isPremium) colors.success else colors.warning,
-                                modifier = Modifier.size($1.dp)
+                                modifier = Modifier.size(22.dp)
                             )
                         }
                     )
@@ -319,7 +318,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.PrivacyTip,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size($1.dp)
+                                    modifier = Modifier.size(22.dp)
                                 )
                             }
                         )
@@ -335,7 +334,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.Info,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size($1.dp)
+                                    modifier = Modifier.size(22.dp)
                                 )
                             }
                         )
@@ -351,7 +350,7 @@ fun SettingsScreen(
                                     imageVector = Icons.Default.Shield,
                                     contentDescription = null,
                                     tint = colors.secondaryText,
-                                    modifier = Modifier.size($1.dp)
+                                    modifier = Modifier.size(22.dp)
                                 )
                             }
                         )
@@ -771,7 +770,7 @@ private fun SettingsRow(
                     imageVector = Icons.Default.ChevronRight,
                     contentDescription = null,
                     tint = colors.secondaryText.copy(alpha = 0.5f),
-                    modifier = Modifier.size($1.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             }
         } else if (onClick != null) {
@@ -779,7 +778,7 @@ private fun SettingsRow(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
                 tint = colors.secondaryText.copy(alpha = 0.5f),
-                modifier = Modifier.size($1.dp)
+                modifier = Modifier.size(20.dp)
             )
         }
     }
@@ -841,4 +840,3 @@ private fun SettingsSectionHeader(title: String) {
         modifier = Modifier.padding(start = 4.dp, bottom = 4.dp, top = 4.dp)
     )
 }
-
