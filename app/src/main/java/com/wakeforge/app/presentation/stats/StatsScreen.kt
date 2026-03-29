@@ -1,5 +1,4 @@
-﻿package com.wakeforge.app.presentation.stats
-import androidx.compose.animation.core.animateTo
+package com.wakeforge.app.presentation.stats
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable

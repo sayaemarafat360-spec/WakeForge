@@ -1,5 +1,6 @@
 package com.wakeforge.app.presentation.navigation
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.BarChart
@@ -71,8 +72,6 @@ fun WakeForgeBottomBar(
         )
     }
 }
-
-import androidx.compose.foundation.layout.RowScope
 
 /**
  * Single tab item used inside [WakeForgeBottomBar].

@@ -1,5 +1,5 @@
-﻿package com.wakeforge.app.presentation.navigation
-import androidx.navigation.findStartDestination
+package com.wakeforge.app.presentation.navigation
+import androidx.navigation.NavGraph.Companion.findStartDestination
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition

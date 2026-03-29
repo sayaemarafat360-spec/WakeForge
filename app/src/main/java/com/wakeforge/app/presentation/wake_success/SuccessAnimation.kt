@@ -1,5 +1,4 @@
-﻿package com.wakeforge.app.presentation.wake_success
-import androidx.compose.animation.core.animateTo
+package com.wakeforge.app.presentation.wake_success
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat

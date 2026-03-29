@@ -1,6 +1,5 @@
-﻿package com.wakeforge.app.presentation.wake_success
+package com.wakeforge.app.presentation.wake_success
 import androidx.compose.runtime.remember
-import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
