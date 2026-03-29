@@ -28,7 +28,7 @@ val DefaultSpring = spring<Float>(
 /**
  * Default spring specs usable with `animateXxxAsState` APIs.
  */
-val DefaultSpringSpec = Spring.Visual(
+val DefaultSpringSpec = spring(
     dampingRatio = 0.85f,
     stiffness    = 300f,
 )
@@ -36,7 +36,7 @@ val DefaultSpringSpec = Spring.Visual(
 /**
  * Bouncy spring â€” playful overshoot for celebrations and feedback.
  */
-val BouncySpringSpec = Spring.Visual(
+val BouncySpringSpec = spring(
     dampingRatio = 0.5f,
     stiffness    = 400f,
 )
@@ -44,7 +44,7 @@ val BouncySpringSpec = Spring.Visual(
 /**
  * Gentle spring â€” slow, subtle motion for background changes.
  */
-val GentleSpringSpec = Spring.Visual(
+val GentleSpringSpec = spring(
     dampingRatio = 0.9f,
     stiffness    = 200f,
 )

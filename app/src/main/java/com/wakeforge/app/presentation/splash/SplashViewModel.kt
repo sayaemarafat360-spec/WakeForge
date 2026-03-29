@@ -3,7 +3,7 @@
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wakeforge.app.domain.usecases.settings.GetSettingsUseCase
-import com.wakeforge.app.presentation.navigation.Route
+import com.wakeforge.app.presentation.navigation.Routes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.delay
@@ -45,9 +45,9 @@ class SplashViewModel @Inject constructor(
             val settings = getSettingsUseCase().first()
 
             val destination = if (settings.onboardingCompleted) {
-                Route.Home.route
+                Routes.HOME
             } else {
-                Route.Onboarding.route
+                Routes.ONBOARDING
             }
 
             _state.value = SplashUiState.Navigate(destination)

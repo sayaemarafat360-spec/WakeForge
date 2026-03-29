@@ -100,7 +100,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
                 while (true) {
                     fireFlicker.animateTo(
                         targetValue = if (fireFlicker.value < 0.5f) 1f else 0.3f,
-                        animationSpec = tween(100 + Random.nextLong(100)),
+                        animationSpec = tween(100 + Random.nextInt(100)),
                     )
                 }
             }
@@ -136,7 +136,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
                 val py = cy + sin(angleRad) * dist
                 drawCircle(
                     color = particle.color.copy(alpha = particleAlpha.value * 0.8f),
-                    radius = particle.size.toPx(),
+                    radius = particle.size,
                     center = Offset(px, py),
                 )
             }

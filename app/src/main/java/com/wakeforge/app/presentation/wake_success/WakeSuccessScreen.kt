@@ -469,6 +469,7 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawFlame(
         )
         cubicTo(
             center.x - innerW * 0.5f, center.y - innerH * 0.4f,
+            center.x - innerW * 0.15f, center.y - innerH * 0.2f,
             center.x, center.y - innerH,
         )
         close()

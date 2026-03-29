@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.filled.Check
@@ -114,8 +114,9 @@ fun PremiumScreen(
                 // Use a nested LazyVerticalGrid requires specific handling,
                 // so we render the grid items as a grid manually.
                 val gridItems = uiState.features
-                val half = (gridItems.size + 1) / 2
-                items(gridItems.chunked(2)) { rowItems ->
+                val chunkedItems = gridItems.chunked(2)
+                items(chunkedItems.size) { index ->
+                    val rowItems = chunkedItems[index]
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -146,7 +147,9 @@ fun PremiumScreen(
                     )
                 }
 
-                items(PremiumViewModel.PricingPlan.entries) { plan ->
+                val pricingPlans = PremiumViewModel.PricingPlan.entries.toList()
+                items(pricingPlans.size) { index ->
+                    val plan = pricingPlans[index]
                     PricingPlanCard(
                         plan = plan,
                         isSelected = uiState.selectedPlan == plan,

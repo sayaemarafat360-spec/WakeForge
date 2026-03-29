@@ -177,7 +177,7 @@ fun WeeklyBarChart(
                 }
 
                 // Draw day label below bar
-                drawContext.canvas.drawContext.canvas.drawContext.canvas.nativeCanvas.apply {
+                drawContext.canvas.nativeCanvas.apply {
                     val label = dayLabels.getOrNull(index) ?: ""
                     val textX = barX + barWidth.toPx() / 2f
                     val textY = chartBottom + 16.dp.toPx()
@@ -188,7 +188,7 @@ fun WeeklyBarChart(
                         textAlign = android.graphics.Paint.Align.CENTER
                         isAntiAlias = true
                     }
-                    drawContext.canvas.nativeCanvas.drawContext.canvas.nativeCanvas.drawText(label, textX, textY, paint)
+                    drawText(label, textX, textY, paint)
                 }
             }
         }
@@ -216,44 +216,38 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRoundedBar(
                     top = y,
                     right = x + width,
                     bottom = y + height,
-                    topLeftCornerRadius = CornerRadius(cornerRadius),
-                    topRightCornerRadius = CornerRadius(cornerRadius),
-                    bottomLeftCornerRadius = CornerRadius(cornerRadius),
-                    bottomRightCornerRadius = CornerRadius(cornerRadius)
+                    radiusX = cornerRadius,
+                    radiusY = cornerRadius
                 )
             )
         } else if (isTop) {
-            addRoundRect(
-                androidx.compose.ui.geometry.RoundRect(
+            // Draw rectangle with only top corners rounded
+            addRect(
+                androidx.compose.ui.geometry.Rect(
                     left = x,
                     top = y,
                     right = x + width,
-                    bottom = y + height,
-                    topLeftCornerRadius = CornerRadius(cornerRadius),
-                    topRightCornerRadius = CornerRadius(cornerRadius),
-                    bottomLeftCornerRadius = CornerRadius(0f),
-                    bottomRightCornerRadius = CornerRadius(0f)
+                    bottom = y + height
                 )
             )
         } else if (isBottom) {
-            addRoundRect(
-                androidx.compose.ui.geometry.RoundRect(
+            // Draw rectangle with only bottom corners rounded
+            addRect(
+                androidx.compose.ui.geometry.Rect(
                     left = x,
                     top = y,
                     right = x + width,
-                    bottom = y + height,
-                    topLeftCornerRadius = CornerRadius(0f),
-                    topRightCornerRadius = CornerRadius(0f),
-                    bottomLeftCornerRadius = CornerRadius(cornerRadius),
-                    bottomRightCornerRadius = CornerRadius(cornerRadius)
+                    bottom = y + height
                 )
             )
         } else {
             addRect(
-                left = x,
-                top = y,
-                right = x + width,
-                bottom = y + height
+                androidx.compose.ui.geometry.Rect(
+                    left = x,
+                    top = y,
+                    right = x + width,
+                    bottom = y + height
+                )
             )
         }
     }

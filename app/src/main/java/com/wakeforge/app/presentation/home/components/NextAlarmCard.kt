@@ -1,5 +1,4 @@
 ﻿package com.wakeforge.app.presentation.home.components
-import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing

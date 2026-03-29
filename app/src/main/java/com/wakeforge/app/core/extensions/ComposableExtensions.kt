@@ -28,6 +28,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
 import com.wakeforge.app.core.theme.ButtonPressMs
 import com.wakeforge.app.core.theme.DefaultSpringSpec
@@ -84,14 +85,15 @@ fun Modifier.pulseAnimation(
  */
 fun Modifier.pressEffect(): Modifier = composed {
     val interactionScale = remember { androidx.compose.animation.core.Animatable(1f) }
+    val coroutineScope = rememberCoroutineScope()
 
     this
         .pointerInput(Unit) {
             detectTapGestures(
                 onPress = {
-                    launch { interactionScale.animateTo(0.96f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
+                    coroutineScope.launch { interactionScale.animateTo(0.96f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
                     tryAwaitRelease()
-                    launch { interactionScale.animateTo(1f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
+                    coroutineScope.launch { interactionScale.animateTo(1f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
                 },
             )
         }

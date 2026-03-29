@@ -59,13 +59,16 @@ fun OnboardingScreen(
 ) {
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
-    val uiState by viewModel.state.collectAsStateWithLifecycle()
+    val pagesList = remember { getOnboardingPages() }
     val coroutineScope = rememberCoroutineScope()
-    val pages = remember { getOnboardingPages() }
 
     val pagerState = rememberPagerState(
         initialPage = 0,
+        pageCount = { pagesList.size }
     )
+
+    // Collect state as state
+    val uiState by viewModel.state.collectAsStateWithLifecycle()
 
     // Listen for completion / skip events
     LaunchedEffect(Unit) {
@@ -102,11 +105,10 @@ fun OnboardingScreen(
 
         // Horizontal pager with onboarding pages
         HorizontalPager(
-            pageCount = pages.size,
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
         ) { pageIndex ->
-            val page = pages[pageIndex]
+            val page = pagesList[pageIndex]
 
             Column(
                 modifier = Modifier
@@ -159,7 +161,7 @@ fun OnboardingScreen(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                pages.forEachIndexed { index, _ ->
+                pagesList.forEachIndexed { index, _ ->
                     val isActive = index == pagerState.currentPage
                     Box(
                         modifier = Modifier
@@ -175,7 +177,7 @@ fun OnboardingScreen(
             }
 
             // Action button: "Next" on pages 0-2, "Get Started" on page 3
-            val isLastPage = pagerState.currentPage == pages.size - 1
+            val isLastPage = pagerState.currentPage == pagesList.size - 1
 
             WFButton(
                 text = if (isLastPage) {

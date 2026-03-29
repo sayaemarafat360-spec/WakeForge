@@ -139,3 +139,23 @@ sealed interface Route {
     }
 }
 
+/**
+ * Provides convenient access to route strings as constants.
+ */
+object Routes {
+    const val SPLASH = "splash"
+    const val ONBOARDING = "onboarding?pageIndex={pageIndex}"
+    const val PERMISSION_SETUP = "permission_setup"
+    const val HOME = "home"
+    const val ALARMS = "alarms"
+    const val CREATE_ALARM = "create_alarm"
+    const val EDIT_ALARM = "edit_alarm/{alarmId}"
+    const val ALARM_RINGING = "alarm_ringing/{alarmId}"
+    const val MISSION_CHALLENGE = "mission_challenge?alarmId={alarmId}&missionType={missionType}&difficulty={difficulty}&snoozeCount={snoozeCount}"
+    const val WAKE_SUCCESS = "wake_success/{alarmId}/{wakeRecordId}"
+    const val STATS = "stats"
+    const val PREMIUM = "premium"
+    const val SETTINGS = "settings"
+    const val SOUND_PICKER = "sound_picker"
+}
+

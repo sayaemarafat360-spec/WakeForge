@@ -1,6 +1,7 @@
 package com.wakeforge.app.data.ad
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -12,11 +13,14 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.google.android.gms.ads.rewarded.RewardItem
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AdManager @Inject constructor() {
+class AdManager @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
 
     companion object {
         private const val TAG = "AdManager"
@@ -58,8 +62,7 @@ class AdManager @Inject constructor() {
                 val status = statusMap[adapterClass]
                 Log.d(
                     TAG,
-                    "Adapter: $adapterClass, Status: ${status?.initializationState?.name}, " +
-                        "Latency: ${status?.latencyMillis}ms"
+                    "Adapter: $adapterClass, Status: ${status?.initializationState?.name}"
                 )
             }
             isInitialized = true

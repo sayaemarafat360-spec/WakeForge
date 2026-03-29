@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -91,7 +92,7 @@ fun PermissionScreen(
         // Top bar with back button
         WFTopBar(
             title = "Permission Setup",
-            navigationIcon = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack,
+            navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
             onNavigationClick = { navController.popBackStack() },
         )
 

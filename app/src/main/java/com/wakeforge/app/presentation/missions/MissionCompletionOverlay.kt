@@ -214,7 +214,7 @@ fun MissionCompletionOverlay(onContinue: () -> Unit) {
                         val py = center.y + sin(angleRad) * currentDist
                         drawCircle(
                             color = particle.color.copy(alpha = particleAlpha.value),
-                            radius = particle.size.toPx(),
+                            radius = particle.size,
                             center = Offset(px, py),
                         )
                     }

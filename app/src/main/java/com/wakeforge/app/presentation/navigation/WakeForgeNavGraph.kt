@@ -38,10 +38,10 @@ fun WakeForgeNavGraph(
     val currentRoute = navBackStackEntry?.destination?.route
 
     val bottomNavRoutes = setOf(
-        Route.Home.route,
-        Route.Alarms.route,
-        Route.Stats.route,
-        Route.Settings.route
+        Routes.HOME,
+        Routes.ALARMS,
+        Routes.STATS,
+        Routes.SETTINGS
     )
     val showBottomBar = currentRoute in bottomNavRoutes
 
@@ -70,13 +70,13 @@ fun WakeForgeNavGraph(
             modifier = Modifier.padding(innerPadding)
         ) {
             // Splash
-            composable(route = Route.Splash.route) {
+            composable(route = Routes.SPLASH) {
                 SplashScreen(navController = navController)
             }
 
             // Onboarding
             composable(
-                route = Route.Onboarding.route,
+                route = Routes.ONBOARDING,
                 arguments = listOf(
                     navArgument("pageIndex") {
                         type = NavType.IntType
@@ -88,28 +88,28 @@ fun WakeForgeNavGraph(
             }
 
             // Permission Setup
-            composable(route = Route.PermissionSetup.route) {
+            composable(route = Routes.PERMISSION_SETUP) {
                 PermissionScreen(navController = navController)
             }
 
             // Home (bottom tab)
-            composable(route = Route.Home.route) {
+            composable(route = Routes.HOME) {
                 HomeScreen(navController = navController)
             }
 
             // Alarms (bottom tab)
-            composable(route = Route.Alarms.route) {
+            composable(route = Routes.ALARMS) {
                 AlarmsScreen(navController = navController)
             }
 
             // Create Alarm
-            composable(route = Route.CreateAlarm.route) {
+            composable(route = Routes.CREATE_ALARM) {
                 CreateAlarmScreen(navController = navController)
             }
 
             // Edit Alarm
             composable(
-                route = Route.EditAlarm.route,
+                route = Routes.EDIT_ALARM,
                 arguments = listOf(
                     navArgument("alarmId") { type = NavType.StringType }
                 )
@@ -119,7 +119,7 @@ fun WakeForgeNavGraph(
 
             // Alarm Ringing (fullscreen, no bottom bar)
             composable(
-                route = Route.AlarmRinging.route,
+                route = Routes.ALARM_RINGING,
                 arguments = listOf(
                     navArgument("alarmId") { type = NavType.StringType }
                 ),
@@ -133,7 +133,7 @@ fun WakeForgeNavGraph(
 
             // Mission Challenge (fullscreen, no bottom bar)
             composable(
-                route = Route.MissionChallenge.route,
+                route = Routes.MISSION_CHALLENGE,
                 arguments = listOf(
                     navArgument("alarmId") { type = NavType.StringType; defaultValue = "" },
                     navArgument("missionType") { type = NavType.StringType; defaultValue = "" },
@@ -150,7 +150,7 @@ fun WakeForgeNavGraph(
 
             // Wake Success
             composable(
-                route = Route.WakeSuccess.route,
+                route = Routes.WAKE_SUCCESS,
                 arguments = listOf(
                     navArgument("alarmId") { type = NavType.StringType },
                     navArgument("wakeRecordId") { type = NavType.StringType }
@@ -162,17 +162,17 @@ fun WakeForgeNavGraph(
             }
 
             // Stats (bottom tab)
-            composable(route = Route.Stats.route) {
+            composable(route = Routes.STATS) {
                 StatsScreen(navController = navController)
             }
 
             // Premium
-            composable(route = Route.Premium.route) {
+            composable(route = Routes.PREMIUM) {
                 PremiumScreen(navController = navController)
             }
 
             // Settings (bottom tab)
-            composable(route = Route.Settings.route) {
+            composable(route = Routes.SETTINGS) {
                 SettingsScreen(navController = navController)
             }
         }

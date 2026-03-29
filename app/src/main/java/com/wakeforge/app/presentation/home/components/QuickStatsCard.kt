@@ -1,5 +1,4 @@
 ﻿package com.wakeforge.app.presentation.home.components
-import androidx.compose.ui.graphics.StrokeCap
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
