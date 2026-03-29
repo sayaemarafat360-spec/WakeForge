@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.ad
+package com.wakeforge.app.data.ad
 
 import android.app.Activity
 import android.util.Log
@@ -52,7 +52,7 @@ class AdManager @Inject constructor() {
             return
         }
 
-        MobileAds.initialize { initializationStatus ->
+        MobileAds.initialize(context) { initializationStatus ->
             val statusMap = initializationStatus.adapterStatusMap
             for (adapterClass in statusMap.keys) {
                 val status = statusMap[adapterClass]
@@ -85,7 +85,7 @@ class AdManager @Inject constructor() {
         isInterstitialLoading = true
         val adRequest = AdRequest.Builder().build()
 
-        InterstitialAd.load(interstitialAdUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(context, interstitialAdUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 interstitialAd = null
                 isInterstitialLoading = false

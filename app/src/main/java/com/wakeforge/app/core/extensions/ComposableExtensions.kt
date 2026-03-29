@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.core.extensions
+package com.wakeforge.app.core.extensions
 import androidx.compose.animation.core.animateTo
 
 import androidx.compose.animation.AnimatedVisibilityScope
@@ -27,6 +27,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import kotlinx.coroutines.launch
 import com.wakeforge.app.core.theme.ButtonPressMs
 import com.wakeforge.app.core.theme.DefaultSpringSpec
 import com.wakeforge.app.core.theme.FadeMs
@@ -81,19 +84,15 @@ fun Modifier.pulseAnimation(
  * Gives tactile, material-like press feedback without ripple noise.
  */
 fun Modifier.pressEffect(): Modifier = composed {
-    val interactionScale = androidx.compose.animation.core.animateFloatAsState(
-        targetValue = 1f,
-        animationSpec = spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness),
-        label = "pressScale",
-    )
+    val interactionScale = remember { androidx.compose.animation.core.Animatable(1f) }
 
     this
         .pointerInput(Unit) {
             detectTapGestures(
                 onPress = {
-                    interactionScale.animateTo(0.96f)
+                    launch { interactionScale.animateTo(0.96f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
                     tryAwaitRelease()
-                    interactionScale.animateTo(1f)
+                    launch { interactionScale.animateTo(1f, spring(dampingRatio = DefaultSpringSpec.dampingRatio, stiffness = DefaultSpringSpec.stiffness)) }
                 },
             )
         }

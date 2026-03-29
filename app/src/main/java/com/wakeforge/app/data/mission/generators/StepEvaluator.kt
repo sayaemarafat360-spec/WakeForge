@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.mission.generators
+package com.wakeforge.app.data.mission.generators
 
 import android.content.Context
 import android.hardware.Sensor
@@ -32,7 +32,7 @@ class StepEvaluator @Inject constructor(
         val requiredSteps = configurator.getStepCount(difficulty)
         val timeLimitMs = configurator.getStepTimeLimit(difficulty)
 
-        return Mission.StepMission(difficulty = difficulty, 
+        return Mission.StepMission(
             id = UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.STEP,
             difficulty = difficulty,

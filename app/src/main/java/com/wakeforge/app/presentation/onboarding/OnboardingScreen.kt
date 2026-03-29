@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.presentation.onboarding
+package com.wakeforge.app.presentation.onboarding
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -65,7 +65,6 @@ fun OnboardingScreen(
 
     val pagerState = rememberPagerState(
         initialPage = 0,
-        pageCount = { pages.size },
     )
 
     // Listen for completion / skip events
@@ -103,6 +102,7 @@ fun OnboardingScreen(
 
         // Horizontal pager with onboarding pages
         HorizontalPager(
+            pageCount = pages.size,
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
         ) { pageIndex ->

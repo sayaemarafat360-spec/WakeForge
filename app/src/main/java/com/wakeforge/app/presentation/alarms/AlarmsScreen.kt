@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.presentation.alarms
+package com.wakeforge.app.presentation.alarms
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.AnimatedVisibility
@@ -28,13 +28,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.rememberDismissState
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.SnackbarResult
-import androidx.compose.material3.SwipeToDismiss
+import androidx.compose.material3.SwipeToDismissBox
+import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -88,17 +84,17 @@ fun AlarmsScreen(
     // Show undo snackbar when a delete is staged
     LaunchedEffect(uiState.showDeleteUndo) {
         if (uiState.showDeleteUndo) {
-            val result = coroutineScope.launch {
-                snackbarHostState.showSnackbar(
+            coroutineScope.launch {
+                val result = snackbarHostState.showSnackbar(
                     message = "Alarm deleted",
                     actionLabel = "Undo",
                     duration = SnackbarDuration.Short,
                 )
-            }
-            if (result == SnackbarResult.ActionPerformed) {
-                viewModel.undoDelete()
-            } else {
-                // User dismissed; permanent delete will happen via the timer
+                if (result == SnackbarResult.ActionPerformed) {
+                    viewModel.undoDelete()
+                } else {
+                    // User dismissed; permanent delete will happen via the timer
+                }
             }
         }
     }
@@ -229,10 +225,10 @@ private fun SwipeToDismissAlarmCard(
     onClick: (String) -> Unit,
     onDismiss: (String) -> Unit,
 ) {
-    val dismissState = rememberDismissState(
+    val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = {
             when (it) {
-                androidx.compose.material3.DismissValue.DismissedToStart -> {
+                SwipeToDismissBoxValue.EndToStart -> {
                     onDismiss(alarm.id)
                     true
                 }
@@ -241,13 +237,13 @@ private fun SwipeToDismissAlarmCard(
         },
     )
 
-    SwipeToDismiss(
+    SwipeToDismissBox(
         state = dismissState,
-        background = {
+        backgroundContent = {
             // Red background with trash icon
             val color by animateColorAsState(
                 targetValue = when (dismissState.targetValue) {
-                    androidx.compose.material3.DismissValue.DismissedToStart -> Error
+                    SwipeToDismissBoxValue.EndToStart -> Error
                     else -> Color.Transparent
                 },
                 label = "dismissBg",
@@ -278,7 +274,7 @@ private fun SwipeToDismissAlarmCard(
                 }
             }
         },
-        dismissContent = {
+        content = {
             // Staggered entrance animation for the card
             AnimatedVisibility(
                 visible = true,

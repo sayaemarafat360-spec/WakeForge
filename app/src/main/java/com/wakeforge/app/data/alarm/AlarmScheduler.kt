@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.alarm
+package com.wakeforge.app.data.alarm
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -167,10 +167,10 @@ class AlarmScheduler @Inject constructor(
         val firstRepeatDay = alarm.repeatDays.minByOrNull { it.calendarDay } ?: return null
         val todayDomainDay = javaTimeToDomainDay(todayDayOfWeek)
         val daysUntilFirst = (firstRepeatDay.calendarDay - todayDomainDay.calendarDay + 7) % 7
-        val nextDate = if (daysUntilFirst == 0L && now.toLocalTime().isAfter(alarmTime)) {
+        val nextDate = if (daysUntilFirst == 0 && now.toLocalTime().isAfter(alarmTime)) {
             now.toLocalDate().plusWeeks(1).atTime(alarmTime)
         } else {
-            now.toLocalDate().plusDays(if (daysUntilFirst == 0L) 0 else daysUntilFirst.toLong())
+            now.toLocalDate().plusDays(if (daysUntilFirst == 0) 0 else daysUntilFirst.toLong())
                 .atTime(alarmTime)
         }
 

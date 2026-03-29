@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.presentation.create_alarm
+package com.wakeforge.app.presentation.create_alarm
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -44,6 +45,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.FlowPreview
 
 /**
@@ -73,6 +75,7 @@ fun TimePickerSection(
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
     val haptic = LocalHapticFeedback.current
+    val coroutineScope = rememberCoroutineScope()
 
     val visibleItems = 5
     val centerIndex = visibleItems / 2
@@ -152,8 +155,7 @@ fun TimePickerSection(
                         state = hourListState,
                         modifier = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        contentPadding = PaddingValues(vertical = 76.dp),
-                        flingBehavior = remember { },
+                        contentPadding = PaddingValues(vertical = 76.dp)
                     ) {
                         val hourRange = if (is24Hour) (0..23) else (1..12)
                         items(
@@ -170,7 +172,7 @@ fun TimePickerSection(
                                 onClick = {
                                     userInteractedHour++
                                     haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    hourListState.animateScrollToItem(index - centerIndex)
+                                    coroutineScope.launch { hourListState.animateScrollToItem(index - centerIndex) }
                                     onHourChange(h)
                                 }
                             )
@@ -201,8 +203,7 @@ fun TimePickerSection(
                         state = minuteListState,
                         modifier = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        contentPadding = PaddingValues(vertical = 76.dp),
-                        flingBehavior = remember { },
+                        contentPadding = PaddingValues(vertical = 76.dp)
                     ) {
                         items(
                             count = 60,
@@ -214,7 +215,7 @@ fun TimePickerSection(
                                 onClick = {
                                     userInteractedMinute++
                                     haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    minuteListState.animateScrollToItem(index - centerIndex)
+                                    coroutineScope.launch { minuteListState.animateScrollToItem(index - centerIndex) }
                                     onMinuteChange(index)
                                 }
                             )

@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.mission.generators
+package com.wakeforge.app.data.mission.generators
 
 import android.content.Context
 import android.hardware.Sensor
@@ -33,7 +33,7 @@ class ShakeEvaluator @Inject constructor(
         val requiredShakes = configurator.getShakeCount(difficulty)
         val timeLimitMs = configurator.getShakeTimeLimit(difficulty)
 
-        return Mission.ShakeMission(difficulty = difficulty, 
+        return Mission.ShakeMission(
             id = UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.SHAKE,
             difficulty = difficulty,

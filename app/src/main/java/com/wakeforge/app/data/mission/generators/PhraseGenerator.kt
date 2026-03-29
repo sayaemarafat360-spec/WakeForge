@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.mission.generators
+package com.wakeforge.app.data.mission.generators
 
 import com.wakeforge.app.data.mission.DifficultyConfigurator
 import com.wakeforge.app.domain.models.Mission
@@ -69,7 +69,7 @@ class PhraseGenerator @Inject constructor(
         val phrases = getPhrasesForDifficulty(difficulty)
         val selectedPhrase = selectClosestPhrase(phrases, targetLength)
 
-        return Mission.TypePhraseMission(difficulty = difficulty, 
+        return Mission.TypePhraseMission(
             id = java.util.UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.TYPE_PHRASE,
             difficulty = difficulty,

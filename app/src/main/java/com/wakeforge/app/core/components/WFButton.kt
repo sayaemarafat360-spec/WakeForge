@@ -1,6 +1,4 @@
-﻿package com.wakeforge.app.core.components
-import androidx.compose.animation.core.Visual
-
+package com.wakeforge.app.core.components
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween

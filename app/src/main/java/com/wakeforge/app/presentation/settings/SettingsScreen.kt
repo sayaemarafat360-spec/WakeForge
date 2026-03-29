@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.presentation.settings
+package com.wakeforge.app.presentation.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -784,59 +784,3 @@ private fun SettingsRow(
     }
 }
 
-/**
- * Settings row with a toggle control on the right side.
- */
-@Composable
-private fun SettingsToggleRow(
-    label: String,
-    subtitle: String?,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    val colors = LocalWakeForgeColors.current
-    val typography = LocalWakeForgeTypography.current
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = 16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = label,
-                style = typography.bodyLarge,
-                color = colors.primaryText
-            )
-            if (subtitle != null) {
-                Text(
-                    text = subtitle,
-                    style = typography.labelMedium,
-                    color = colors.secondaryText
-                )
-            }
-        }
-
-        WFToggle(
-            checked = checked,
-            onCheckedChange = onCheckedChange
-        )
-    }
-}
-
-/**
- * Section header label for settings groups.
- */
-@Composable
-private fun SettingsSectionHeader(title: String) {
-    val typography = LocalWakeForgeTypography.current
-    val colors = LocalWakeForgeColors.current
-
-    Text(
-        text = title,
-        style = typography.labelLarge,
-        color = colors.secondaryText,
-        modifier = Modifier.padding(start = 4.dp, bottom = 4.dp, top = 4.dp)
-    )
-}

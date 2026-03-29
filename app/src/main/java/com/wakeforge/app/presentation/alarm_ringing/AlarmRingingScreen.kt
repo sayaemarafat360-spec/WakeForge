@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.presentation.alarm_ringing
+package com.wakeforge.app.presentation.alarm_ringing
 import androidx.compose.foundation.layout.asPaddingValues
 
 import androidx.compose.animation.core.animateFloat
@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableFloatStateOf
@@ -76,7 +77,7 @@ fun AlarmRingingScreen(
     navController: NavController,
     viewModel: AlarmRingingViewModel = hiltViewModel(),
 ) {
-    val state by viewModel.uiState
+    val state by viewModel.uiState.collectAsState()
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
     val haptic = LocalHapticFeedback.current
@@ -288,8 +289,8 @@ fun AlarmRingingScreen(
                             fontSize = 64.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White,
-                            textAlign = TextAlign.Center,
                         ),
+                        textAlign = TextAlign.Center,
                         modifier = Modifier.graphicsLayer {
                             scaleX = timeScale
                             scaleY = timeScale

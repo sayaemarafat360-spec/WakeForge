@@ -1,6 +1,3 @@
-﻿package com.wakeforge.app.presentation.create_alarm
-import androidx.compose.animation.core.Visual
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,11 +36,13 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -85,10 +84,11 @@ fun CreateAlarmScreen(
     navController: NavController,
     viewModel: CreateAlarmViewModel = hiltViewModel(),
 ) {
-    val state by viewModel.uiState
+    val state by viewModel.uiState.collectAsState()
     val colors = LocalWakeForgeColors.current
     val typography = LocalWakeForgeTypography.current
     val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(
         rememberTopAppBarState()
@@ -101,7 +101,7 @@ fun CreateAlarmScreen(
                 navController.popBackStack()
             }
             is CreateAlarmViewModel.CreateAlarmEvent.SaveError -> {
-                snackbarHostState.showSnackbar(event.message)
+                coroutineScope.launch { snackbarHostState.showSnackbar(event.message) }
             }
         }
     }
@@ -173,14 +173,9 @@ fun CreateAlarmScreen(
                                 imeAction = ImeAction.Done,
                             ),
                             colors = OutlinedTextFieldDefaults.colors(
-                                
-                                un
-                                
-                                un
-                                
-                                un
-                                
-                                
+                                focusedBorderColor = colors.primaryAccent,
+                                unfocusedBorderColor = colors.border,
+                                cursorColor = colors.primaryAccent,
                             ),
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier.fillMaxWidth(),
@@ -408,7 +403,7 @@ fun CreateAlarmScreen(
                     smartEscalation = state.smartEscalationEnabled,
                     onIntervalChange = viewModel::updateSnoozeInterval,
                     onMaxCountChange = viewModel::updateMaxSnoozeCount,
-                    onEscalationToggle = viewModel::toggleSmartEscalation,
+                    onEscalationToggle = { viewModel.toggleSmartEscalation() },
                 )
             }
 

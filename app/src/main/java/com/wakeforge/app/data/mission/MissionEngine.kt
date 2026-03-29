@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.mission
+package com.wakeforge.app.data.mission
 
 import com.wakeforge.app.data.mission.generators.MathGenerator
 import com.wakeforge.app.data.mission.generators.MemoryGenerator
@@ -35,7 +35,7 @@ class MissionEngine @Inject constructor(
         return when (type) {
             MissionType.MATH -> {
                 val problems = mathGenerator.generate(difficulty)
-                Mission.MathMission(difficulty = difficulty, 
+                Mission.MathMission(
                     id = missionId,
                     type = MissionType.MATH,
                     difficulty = difficulty,
@@ -47,7 +47,7 @@ class MissionEngine @Inject constructor(
 
             MissionType.MEMORY -> {
                 val memory = memoryGenerator.generate(difficulty)
-                Mission.MemoryMission(difficulty = difficulty, 
+                Mission.MemoryMission(
                     id = missionId,
                     type = MissionType.MEMORY,
                     difficulty = difficulty,
@@ -61,7 +61,7 @@ class MissionEngine @Inject constructor(
 
             MissionType.TYPE_PHRASE -> {
                 val phrase = phraseGenerator.generate(difficulty)
-                Mission.TypePhraseMission(difficulty = difficulty, 
+                Mission.TypePhraseMission(
                     id = missionId,
                     type = MissionType.TYPE_PHRASE,
                     difficulty = difficulty,
@@ -73,8 +73,8 @@ class MissionEngine @Inject constructor(
             }
 
             MissionType.SHAKE -> {
-                val shake = shakeEvaluator.createShakeMission(difficulty = difficulty, difficulty)
-                Mission.ShakeMission(difficulty = difficulty, 
+                val shake = shakeEvaluator.createShakeMission(difficulty)
+                Mission.ShakeMission(
                     id = missionId,
                     type = MissionType.SHAKE,
                     difficulty = difficulty,
@@ -87,8 +87,8 @@ class MissionEngine @Inject constructor(
             }
 
             MissionType.STEP -> {
-                val step = stepEvaluator.createStepMission(difficulty = difficulty, difficulty)
-                Mission.StepMission(difficulty = difficulty, 
+                val step = stepEvaluator.createStepMission(difficulty)
+                Mission.StepMission(
                     id = missionId,
                     type = MissionType.STEP,
                     difficulty = difficulty,

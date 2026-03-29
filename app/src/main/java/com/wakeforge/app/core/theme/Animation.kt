@@ -1,6 +1,4 @@
-﻿package com.wakeforge.app.core.theme
-import androidx.compose.animation.core.Visual
-
+package com.wakeforge.app.core.theme
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateInt

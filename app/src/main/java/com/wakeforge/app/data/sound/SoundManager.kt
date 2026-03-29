@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.sound
+package com.wakeforge.app.data.sound
 
 import android.content.Context
 import android.media.AudioAttributes
@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
+import com.wakeforge.app.R
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton

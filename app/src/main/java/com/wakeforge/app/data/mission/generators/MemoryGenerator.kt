@@ -1,4 +1,4 @@
-﻿package com.wakeforge.app.data.mission.generators
+package com.wakeforge.app.data.mission.generators
 
 import com.wakeforge.app.data.mission.DifficultyConfigurator
 import com.wakeforge.app.domain.models.Mission
@@ -23,7 +23,7 @@ class MemoryGenerator @Inject constructor(
 
         val pattern = generateUniquePositions(totalTiles, patternLength)
 
-        return Mission.MemoryMission(difficulty = difficulty, 
+        return Mission.MemoryMission(
             id = java.util.UUID.randomUUID().toString(),
             type = com.wakeforge.app.domain.models.MissionType.MEMORY,
             difficulty = difficulty,
