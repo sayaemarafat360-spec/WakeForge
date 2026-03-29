@@ -35,7 +35,7 @@ class AlarmScheduler @Inject constructor(
 
     fun scheduleAlarm(alarm: Alarm) {
         val nextFireTime = calculateNextFireTime(alarm) ?: return
-        scheduleAlarmAtTime(alarm.id, nextFireTime)
+        scheduleAlarmAtTime(alarm.id, nextFireTime.toEpochMilli())
 
         Log.d(
             TAG,
@@ -59,7 +59,7 @@ class AlarmScheduler @Inject constructor(
         for (entity in activeAlarms) {
             val alarm = entity.toDomain()
             val nextFireTime = calculateNextFireTime(alarm) ?: continue
-            scheduleAlarmAtTime(alarm.id, nextFireTime)
+            scheduleAlarmAtTime(alarm.id, nextFireTime.toEpochMilli())
             Log.d(
                 TAG,
                 "Rescheduled alarm ${alarm.id} for ${
@@ -212,8 +212,6 @@ class AlarmScheduler @Inject constructor(
 
     private fun getRequestCode(alarmId: String): Int {
         val hash = alarmId.hashCode()
-        return if (hash == Int.MIN_VALUE) Int.MAX_VALUE else Math.abs(hash)
+        return if (hash == Int.MIN_VALUE) Int.MAX_VALUE else kotlin.math.abs(hash)
     }
 }
-
-

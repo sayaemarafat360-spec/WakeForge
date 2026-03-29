@@ -3,15 +3,11 @@
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.BooleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.core.FloatPreferencesKey
 import androidx.datastore.preferences.core.floatPreferencesKey
-import androidx.datastore.preferences.core.IntPreferencesKey
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.StringPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.wakeforge.app.domain.models.AppSettings
@@ -33,19 +29,19 @@ class SettingsDataStore @Inject constructor(
 ) {
 
     private object Keys {
-        val THEME_MODE = StringPreferencesKey("theme_mode")
-        val ONBOARDING_COMPLETED = BooleanPreferencesKey("onboarding_completed")
-        val DEFAULT_SNOOZE_INTERVAL = IntPreferencesKey("default_snooze_interval")
-        val DEFAULT_MAX_SNOOZE_COUNT = IntPreferencesKey("default_max_snooze_count")
-        val DEFAULT_MISSION_TYPE = StringPreferencesKey("default_mission_type")
-        val DEFAULT_DIFFICULTY = StringPreferencesKey("default_difficulty")
-        val STRICT_MODE_DEFAULT = BooleanPreferencesKey("strict_mode_default")
-        val SOUND_VOLUME = FloatPreferencesKey("sound_volume")
-        val VIBRATION_INTENSITY = IntPreferencesKey("vibration_intensity")
-        val NOTIFICATION_PERMISSION_REQUESTED = BooleanPreferencesKey("notification_permission_requested")
-        val BATTERY_OPTIMIZATION_REQUESTED = BooleanPreferencesKey("battery_optimization_requested")
-        val IS_24_HOUR_FORMAT = BooleanPreferencesKey("is_24_hour_format")
-        val SELECTED_THEME_PALETTE = StringPreferencesKey("selected_theme_palette")
+        val THEME_MODE = stringPreferencesKey("theme_mode")
+        val ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
+        val DEFAULT_SNOOZE_INTERVAL = intPreferencesKey("default_snooze_interval")
+        val DEFAULT_MAX_SNOOZE_COUNT = intPreferencesKey("default_max_snooze_count")
+        val DEFAULT_MISSION_TYPE = stringPreferencesKey("default_mission_type")
+        val DEFAULT_DIFFICULTY = stringPreferencesKey("default_difficulty")
+        val STRICT_MODE_DEFAULT = booleanPreferencesKey("strict_mode_default")
+        val SOUND_VOLUME = floatPreferencesKey("sound_volume")
+        val VIBRATION_INTENSITY = intPreferencesKey("vibration_intensity")
+        val NOTIFICATION_PERMISSION_REQUESTED = booleanPreferencesKey("notification_permission_requested")
+        val BATTERY_OPTIMIZATION_REQUESTED = booleanPreferencesKey("battery_optimization_requested")
+        val IS_24_HOUR_FORMAT = booleanPreferencesKey("is_24_hour_format")
+        val SELECTED_THEME_PALETTE = stringPreferencesKey("selected_theme_palette")
     }
 
     private val dataStore: DataStore<Preferences> = context.wakeforgeSettingsDataStore
@@ -184,5 +180,3 @@ class SettingsDataStore @Inject constructor(
         throw throwable
     }
 }
-
-
