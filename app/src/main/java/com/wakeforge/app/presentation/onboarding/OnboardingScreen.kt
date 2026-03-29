@@ -1,5 +1,6 @@
 package com.wakeforge.app.presentation.onboarding
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -52,6 +53,7 @@ import kotlinx.coroutines.launch
  * @param navController Controller for navigation after onboarding.
  * @param viewModel The [OnboardingViewModel] managing onboarding state.
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
     navController: NavController,

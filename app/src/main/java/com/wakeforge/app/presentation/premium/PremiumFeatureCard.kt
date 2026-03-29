@@ -125,8 +125,9 @@ fun PremiumFeatureCard(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 // Short description
+                val descriptionText: String = description // Ensure String type
                 Text(
-                    text = description,
+                    text = descriptionText,
                     style = typography.labelMedium,
                     color = colors.secondaryText,
                     textAlign = TextAlign.Center,
