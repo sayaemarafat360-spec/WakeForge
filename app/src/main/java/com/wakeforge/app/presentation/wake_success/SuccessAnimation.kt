@@ -19,6 +19,7 @@ import com.wakeforge.app.core.theme.LocalWakeForgeColors
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
+import kotlinx.coroutines.launch
 
 /**
  * Canvas-based success celebration animation.
@@ -70,11 +71,11 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
     val fireFlicker = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        // 1. Expanding circle
-        kotlinx.coroutines.LaunchedEffect(Unit) {
+        // 1. Expanding circle (parallel animations)
+        launch {
             circleExpansion.animateTo(1f, animationSpec = tween(1000))
         }
-        kotlinx.coroutines.LaunchedEffect(Unit) {
+        launch {
             circleAlpha.animateTo(0f, animationSpec = tween(1200))
         }
 
@@ -85,7 +86,7 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
 
         // 3. Firework bursts at staggered delays
         for (i in 0 until burstCount) {
-            kotlinx.coroutines.LaunchedEffect(Unit) {
+            launch {
                 kotlinx.coroutines.delay(i * 200L)
                 burstProgresses[i].animateTo(1f, animationSpec = tween(600))
                 burstAlphas[i].animateTo(0f, animationSpec = tween(400, delayMillis = 200))
@@ -94,12 +95,8 @@ fun SuccessCelebration(isNewRecord: Boolean = false) {
 
         // 4. Fire flicker for new records (continuous)
         if (isNewRecord) {
-            kotlinx.coroutines.LaunchedEffect(Unit) {
+            launch {
                 fireFlicker.animateTo(1f, animationSpec = tween(300))
-                infiniteRepeatable(
-                    animation = tween(150),
-                    repeatMode = RepeatMode.Reverse,
-                )
                 while (true) {
                     fireFlicker.animateTo(
                         targetValue = if (fireFlicker.value < 0.5f) 1f else 0.3f,

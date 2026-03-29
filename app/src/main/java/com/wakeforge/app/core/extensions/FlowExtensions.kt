@@ -1,11 +1,17 @@
 package com.wakeforge.app.core.extensions
-import androidx.lifecycle.LifecycleOwner
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -33,7 +39,7 @@ fun <T> Flow<T>.asStateFlowInViewModel(
     initialValue: T,
 ): StateFlow<T> = stateIn(
     scope = scope,
-    started = kotlinx.coroutines.flow.SharingStarted.WhileSubscribed(5_000),
+    started = SharingStarted.WhileSubscribed(5_000),
     initialValue = initialValue,
 )
 
@@ -56,11 +62,11 @@ fun <T> Flow<T>.asStateFlowInViewModel(
 @Composable
 fun <T> Flow<T>.collectAsStateWithLifecycle(initialValue: T): androidx.compose.runtime.State<T> {
     val lifecycleOwner = LocalLifecycleOwner.current
-    val state = remember { androidx.compose.runtime.mutableStateOf(initialValue) }
+    val state = remember { mutableStateOf(initialValue) }
 
     LaunchedEffect(this, lifecycleOwner) {
         lifecycleOwner.lifecycleScope.launch {
-            lifecycleOwner.lifecycle.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.STARTED) {
+            lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 this@collectAsStateWithLifecycle.collect { value ->
                     state.value = value
                 }
@@ -109,7 +115,7 @@ fun <Event> SharedFlow<Event>.observeEventsWithLifecycle(
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(this, lifecycleOwner) {
-        lifecycleOwner.lifecycle.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.STARTED) {
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             this@observeEventsWithLifecycle.collect { event ->
                 onEvent(event)
             }
