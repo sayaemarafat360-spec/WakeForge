@@ -67,8 +67,7 @@ fun OnboardingScreen(
         pageCount = { pagesList.size }
     )
 
-    // Collect state as state
-    val uiState by viewModel.state.collectAsStateWithLifecycle()
+    val uiState = viewModel.state.collectAsStateWithLifecycle()
 
     // Listen for completion / skip events
     LaunchedEffect(Unit) {

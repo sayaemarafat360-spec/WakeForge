@@ -95,33 +95,30 @@ fun StreakLineChart(
 
         // Y-axis labels
         val yLabels = listOf(maxValue.toString(), (maxValue * 3 / 4).toString(), (maxValue / 2).toString(), (maxValue / 4).toString(), "0")
-        drawContext.canvas.nativeCanvas.apply {
-            yLabels.forEachIndexed { index, label ->
-                val y = paddingTop + (plotHeight * index / 4f)
-                val paint = android.graphics.Paint().apply {
-                    color = colors.secondaryText.hashCode()
-                    textSize = 9f * density
-                    textAlign = android.graphics.Paint.Align.RIGHT
-                    isAntiAlias = true
-                }
-                drawText(label, paddingStart - 4.dp.toPx(), y + 3.dp.toPx(), paint)
+        val nativeCanvas = drawContext.canvas.nativeCanvas
+        yLabels.forEachIndexed { index, label ->
+            val y = paddingTop + (plotHeight * index / 4f)
+            val paint = android.graphics.Paint().apply {
+                color = colors.secondaryText.hashCode()
+                textSize = 9f * density
+                textAlign = android.graphics.Paint.Align.RIGHT
+                isAntiAlias = true
             }
+            nativeCanvas.drawText(label, paddingStart - 4.dp.toPx(), y + 3.dp.toPx(), paint)
         }
 
         // X-axis labels (every 5th day)
         val xLabelPositions = listOf(0, 4, 9, 14, 19, 24, 29)
         val xLabelValues = listOf("1", "5", "10", "15", "20", "25", "30")
-        drawContext.canvas.nativeCanvas.apply {
-            xLabelPositions.forEachIndexed { index, dataIdx ->
-                val point = pointAt(dataIdx)
-                val paint = android.graphics.Paint().apply {
-                    color = colors.secondaryText.hashCode()
-                    textSize = 9f * density
-                    textAlign = android.graphics.Paint.Align.CENTER
-                    isAntiAlias = true
-                }
-                drawText(xLabelValues[index], point.x, chartHeight - 4.dp.toPx(), paint)
+        xLabelPositions.forEachIndexed { index, dataIdx ->
+            val point = pointAt(dataIdx)
+            val paint = android.graphics.Paint().apply {
+                color = colors.secondaryText.hashCode()
+                textSize = 9f * density
+                textAlign = android.graphics.Paint.Align.CENTER
+                isAntiAlias = true
             }
+            nativeCanvas.drawText(xLabelValues[index], point.x, chartHeight - 4.dp.toPx(), paint)
         }
 
         // Build smooth bezier path through data points

@@ -177,19 +177,18 @@ fun WeeklyBarChart(
                 }
 
                 // Draw day label below bar
-                drawContext.canvas.nativeCanvas.apply {
-                    val label = dayLabels.getOrNull(index) ?: ""
-                    val textX = barX + barWidth.toPx() / 2f
-                    val textY = chartBottom + 16.dp.toPx()
+                val nativeCanvas = drawContext.canvas.nativeCanvas
+                val label = dayLabels.getOrNull(index) ?: ""
+                val textX = barX + barWidth.toPx() / 2f
+                val textY = chartBottom + 16.dp.toPx()
 
-                    val paint = android.graphics.Paint().apply {
-                        color = colors.secondaryText.hashCode()
-                        textSize = 11f * density
-                        textAlign = android.graphics.Paint.Align.CENTER
-                        isAntiAlias = true
-                    }
-                    drawText(label, textX, textY, paint)
+                val paint = android.graphics.Paint().apply {
+                    color = colors.secondaryText.hashCode()
+                    textSize = 11f * density
+                    textAlign = android.graphics.Paint.Align.CENTER
+                    isAntiAlias = true
                 }
+                nativeCanvas.drawText(label, textX, textY, paint)
             }
         }
     }

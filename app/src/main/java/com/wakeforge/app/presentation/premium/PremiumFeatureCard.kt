@@ -65,10 +65,10 @@ fun PremiumFeatureCard(
     val typography = LocalWakeForgeTypography.current
 
     val icon = mapFeatureIcon(feature.icon)
-    val displayName = feature.displayName.replace("_", " ")
+    val displayName: String = feature.displayName.replace("_", " ")
         .split(" ")
         .joinToString(" ") { it.replaceFirstChar { c -> c.uppercase() } }
-    val description = buildFeatureDescription(feature)
+    val description: String = buildFeatureDescription(feature)
 
     WFCard(
         modifier = modifier.fillMaxWidth()
